@@ -22,6 +22,13 @@ a.navlink{color:#c9c5be;font-size:14px;font-weight:600}
 a.navlink:hover{color:#f28a2e}
 .navwrap{-ms-overflow-style:none;scrollbar-width:none}
 .navwrap::-webkit-scrollbar{display:none}
+.navrow{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px}
+.navlogo{flex:0 0 auto;display:flex;align-items:center;min-width:0}
+.navlogo img{display:block;height:32px;width:auto}
+@media (max-width:640px){
+.navlinks{order:3;width:100%;justify-content:flex-start;padding-top:2px}
+.navcta{order:2}
+}
 </style>
 
 </head>
@@ -31,14 +38,14 @@ a.navlink:hover{color:#f28a2e}
 <div id="top" style="width: 100%; box-sizing: border-box; background: #0c0c0e; color: #ece8e2; font-family: 'Source Sans 3','Helvetica Neue',Arial,sans-serif;">
 
 <div style="position: sticky; top: 0; z-index: 20; background: rgba(12,12,14,0.92); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(255,255,255,0.06);">
-<div style="max-width: 1160px; margin: 0 auto; padding: 16px 24px; box-sizing: border-box; display: flex; flex-wrap: nowrap; gap: 16px; align-items: center; justify-content: space-between;">
-<a href="#top" style="font-size: 13px; letter-spacing: 0.28em; color: #b9b6b0; text-transform: uppercase; flex: 0 0 auto; white-space: nowrap;">Школа <span style="font-family: Lora,Georgia,serif; font-style: italic; font-weight: 700; font-size: 19px; letter-spacing: 0.02em; color: #f28a2e;">PRO</span> продажи</a>
-<div class="navwrap" style="display: flex; gap: 20px; overflow-x: auto; flex: 1 1 auto; justify-content: flex-end; align-items: center;">
+<div class="navrow" style="max-width: 1160px; margin: 0 auto; padding: 14px 24px; box-sizing: border-box;">
+<a href="#top" class="navlogo"><img src="logo.png" alt="Школа PRO продажи Оксаны Пантелеевой"></a>
+<div class="navwrap navlinks" style="display: flex; gap: 20px; overflow-x: auto; align-items: center;">
 <a class="navlink" href="#programma">Программа</a>
 <a class="navlink" href="#otzyvy">Отзывы</a>
 <a class="navlink" href="#oksana">Об Оксане</a>
-<a class="pill" href="#zapis" style="display: inline-flex; align-items: center; min-height: 40px; padding: 0 18px; box-sizing: border-box; border: 1px solid rgba(242,138,46,0.55); border-radius: 999px; color: #ece8e2; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; flex: 0 0 auto;">Записаться</a>
 </div>
+<a class="pill navcta" href="#zapis" style="display: inline-flex; align-items: center; min-height: 40px; padding: 0 18px; box-sizing: border-box; border: 1px solid rgba(242,138,46,0.55); border-radius: 999px; color: #ece8e2; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap;">Записаться</a>
 </div>
 </div>
 
@@ -243,7 +250,7 @@ a.navlink:hover{color:#f28a2e}
 
 <div style="border-top: 1px solid rgba(255,255,255,0.08);">
 <div style="max-width: 1160px; margin: 0 auto; padding: 32px 24px 44px; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px;">
-<div style="font-size: 14px; letter-spacing: 0.3em; color: #b9b6b0; text-transform: uppercase;">Школа <span style="font-family: Lora,Georgia,serif; font-style: italic; font-weight: 700; font-size: 20px; letter-spacing: 0.02em; color: #f28a2e;">PRO</span> продажи Оксаны Пантелеевой</div>
+<img src="logo.png" alt="Школа PRO продажи Оксаны Пантелеевой" style="display: block; height: 40px; width: auto;">
 <div style="font-size: 14px; line-height: 1.5; color: #9d9a94;">Instagram — запрещённая социальная сеть на территории РФ.</div>
 </div>
 </div>
