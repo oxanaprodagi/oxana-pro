@@ -20,6 +20,13 @@ a.btn:hover{filter:brightness(1.1);color:#ffffff}
 a.pill:hover{border-color:#f28a2e;color:#ffffff}
 a.navlink{color:#c9c5be;font-size:14px;font-weight:600}
 a.navlink:hover{color:#f28a2e}
+.consent{display:flex;align-items:flex-start;gap:12px;max-width:520px;font-size:15px;line-height:1.5;color:#c9c5be;cursor:pointer}
+.consent input{flex:0 0 auto;width:20px;height:20px;margin:2px 0 0;accent-color:#ee7b2f;cursor:pointer}
+.consent-hint{font-size:14px;font-weight:700;color:#ff9a5a;margin-top:-14px}
+#pay-btn.locked{opacity:.55}
+.legal-links{display:flex;flex-wrap:wrap;gap:6px 20px;font-size:14px}
+.legal-links a{color:#c9c5be;text-decoration:underline;text-underline-offset:3px}
+.legal-links a:hover{color:#f28a2e}
 .navwrap{-ms-overflow-style:none;scrollbar-width:none}
 .navwrap::-webkit-scrollbar{display:none}
 .navrow{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px}
@@ -278,10 +285,12 @@ a.navlink:hover{color:#f28a2e}
 <h2 style="margin: 0; font-family: Lora,Georgia,serif; font-weight: 600; font-size: clamp(30px, 4.6vw, 50px); line-height: 1.1; color: #f4f1ec;">Готовы навести порядок в своих продажах?</h2>
 <p style="margin: 0; font-size: 19px; line-height: 1.6; color: #c9c5be;">Оплатите участие онлайн — это займёт пару минут.</p>
 <div class="price-deadline-tag" style="font-size: 15px; font-weight: 700; letter-spacing: 0.04em; color: #f28a2e;">Спеццена действует до 13 октября — дальше дороже. Старт потока — 19 октября.</div>
-<a class="btn" href="https://securepayecom.com/sc/gYJHDMxYNAJEsRRN" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; justify-content: center; align-self: flex-start; min-height: 60px; padding: 0 40px; box-sizing: border-box; border-radius: 999px; background: linear-gradient(180deg, #ee7b2f, #c9480f); color: #ffffff; font-weight: 700; font-size: 18px; letter-spacing: 0.12em; text-transform: uppercase; box-shadow: 0 10px 30px rgba(226,90,20,0.30);">Хочу научиться продавать</a>
+<label class="consent" for="consent"><input type="checkbox" id="consent"><span>Я принимаю условия <a href="oferta.html" target="_blank">публичной оферты</a> и даю <a href="soglasie.html" target="_blank">согласие на обработку персональных данных</a> в соответствии с <a href="privacy.html" target="_blank">политикой обработки персональных данных</a></span></label>
+<div id="consent-hint" class="consent-hint" hidden>Отметьте галочку выше, чтобы перейти к оплате</div>
+<a class="btn" id="pay-btn" href="https://securepayecom.com/sc/gYJHDMxYNAJEsRRN" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; justify-content: center; align-self: flex-start; min-height: 60px; padding: 0 40px; box-sizing: border-box; border-radius: 999px; background: linear-gradient(180deg, #ee7b2f, #c9480f); color: #ffffff; font-weight: 700; font-size: 18px; letter-spacing: 0.12em; text-transform: uppercase; box-shadow: 0 10px 30px rgba(226,90,20,0.30);">Хочу научиться продавать</a>
 <div style="width: 100%; max-width: 460px; box-sizing: border-box; padding: 18px 22px; background: #151518; border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; display: flex; align-items: center; gap: 18px;">
 <img src="qr-pay.jpg" alt="QR-код для оплаты" style="display: block; width: 72px; height: 72px; border-radius: 10px; flex: 0 0 auto;">
-<div style="font-size: 15px; line-height: 1.4; color: #c9c5be;">Или отсканируйте QR-код, чтобы перейти к оплате с телефона.</div>
+<div style="font-size: 15px; line-height: 1.4; color: #c9c5be;">Или отсканируйте QR-код, чтобы перейти к оплате с телефона. Оплачивая, вы принимаете условия <a href="oferta.html" target="_blank">оферты</a>.</div>
 </div>
 <div style="display: flex; flex-direction: column; gap: 12px; max-width: 460px;">
 <div style="font-size: 15px; color: #9d9a94;">Остались личные вопросы? Напишите Оксане:</div>
@@ -299,6 +308,8 @@ a.navlink:hover{color:#f28a2e}
 <div style="border-top: 1px solid rgba(255,255,255,0.08);">
 <div style="max-width: 1160px; margin: 0 auto; padding: 32px 24px 44px; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px;">
 <img src="logo.png" alt="Школа PRO продажи Оксаны Пантелеевой" style="display: block; width: 220px; max-width: 60vw; height: auto; object-fit: contain;">
+<div class="legal-links"><a href="oferta.html">Публичная оферта</a><a href="privacy.html">Политика обработки персональных данных</a><a href="soglasie.html">Согласие на обработку персональных данных</a></div>
+<div style="font-size: 14px; line-height: 1.5; color: #9d9a94;">ИП Пантелеева Оксана Владимировна · ИНН 380800402893 · ОГРНИП 313385002800189 · <a href="mailto:oxi0712@mail.ru">oxi0712@mail.ru</a></div>
 <div style="font-size: 14px; line-height: 1.5; color: #9d9a94;">Instagram — запрещённая социальная сеть на территории РФ.</div>
 </div>
 </div>
@@ -306,6 +317,18 @@ a.navlink:hover{color:#f28a2e}
 </div>
 
 <script>
+(function(){
+var box = document.getElementById('consent');
+var btn = document.getElementById('pay-btn');
+var hint = document.getElementById('consent-hint');
+if (!box || !btn) return;
+function sync(){ btn.classList.toggle('locked', !box.checked); if (box.checked && hint) hint.hidden = true; }
+box.addEventListener('change', sync);
+btn.addEventListener('click', function(e){
+if (!box.checked) { e.preventDefault(); if (hint) hint.hidden = false; box.focus(); }
+});
+sync();
+})();
 (function(){
 var deadline = new Date('2026-10-13T20:59:59Z');
 if (new Date() > deadline) {
