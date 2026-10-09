@@ -1,0 +1,589 @@
+<title>Какой вы продавец</title>
+<style>
+/* layout: single-screen app that swaps three states (intro / chat / result) via [hidden]; chat mimics a real messenger thread with reply chips, result mirrors the lead-magnet's scoring language */
+:root{
+  --bg:#0c0c0d; --panel:#141416; --panel-2:#1b1b1e; --line:#2a2a2e;
+  --ink:#f2efe9; --ink-dim:#9a9fa6; --steel:#8f99a5; --steel-dim:#565c63;
+  --o1:#ff9a4a; --o2:#f47b20; --o3:#d9560f;
+  --good:#5fd49a;
+  --client-bubble:#1f2023; --me-bubble-grad:linear-gradient(135deg,var(--o1),var(--o3));
+  --font-display:'Fraunces','Georgia',serif; --font-body:'Inter',-apple-system,sans-serif; --font-mono:'JetBrains Mono',monospace;
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){
+    --bg:#0c0c0d; --panel:#141416; --panel-2:#1b1b1e; --line:#2a2a2e; --ink:#f2efe9; --ink-dim:#9a9fa6;
+    --steel:#8f99a5; --steel-dim:#565c63; --client-bubble:#1f2023; color-scheme: dark;
+  }
+}
+:root[data-theme="light"]{
+  --bg:#0c0c0d; --panel:#141416; --panel-2:#1b1b1e; --line:#2a2a2e; --ink:#f2efe9; --ink-dim:#9a9fa6;
+  --steel:#8f99a5; --steel-dim:#565c63; --client-bubble:#1f2023; color-scheme: dark;
+}
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,600&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap');
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; background:var(--bg); color:var(--ink); font-family:var(--font-body);
+  padding-left:max(16px, env(safe-area-inset-left,0px)); padding-right:max(16px, env(safe-area-inset-right,0px));
+  display:flex; justify-content:center;
+}
+body::before{ /* ambient glow */
+  content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
+  background:
+    radial-gradient(60vmax 40vmax at 100% -10%, rgba(244,123,32,.14), transparent 60%),
+    radial-gradient(50vmax 40vmax at -10% 110%, rgba(143,153,165,.10), transparent 65%);
+}
+.app{position:relative; z-index:1; width:100%; max-width:480px; min-height:100%; padding-block:28px 24px; display:flex; flex-direction:column}
+h1,h2,h3{font-family:var(--font-display); font-weight:700; text-wrap:balance; margin:0}
+p{margin:0; line-height:1.5}
+.eyebrow{font-family:var(--font-mono); font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--o1); font-weight:700}
+.brand{display:flex; align-items:center; justify-content:center; gap:7px; font-family:var(--font-mono); font-size:10.5px; letter-spacing:.22em; color:var(--steel); font-weight:600; margin-top:auto; padding-top:28px}
+.brand b{font-style:italic; color:transparent; background:linear-gradient(180deg,var(--o1),var(--o3)); -webkit-background-clip:text; background-clip:text; font-weight:800; letter-spacing:.04em}
+
+/* ---------- INTRO ---------- */
+#intro{display:flex; flex-direction:column; gap:22px; flex:1}
+.hero-frame{position:relative; border-radius:18px; overflow:hidden; aspect-ratio:4/5; border:1px solid var(--line)}
+.hero-frame img{width:100%; height:100%; object-fit:cover; object-position:50% 4%; display:block}
+.hero-frame::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(12,12,13,0) 45%, rgba(12,12,13,.92) 100%), linear-gradient(90deg, rgba(12,12,13,.5) 0%, rgba(12,12,13,0) 38%)}
+.hero-tag{position:absolute; left:14px; bottom:12px; font-family:var(--font-mono); font-size:10px; letter-spacing:.18em; color:var(--ink-dim); text-transform:uppercase}
+#intro h1{font-size:clamp(28px,7vw,36px); line-height:1.08; margin-top:2px}
+#intro h1 em{font-style:normal; color:transparent; background:linear-gradient(180deg,var(--o1),var(--o3)); -webkit-background-clip:text; background-clip:text}
+.lead{color:var(--ink-dim); font-size:15px; max-width:52ch}
+.stat-row{display:flex; gap:10px}
+.stat-chip{flex:1; background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:11px 12px}
+.stat-chip b{display:block; font-family:var(--font-display); font-size:20px; color:var(--o1)}
+.stat-chip span{display:block; font-size:10.5px; letter-spacing:.07em; color:var(--steel); text-transform:uppercase; margin-top:2px; line-height:1.3}
+.scenario-note{font-size:13px; color:var(--ink-dim); background:var(--panel); border-left:2px solid var(--o2); border-radius:0 10px 10px 0; padding:11px 14px; line-height:1.45}
+.scenario-note b{color:var(--ink)}
+button{font-family:var(--font-body); cursor:pointer}
+.btn-start{
+  appearance:none; border:none; border-radius:999px; padding:16px 20px; font-size:15px; font-weight:800;
+  letter-spacing:.03em; color:#160a04; background:linear-gradient(90deg,var(--o1),var(--o3));
+  box-shadow:0 10px 24px -8px rgba(244,123,32,.55); display:flex; align-items:center; justify-content:center; gap:8px;
+}
+.btn-start:active{transform:scale(.98)}
+.btn-start svg{width:16px; height:16px}
+
+/* ---------- CHAT ---------- */
+#chat{display:none; flex:1; flex-direction:column; gap:16px}
+#chat.active{display:flex}
+.progress{display:flex; gap:5px}
+.progress i{flex:1; height:4px; border-radius:3px; background:var(--line)}
+.progress i.done{background:linear-gradient(90deg,var(--o1),var(--o3))}
+.progress i.now{background:var(--steel)}
+.round-label{font-family:var(--font-mono); font-size:11px; letter-spacing:.14em; color:var(--steel); text-transform:uppercase; display:grid; grid-template-columns:auto 1fr auto; align-items:center; gap:8px}
+.round-label b{color:var(--o1)}
+.back-btn{appearance:none; border:1px solid var(--line); background:var(--panel); color:var(--steel); border-radius:999px; width:26px; height:26px; flex:none; display:flex; align-items:center; justify-content:center; padding:0; transition:border-color .15s, color .15s}
+.back-btn svg{width:13px; height:13px; stroke:currentColor}
+.back-btn[disabled]{opacity:.3; cursor:default}
+.back-btn:not([disabled]):hover{border-color:var(--o2); color:var(--o1)}
+.thread{background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:16px; display:flex; flex-direction:column; gap:10px; min-height:148px; max-height:46vh; overflow-y:auto; scroll-behavior:smooth}
+.msg{display:flex; gap:8px; max-width:92%}
+.msg .av{width:28px; height:28px; border-radius:50%; flex:none; background:var(--panel-2); border:1px solid var(--line); display:flex; align-items:center; justify-content:center; font-family:var(--font-mono); font-size:10px; color:var(--steel); font-weight:700}
+.msg.client{align-self:flex-start}
+.msg.me{align-self:flex-end; flex-direction:row-reverse}
+.bubble{border-radius:14px; padding:10px 13px; font-size:14px; line-height:1.4}
+.msg.client .bubble{background:var(--client-bubble); border:1px solid var(--line); border-top-left-radius:4px; color:#e4e2de}
+.msg.me .bubble{background:var(--me-bubble-grad); color:#1c0d03; border-top-right-radius:4px; font-weight:600}
+.typing{display:inline-flex; gap:3px; padding:4px 2px}
+.typing i{width:5px; height:5px; border-radius:50%; background:var(--steel-dim); animation:tb 1.1s infinite ease-in-out}
+.typing i:nth-child(2){animation-delay:.15s} .typing i:nth-child(3){animation-delay:.3s}
+@keyframes tb{0%,60%,100%{opacity:.3; transform:translateY(0)}30%{opacity:1; transform:translateY(-2px)}}
+.options{display:flex; flex-direction:column; gap:8px}
+.opt{
+  text-align:left; background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:13px 14px;
+  font-size:14px; color:var(--ink); line-height:1.4; transition:border-color .15s, background .15s;
+}
+.opt:hover{border-color:var(--o2)}
+.opt:active{transform:scale(.99)}
+.opt[disabled]{opacity:.45}
+.opt .k{display:block; font-family:var(--font-mono); font-size:10px; letter-spacing:.1em; color:var(--o1); margin-bottom:4px; font-weight:700}
+
+/* ---------- RESULT ---------- */
+#result{display:none; flex:1; flex-direction:column; gap:18px}
+#result.active{display:flex}
+.res-card{background:linear-gradient(160deg, rgba(244,123,32,.14), rgba(143,153,165,.05)); border:1px solid rgba(244,123,32,.35); border-radius:18px; padding:22px}
+.res-eyebrow{display:flex; align-items:center; gap:8px}
+.res-eyebrow .face{width:34px; height:34px; border-radius:50%; object-fit:cover; border:2px solid var(--o2)}
+#res-name{font-size:clamp(24px,7vw,30px); margin-top:10px; line-height:1.1}
+#res-sub{color:var(--ink-dim); font-size:14.5px; margin-top:8px; line-height:1.5}
+.bars{display:flex; flex-direction:column; gap:10px}
+.bar-row{display:grid; grid-template-columns:1fr auto; gap:8px 10px; align-items:center}
+.bar-row .lbl{font-size:12.5px; color:var(--ink-dim)}
+.bar-row .lbl b{color:var(--ink); font-weight:600}
+.bar-row .pct{font-family:var(--font-mono); font-size:12px; color:var(--steel); text-align:right}
+.bar-track{grid-column:1/-1; height:7px; border-radius:4px; background:var(--panel-2); overflow:hidden; border:1px solid var(--line)}
+.bar-fill{height:100%; border-radius:4px; background:linear-gradient(90deg,var(--o1),var(--o3)); width:0%; transition:width .7s cubic-bezier(.2,.8,.2,1)}
+.bar-fill.lead{background:linear-gradient(90deg,var(--good),#2f8f66)}
+.block{background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:16px}
+.block .lbl2{font-family:var(--font-mono); font-size:10px; letter-spacing:.18em; color:var(--o1); text-transform:uppercase; font-weight:700; margin-bottom:9px}
+.block ul{margin:0; padding-left:18px; display:flex; flex-direction:column; gap:7px; font-size:13.5px; color:#d7d4ce; line-height:1.45}
+.block.tip{border-color:rgba(244,123,32,.35); background:linear-gradient(135deg, rgba(244,123,32,.1), rgba(244,123,32,.02))}
+.cta{background:var(--panel); border:1px solid var(--line); border-radius:16px; padding:18px; display:flex; flex-direction:column; gap:12px}
+.cta h3{font-size:17px}
+.cta p{font-size:13.5px; color:var(--ink-dim); line-height:1.5}
+.pill{display:inline-block; padding:3px 11px 4px; border-radius:999px; font-weight:800; letter-spacing:.14em; font-size:12.5px; color:#1c0d03; background:linear-gradient(90deg,var(--o1),var(--o3))}
+.links{display:flex; flex-direction:column; gap:8px}
+.lnk{display:flex; align-items:center; gap:10px; padding:10px 12px; border-radius:12px; text-decoration:none; border:1px solid rgba(244,123,32,.45); background:rgba(244,123,32,.08); color:var(--ink)}
+.lnk .ic{flex:none; width:28px; height:28px; border-radius:50%; background:linear-gradient(135deg,var(--o1),var(--o3)); display:flex; align-items:center; justify-content:center}
+.lnk .ic svg{width:15px; height:15px; stroke:#1c0d03; fill:none; stroke-width:2; stroke-linecap:round; stroke-linejoin:round}
+.lnk small{display:block; font-family:var(--font-mono); font-size:9.5px; letter-spacing:.12em; color:var(--steel); text-transform:uppercase}
+.lnk b{display:block; font-size:14px; margin-top:1px}
+.row2{display:flex; gap:10px}
+.btn-ghost{flex:1; appearance:none; border:1px solid var(--line); background:var(--panel); color:var(--ink-dim); border-radius:12px; padding:12px; font-size:13px; font-weight:600; display:flex; align-items:center; justify-content:center; gap:6px}
+.btn-ghost svg{width:14px; height:14px}
+.btn-ghost.copied{color:var(--good); border-color:var(--good)}
+
+@media (prefers-reduced-motion: reduce){ .bar-fill{transition:none} .typing i{animation:none} }
+</style>
+
+<div class="app">
+
+  <!-- ===== INTRO ===== -->
+  <section id="intro">
+    <div class="eyebrow">Игра-тест · Школа PRO продажи</div>
+    <div class="hero-frame">
+      <img src="test-hero.jpg" alt="">
+      <div class="hero-tag">6 ситуаций · реальный диалог с клиентом</div>
+    </div>
+    <h1>Какой вы <em>продавец</em>?</h1>
+    <p class="lead">Узнайте за 2 минуты, на каком шаге разговора вы теряете клиентов - и деньги вместе с ними.</p>
+    <div class="stat-row">
+      <div class="stat-chip"><b>6</b><span>ситуаций</span></div>
+      <div class="stat-chip"><b>4</b><span>типа продавца</span></div>
+      <div class="stat-chip"><b>2 мин</b><span>без регистрации</span></div>
+    </div>
+    <p class="scenario-note"><b>Вам написала Марина.</b> Она уже обожглась на дорогих курсах и теперь сомневается в каждом слове. Отвечайте так, как отвечаете обычно - в этом и есть тест.</p>
+    <button class="btn-start" id="btnStart">Пройти тест бесплатно <svg viewBox="0 0 24 24" stroke="#1c0d03" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
+    <div class="brand">ШКОЛА <b>PRO</b> ПРОДАЖИ · ОКСАНЫ ПАНТЕЛЕЕВОЙ</div>
+  </section>
+
+  <!-- ===== CHAT ===== -->
+  <section id="chat">
+    <div class="progress" id="progress"></div>
+    <div class="round-label">
+      <button class="back-btn" id="btnBack" aria-label="Назад" disabled><svg viewBox="0 0 24 24" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+      <span>Диалог с клиентом</span>
+      <b id="roundNum">01 / 06</b>
+    </div>
+    <div class="thread" id="thread"></div>
+    <div class="options" id="options"></div>
+  </section>
+
+  <!-- ===== RESULT ===== -->
+  <section id="result">
+    <div class="eyebrow">Результат</div>
+    <div class="res-card">
+      <div class="res-eyebrow"><img class="face" src="test-face.jpg" alt=""><span class="eyebrow" style="color:var(--steel)">Ваш тип продавца</span></div>
+      <h2 id="res-name"></h2>
+      <p id="res-sub"></p>
+    </div>
+
+    <div class="bars" id="bars"></div>
+
+    <div class="block">
+      <div class="lbl2">Где вы теряете клиента</div>
+      <ul id="res-leaks"></ul>
+    </div>
+
+    <div class="block tip">
+      <div class="lbl2">Что попробовать уже в следующем диалоге</div>
+      <ul id="res-tips"></ul>
+    </div>
+
+    <div class="cta">
+      <h3>Хотите узнать, где теряете деньги именно вы?</h3>
+      <p>Пришлите мне скрин результата и слово <span class="pill">ДИАГНОСТИКА</span>. Запишу голосовое на 3–5 минут: скажу, на чём вы теряете клиентов, и что сделать уже в следующем разговоре.</p>
+      <div class="links">
+        <a class="lnk" href="https://t.me/Oxi071280" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24"><path d="M21 4 3 11l5.5 2L10 19l3-3.5 5 3.7z"/><path d="M8.5 13 21 4"/></svg></span><span><small>Telegram · личные сообщения</small><b>@Oxi071280</b></span></a>
+        <a class="lnk" href="https://www.instagram.com/oxi0712" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r=".6"/></svg></span><span><small>Instagram · direct</small><b>@oxi0712</b></span></a>
+        <a class="lnk" href="https://t.me/noise_25" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24"><path d="M21 4 3 11l5.5 2L10 19l3-3.5 5 3.7z"/><path d="M8.5 13 21 4"/></svg></span><span><small>Telegram-канал</small><b>@noise_25</b></span></a>
+      </div>
+    </div>
+
+    <div class="row2">
+      <button class="btn-ghost" id="btnCopy"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M4 16V5a1 1 0 0 1 1-1h11"/></svg><span>Скопировать результат</span></button>
+      <button class="btn-ghost" id="btnRestart"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg><span>Пройти ещё раз</span></button>
+    </div>
+    <div class="brand">ШКОЛА <b>PRO</b> ПРОДАЖИ · ОКСАНЫ ПАНТЕЛЕЕВОЙ</div>
+  </section>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var TYPES = {
+    hs: {
+      name: "Хозяйка сделки",
+      sub: "Вы сами ведёте разговор: спрашиваете первой, спокойно называете цену и предлагаете понятный следующий шаг. Именно так клиенты чаще всего доходят до оплаты.",
+      leaks: [
+        "Иногда торопитесь дальше и не даёте клиенту пару секунд на раздумье.",
+        "Можете звучать слишком чётко для тех, кому сначала важно тепло, а не план."
+      ],
+      tips: [
+        "После «да» клиента - не спешите. Дайте короткую паузу.",
+        "Раз в неделю перечитывайте свою переписку: не слишком ли сухо вы звучите?"
+      ]
+    },
+    sb: {
+      name: "Справочное бюро",
+      sub: "Вы подробно и честно отвечаете на любой вопрос. Но разговор ведёт клиент, а не вы - он спрашивает, вы отвечаете, а до предложения дело часто не доходит.",
+      leaks: [
+        "Клиент получает много полезной информации, но не слышит простого «вот что я предлагаю».",
+        "Рассказываете обо всём сразу, вместо одного решения под его задачу."
+      ],
+      tips: [
+        "Ответили на вопрос - сразу задайте свой. Не отдавайте разговор клиенту.",
+        "В следующий раз предложите одну вещь, а не весь список услуг."
+      ]
+    },
+    te: {
+      name: "Тихий эксперт",
+      sub: "Вы отлично знаете своё дело. Но в момент, когда клиент сомневается или молчит, вы тоже замолкаете - лишь бы не показаться навязчивой.",
+      leaks: [
+        "На «я подумаю» вы ничего не отвечаете - и разговор просто гаснет.",
+        "Не спрашиваете, что именно останавливает клиента."
+      ],
+      tips: [
+        "На «я подумаю» спросите прямо: «что хотите обдумать?»",
+        "Договаривайтесь о дате и времени следующего разговора - а не «напишите, если что»."
+      ]
+    },
+    op: {
+      name: "Оправдашка",
+      sub: "Как только разговор доходит до денег, вы начинаете оправдываться или сбрасывать цену - иногда ещё до того, как клиент хоть что-то сказал.",
+      leaks: [
+        "Предлагаете скидку сами, раньше, чем клиент успел возразить.",
+        "Называете цену раньше, чем клиент понял, зачем она ему нужна."
+      ],
+      tips: [
+        "Перед ценой одной фразой напомните результат. Потом назовите цену - и помолчите.",
+        "Скидку давайте только в ответ на реальное «дорого», а не заранее."
+      ]
+    }
+  };
+  var ORDER = ["hs","sb","te","op"];
+
+  var ROUNDS = [
+    {
+      label: "Первое сообщение",
+      client: "Здравствуйте! Сколько стоит ваше обучение?",
+      opts: [
+        {t:"Присылаю полную программу и список всех плюсов", k:"sb"},
+        {t:"Спрашиваю: какой у вас запрос, что хотите решить?", k:"hs"},
+        {t:"Говорю, что подумаю, как сделать подешевле", k:"op"}
+      ]
+    },
+    {
+      label: "Клиент сомневается в себе",
+      clientByPrev: {
+        hs: "Если честно - хочу перестать теряться, когда слышу «дорого». Но я уже покупала один курс, и толку не было. Не уверена, что в этот раз получится",
+        sb: "Пока просто смотрю варианты... Если честно, я уже покупала один курс, и толку не было. Не уверена, что в этот раз получится",
+        op: "Хорошо, буду благодарна. Если честно, я уже покупала один курс, и толку не было. Не уверена, что в этот раз получится"
+      },
+      opts: [
+        {t:"Спрашиваю: что именно пугает больше всего?", k:"hs"},
+        {t:"Говорю «не переживайте» и перехожу к программе", k:"sb"},
+        {t:"Беру паузу на пару часов - не знаю, что ответить", k:"te"}
+      ]
+    },
+    {
+      label: "Нужно показать ценность",
+      clientByPrev: {
+        hs: "Ладно, если спросите - боюсь просто потратить деньги зря. А чем вы лучше остальных?",
+        sb: "Хорошо... А чем вы лучше остальных?",
+        te: "Так и не поняла, что вы думаете. Ладно - а чем вы лучше остальных?"
+      },
+      opts: [
+        {t:"Перечисляю все свои плюсы подряд", k:"sb"},
+        {t:"Говорю: «сложно сказать, у всех всё похоже»", k:"te"},
+        {t:"Говорю, что именно это даст лично ей", k:"hs"}
+      ]
+    },
+    {
+      label: "Пора называть цену",
+      clientByPrev: {
+        sb: "Понятно, у вас и правда много всего. Хорошо, а сколько конкретно это стоит?",
+        te: "Хм, ладно. Хорошо, а сколько конкретно это стоит?",
+        hs: "Окей, это убедительно. Хорошо, а сколько конкретно это стоит?"
+      },
+      opts: [
+        {t:"Называю цену и спокойно жду ответа", k:"hs"},
+        {t:"Называю цену и сразу предлагаю скидку", k:"op"},
+        {t:"Немного тяну, перевожу разговор на другое", k:"te"}
+      ]
+    },
+    {
+      label: "Клиент говорит «дорого»",
+      clientByPrev: {
+        hs: "Ой, это дороговато для меня сейчас…",
+        op: "О, скидка - это приятно, но всё равно дороговато для меня сейчас…",
+        te: "Ладно... Если честно, дороговато для меня сейчас…"
+      },
+      opts: [
+        {t:"Сразу делаю скидку 20%, лишь бы не потерять клиента", k:"op"},
+        {t:"Спрашиваю: дорого по сравнению с чем?", k:"hs"},
+        {t:"Присылаю ещё отзывов и аргументов", k:"sb"}
+      ]
+    },
+    {
+      label: "Финал разговора",
+      clientByPrev: {
+        op: "Спасибо за скидку, но мне всё равно нужно подумать",
+        hs: "Окей, справедливо. Мне нужно подумать",
+        sb: "Спасибо, что прислали. Мне нужно подумать"
+      },
+      opts: [
+        {t:"Предлагаю созвониться в четверг в 14:00", k:"hs"},
+        {t:"Говорю «пишите, если что» и жду", k:"te"},
+        {t:"Пишу длинное сообщение, почему стоит решиться сейчас", k:"sb"}
+      ]
+    }
+  ];
+
+  var state = { step: 0, tally: {hs:0, sb:0, te:0, op:0}, answers: [] };
+
+  var elIntro = document.getElementById("intro");
+  var elChat = document.getElementById("chat");
+  var elResult = document.getElementById("result");
+  var elProgress = document.getElementById("progress");
+  var elRoundNum = document.getElementById("roundNum");
+  var elThread = document.getElementById("thread");
+  var elOptions = document.getElementById("options");
+  var elBack = document.getElementById("btnBack");
+
+  function buildProgress(){
+    elProgress.innerHTML = "";
+    for (var i = 0; i < ROUNDS.length; i++){
+      var dot = document.createElement("i");
+      elProgress.appendChild(dot);
+    }
+  }
+  function paintProgress(){
+    var dots = elProgress.children;
+    for (var i = 0; i < dots.length; i++){
+      dots[i].className = i < state.step ? "done" : (i === state.step ? "now" : "");
+    }
+  }
+
+  function clientTextFor(step){
+    var r = ROUNDS[step];
+    if (r.client) return r.client;
+    var prior = state.answers[step-1];
+    var k = prior ? prior.k : ORDER[0];
+    return r.clientByPrev[k] || r.clientByPrev[ORDER[0]];
+  }
+
+  function scrollThread(){
+    elThread.scrollTop = elThread.scrollHeight;
+  }
+
+  function updateBackButton(){
+    elBack.disabled = state.step <= 0;
+  }
+
+  function renderRound(opts){
+    opts = opts || {};
+    var r = ROUNDS[state.step];
+    paintProgress();
+    elRoundNum.textContent = String(state.step+1).padStart(2,"0") + " / " + String(ROUNDS.length).padStart(2,"0");
+    updateBackButton();
+
+    elThread.innerHTML = "";
+    for (var i = 0; i < state.step; i++){
+      elThread.appendChild(bubble("client", clientTextFor(i)));
+      elThread.appendChild(bubble("me", state.answers[i].text));
+    }
+    elOptions.innerHTML = "";
+
+    if (opts.instant){
+      elThread.appendChild(bubble("client", clientTextFor(state.step)));
+      scrollThread();
+      renderOptions(r);
+      return;
+    }
+
+    scrollThread();
+    var typingMsg = bubble("client", null, true);
+    elThread.appendChild(typingMsg);
+    scrollThread();
+
+    window.setTimeout(function(){
+      typingMsg.querySelector(".bubble").innerHTML = escapeHtml(clientTextFor(state.step));
+      scrollThread();
+      renderOptions(r);
+    }, state.step > 0 ? 520 : 200);
+  }
+
+  function bubble(who, text, typing){
+    var wrap = document.createElement("div");
+    wrap.className = "msg " + who;
+    var av = document.createElement("div");
+    av.className = "av";
+    av.textContent = who === "client" ? "М" : "Я";
+    var b = document.createElement("div");
+    b.className = "bubble";
+    if (typing){
+      b.innerHTML = '<span class="typing"><i></i><i></i><i></i></span>';
+    } else {
+      b.innerHTML = escapeHtml(text);
+    }
+    wrap.appendChild(av);
+    wrap.appendChild(b);
+    return wrap;
+  }
+
+  function renderOptions(r){
+    elOptions.innerHTML = "";
+    r.opts.forEach(function(o, idx){
+      var btn = document.createElement("button");
+      btn.className = "opt";
+      btn.innerHTML = '<span class="k">ВАРИАНТ ' + (idx+1) + '</span>' + escapeHtml(o.t);
+      btn.addEventListener("click", function(){ choose(o, r); });
+      elOptions.appendChild(btn);
+    });
+  }
+
+  function choose(o, r){
+    Array.prototype.forEach.call(elOptions.children, function(b){ b.disabled = true; });
+    state.tally[o.k]++;
+    state.answers.push({ text: o.t, k: o.k, round: r.label });
+    elThread.appendChild(bubble("me", o.t));
+    scrollThread();
+    state.step++;
+    if (state.step >= ROUNDS.length){
+      window.setTimeout(showResult, 420);
+    } else {
+      window.setTimeout(function(){ renderRound(); }, 420);
+    }
+  }
+
+  function goBack(){
+    if (state.step <= 0) return;
+    state.step--;
+    var removed = state.answers.pop();
+    if (removed) state.tally[removed.k] = Math.max(0, state.tally[removed.k]-1);
+    renderRound({ instant: true });
+  }
+
+  function escapeHtml(s){
+    var d = document.createElement("div");
+    d.textContent = s;
+    return d.innerHTML;
+  }
+
+  function winner(){
+    var best = ORDER[0];
+    ORDER.forEach(function(k){ if (state.tally[k] > state.tally[best]) best = k; });
+    return best;
+  }
+
+  function showResult(){
+    elChat.classList.remove("active");
+    elResult.classList.add("active");
+
+    var w = winner();
+    var type = TYPES[w];
+    document.getElementById("res-name").textContent = type.name;
+    document.getElementById("res-sub").textContent = type.sub;
+
+    var leaksEl = document.getElementById("res-leaks");
+    leaksEl.innerHTML = "";
+    type.leaks.forEach(function(t){ var li=document.createElement("li"); li.textContent=t; leaksEl.appendChild(li); });
+
+    var tipsEl = document.getElementById("res-tips");
+    tipsEl.innerHTML = "";
+    type.tips.forEach(function(t){ var li=document.createElement("li"); li.textContent=t; tipsEl.appendChild(li); });
+
+    var barsEl = document.getElementById("bars");
+    barsEl.innerHTML = "";
+    var total = ROUNDS.length;
+    var order = ORDER.slice().sort(function(a,b){ return state.tally[b]-state.tally[a]; });
+    order.forEach(function(k){
+      var pct = Math.round((state.tally[k]/total)*100);
+      var row = document.createElement("div");
+      row.className = "bar-row";
+      row.innerHTML =
+        '<span class="lbl"><b>' + TYPES[k].name + '</b></span>' +
+        '<span class="pct">' + state.tally[k] + ' / ' + total + '</span>' +
+        '<div class="bar-track"><div class="bar-fill' + (k===w ? ' lead' : '') + '" data-pct="' + pct + '"></div></div>';
+      barsEl.appendChild(row);
+    });
+    window.requestAnimationFrame(function(){
+      window.setTimeout(function(){
+        barsEl.querySelectorAll(".bar-fill").forEach(function(el){ el.style.width = el.getAttribute("data-pct") + "%"; });
+      }, 50);
+    });
+
+    saveProgress();
+  }
+
+  function resultAsText(){
+    var w = winner();
+    var type = TYPES[w];
+    var lines = ["Мой тип продавца: " + type.name, "", type.sub, "", "Тест «Какой вы продавец» — Школа PRO продажи Оксаны Пантелеевой"];
+    return lines.join("\n");
+  }
+
+  document.getElementById("btnCopy").addEventListener("click", function(){
+    var btn = this;
+    var text = resultAsText();
+    function done(){
+      btn.classList.add("copied");
+      btn.querySelector("span").textContent = "Скопировано";
+      window.setTimeout(function(){
+        btn.classList.remove("copied");
+        btn.querySelector("span").textContent = "Скопировать результат";
+      }, 1800);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(text).then(done).catch(function(){ fallbackCopy(text); done(); });
+    } else {
+      fallbackCopy(text); done();
+    }
+  });
+  function fallbackCopy(text){
+    var ta = document.createElement("textarea");
+    ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0";
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); } catch(e){}
+    document.body.removeChild(ta);
+  }
+
+  elBack.addEventListener("click", goBack);
+
+  document.getElementById("btnRestart").addEventListener("click", function(){
+    state = { step: 0, tally: {hs:0, sb:0, te:0, op:0}, answers: [] };
+    elThread.innerHTML = "";
+    elResult.classList.remove("active");
+    elIntro.style.display = "flex";
+    elChat.classList.remove("active");
+    try { localStorage.removeItem("salesTypeProgress"); } catch(e){}
+  });
+
+  document.getElementById("btnStart").addEventListener("click", function(){
+    elIntro.style.display = "none";
+    elChat.classList.add("active");
+    buildProgress();
+    renderRound();
+  });
+
+  function saveProgress(){
+    try {
+      localStorage.setItem("salesTypeProgress", JSON.stringify({ tally: state.tally, step: state.step, done: true }));
+    } catch(e){}
+  }
+
+  function start(data){
+    buildProgress();
+  }
+  if (window.claude && window.claude.hot){
+    window.claude.hot.ready ? window.claude.hot.ready(start) : start(window.claude.hot.data || {});
+  } else {
+    start({});
+  }
+})();
+</script>
