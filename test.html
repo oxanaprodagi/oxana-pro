@@ -23,12 +23,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,600&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap');
 
 *{box-sizing:border-box}
-html,body{height:auto; min-height:100%}
 body{
   margin:0; background:var(--bg); color:var(--ink); font-family:var(--font-body);
   padding-left:max(16px, env(safe-area-inset-left,0px)); padding-right:max(16px, env(safe-area-inset-right,0px));
   display:flex; justify-content:center;
-  min-height:100vh; min-height:100dvh;
 }
 body::before{ /* ambient glow */
   content:""; position:fixed; inset:0; z-index:0; pointer-events:none;
@@ -36,7 +34,7 @@ body::before{ /* ambient glow */
     radial-gradient(60vmax 40vmax at 100% -10%, rgba(244,123,32,.14), transparent 60%),
     radial-gradient(50vmax 40vmax at -10% 110%, rgba(143,153,165,.10), transparent 65%);
 }
-.app{position:relative; z-index:1; width:100%; max-width:480px; min-height:100vh; min-height:100dvh; padding-block:28px 24px; display:flex; flex-direction:column}
+.app{position:relative; z-index:1; width:100%; max-width:480px; padding-block:22px 20px; display:flex; flex-direction:column}
 h1,h2,h3{font-family:var(--font-display); font-weight:700; text-wrap:balance; margin:0}
 p{margin:0; line-height:1.5}
 .eyebrow{font-family:var(--font-mono); font-size:11px; letter-spacing:.22em; text-transform:uppercase; color:var(--o1); font-weight:700}
@@ -44,9 +42,9 @@ p{margin:0; line-height:1.5}
 .brand b{font-style:italic; color:transparent; background:linear-gradient(180deg,var(--o1),var(--o3)); -webkit-background-clip:text; background-clip:text; font-weight:800; letter-spacing:.04em}
 
 /* ---------- INTRO ---------- */
-#intro{display:flex; flex-direction:column; gap:22px; flex:1}
-.hero-frame{position:relative; border-radius:18px; overflow:hidden; aspect-ratio:4/5; border:1px solid var(--line)}
-.hero-frame img{width:100%; height:100%; object-fit:cover; object-position:50% 4%; display:block}
+#intro{display:flex; flex-direction:column; gap:14px; flex:1}
+.hero-frame{position:relative; border-radius:18px; overflow:hidden; aspect-ratio:1/1; border:1px solid var(--line)}
+.hero-frame img{width:100%; height:100%; object-fit:cover; object-position:50% 8%; display:block}
 .hero-frame::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(12,12,13,0) 45%, rgba(12,12,13,.92) 100%), linear-gradient(90deg, rgba(12,12,13,.5) 0%, rgba(12,12,13,0) 38%)}
 .hero-tag{position:absolute; left:14px; bottom:12px; font-family:var(--font-mono); font-size:10px; letter-spacing:.18em; color:var(--ink-dim); text-transform:uppercase}
 #intro h1{font-size:clamp(28px,7vw,36px); line-height:1.08; margin-top:2px}
