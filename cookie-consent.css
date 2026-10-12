@@ -1,0 +1,8 @@
+.cc-bar{position:fixed;left:12px;right:12px;bottom:12px;z-index:9999;max-width:880px;margin:0 auto;box-sizing:border-box;padding:16px 18px;background:#151518;color:#e4e0d9;border:1px solid rgba(242,138,46,.45);border-radius:18px;box-shadow:0 12px 40px rgba(0,0,0,.55);display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;font-family:'Source Sans 3','Helvetica Neue',Arial,sans-serif;font-size:14px;line-height:1.5}
+.cc-text{flex:1 1 360px;min-width:0}
+.cc-text a{color:#f28a2e;text-decoration:underline;text-underline-offset:3px}
+.cc-btns{display:flex;flex-wrap:wrap;gap:8px;flex:0 0 auto}
+.cc-bar button{font:inherit;font-weight:700;cursor:pointer;min-height:44px;padding:0 20px;border-radius:999px;border:1px solid rgba(242,138,46,.55);background:transparent;color:#ece8e2}
+.cc-bar .cc-yes{background:linear-gradient(180deg,#ee7b2f,#c9480f);border-color:transparent;color:#fff}
+.cc-bar button:focus-visible{outline:2px solid #ffb070;outline-offset:3px}
+@media (max-width:560px){.cc-btns{width:100%}.cc-bar button{flex:1 1 auto}}
