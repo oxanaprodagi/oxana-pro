@@ -411,9 +411,9 @@ a.navlink:hover{color:#f28a2e}
 <div class="step"><div class="step-n">3</div><div class="step-t"><b>Попадаете в закрытый Telegram-канал</b> участников потока</div></div>
 <div class="step"><div class="step-n">4</div><div class="step-t"><b>В день старта</b> присылаем доступы к урокам на платформе</div></div>
 </div>
-<div style="width: 100%; max-width: 460px; box-sizing: border-box; padding: 18px 22px; background: #151518; border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; display: flex; align-items: center; gap: 18px;">
-<img src="qr-pay.jpg" alt="QR-код для оплаты" style="display: block; width: 72px; height: 72px; border-radius: 10px; flex: 0 0 auto;">
-<div style="font-size: 15px; line-height: 1.4; color: #c9c5be;">Тариф «Практика PRO» можно оплатить по QR-коду с телефона. Оплачивая, вы принимаете условия <a href="oferta.html" target="_blank">оферты</a>.</div>
+<div id="qr-box" style="width: 100%; max-width: 460px; box-sizing: border-box; padding: 18px 22px; background: #151518; border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; display: flex; align-items: center; gap: 18px;">
+<img id="qr-img" src="qr-pay.jpg" alt="QR-код для оплаты" style="display: block; width: 72px; height: 72px; border-radius: 10px; flex: 0 0 auto;">
+<div style="font-size: 15px; line-height: 1.4; color: #c9c5be;"><span id="qr-text">Или отсканируйте QR-код, чтобы оплатить тариф «Практика PRO» с телефона.</span> Оплачивая, вы принимаете условия <a href="oferta.html" target="_blank">оферты</a>.</div>
 </div>
 <div style="display: flex; flex-direction: column; gap: 12px; max-width: 460px;">
 <div style="font-size: 15px; color: #9d9a94;">Остались личные вопросы? Напишите Оксане:</div>
@@ -460,6 +460,12 @@ var PAY_LINKS = {
   vip: 'https://securepayecom.com/sc/IDLkjpxheDzGkXzp'
 };
 var DM = 'https://t.me/Oxi071280';
+// QR-коды по тарифам. Пустая строка = QR для тарифа нет, блок скрывается.
+var QR = { self: '', pro: 'qr-pay.jpg', vip: 'qr-vip.png' };
+var NAMES = { self: 'Самостоятельный', pro: 'Практика PRO', vip: 'Личное сопровождение' };
+var qrBox = document.getElementById('qr-box');
+var qrImg = document.getElementById('qr-img');
+var qrText = document.getElementById('qr-text');
 var btn = document.getElementById('pay-btn');
 var note = document.getElementById('pay-note');
 var radios = document.querySelectorAll('input[name="tariff"]');
@@ -469,6 +475,8 @@ function apply(){
   var link = PAY_LINKS[t];
   if (link) { btn.href = link; btn.textContent = 'Перейти к оплате'; note.hidden = true; }
   else { btn.href = DM; btn.textContent = 'Написать Оксане'; note.hidden = false; }
+  if (QR[t]) { qrBox.style.display = 'flex'; qrImg.src = QR[t]; qrText.textContent = 'Или отсканируйте QR-код, чтобы оплатить тариф «' + NAMES[t] + '» с телефона.'; }
+  else { qrBox.style.display = 'none'; }
 }
 radios.forEach(function(r){ r.addEventListener('change', apply); });
 document.querySelectorAll('[data-tariff]').forEach(function(b){
