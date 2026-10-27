@@ -37,6 +37,53 @@ a.navlink:hover{color:#f28a2e}
 .navcta{order:2}
 .navlogo{width:150px;max-width:44vw}
 }
+.wrap{max-width:1160px;margin:0 auto;box-sizing:border-box;padding:0 24px}
+.kicker{font-size:13px;letter-spacing:.3em;color:#f28a2e;font-weight:700;text-transform:uppercase}
+.h2{margin:0;font-family:Lora,Georgia,serif;font-weight:600;font-size:clamp(28px,4vw,44px);line-height:1.15;color:#f4f1ec}
+.card{box-sizing:border-box;background:#151518;border:1px solid rgba(255,255,255,.08);border-radius:22px}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.stat{padding:24px 22px;display:flex;flex-direction:column;gap:8px}
+.stat-num{font-family:Lora,Georgia,serif;font-weight:700;font-size:clamp(34px,4.4vw,48px);line-height:1;color:#f28a2e}
+.stat-label{font-size:16px;line-height:1.4;color:#c9c5be}
+@media (max-width:820px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.feat-grid{display:flex;flex-wrap:wrap;gap:18px}
+.feat{flex:1 1 320px;padding:26px 26px 28px;display:flex;flex-direction:column;gap:12px}
+.feat-ico{width:44px;height:44px;border-radius:12px;background:rgba(242,138,46,.12);display:flex;align-items:center;justify-content:center;color:#f28a2e}
+.feat h3{margin:0;font-family:Lora,Georgia,serif;font-weight:600;font-size:21px;line-height:1.25;color:#f4f1ec}
+.feat p{margin:0;font-size:17px;line-height:1.6;color:#c9c5be}
+.create-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.create-item{padding:20px 22px;display:flex;gap:14px;align-items:flex-start;font-size:18px;line-height:1.45;color:#ece8e2}
+.check{flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:linear-gradient(180deg,#ee7b2f,#c9480f);display:flex;align-items:center;justify-content:center;margin-top:1px}
+@media (max-width:900px){.create-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.create-grid{grid-template-columns:1fr}}
+.tariffs{display:flex;flex-wrap:wrap;gap:20px;align-items:stretch}
+.tariff{flex:1 1 300px;padding:30px 28px;display:flex;flex-direction:column;gap:18px;position:relative}
+.tariff.main{border:1.5px solid rgba(242,138,46,.75);background:linear-gradient(180deg,rgba(242,138,46,.10),#151518 45%);box-shadow:0 24px 60px rgba(226,90,20,.18)}
+.tariff-badge{position:absolute;top:-13px;left:28px;padding:5px 14px;border-radius:999px;background:linear-gradient(180deg,#ee7b2f,#c9480f);color:#fff;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.tariff-name{font-family:Lora,Georgia,serif;font-weight:600;font-size:26px;color:#f4f1ec;margin:0}
+.tariff-for{font-size:16px;line-height:1.45;color:#9d9a94;margin:-8px 0 0}
+.tariff-price{font-family:Lora,Georgia,serif;font-weight:700;font-size:38px;line-height:1;color:#f4f1ec}
+.tariff ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px}
+.tariff li{position:relative;padding-left:26px;font-size:16px;line-height:1.5;color:#e4e0d9}
+.tariff li::before{content:"";position:absolute;left:2px;top:8px;width:9px;height:9px;border-radius:50%;background:#f28a2e}
+.tariff li.plus{color:#f4f1ec;font-weight:600}
+.tariff li.muted{color:#9d9a94}
+.tariff li.muted::before{background:transparent;border:1.5px solid #6d6a65;width:7px;height:7px}
+.tariff .btn-t{margin-top:auto;display:flex;align-items:center;justify-content:center;min-height:54px;padding:0 24px;box-sizing:border-box;border-radius:999px;border:1px solid rgba(242,138,46,.55);color:#ece8e2;font-weight:700;font-size:15px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;background:rgba(255,255,255,.03);font-family:inherit}
+.tariff.main .btn-t{background:linear-gradient(180deg,#ee7b2f,#c9480f);border:none;color:#fff;box-shadow:0 10px 30px rgba(226,90,20,.30)}
+.tariff .btn-t:hover{filter:brightness(1.1);border-color:#f28a2e}
+.picker{display:flex;flex-direction:column;gap:10px;max-width:520px;width:100%}
+.pick{display:flex;align-items:center;gap:14px;padding:14px 18px;box-sizing:border-box;border:1px solid rgba(255,255,255,.12);border-radius:16px;background:#151518;cursor:pointer;transition:border-color .15s}
+.pick input{accent-color:#ee7b2f;width:18px;height:18px;margin:0;flex:0 0 auto;cursor:pointer}
+.pick-name{flex:1 1 auto;font-size:17px;font-weight:600;color:#f4f1ec}
+.pick-price{font-size:17px;font-weight:700;color:#f28a2e;white-space:nowrap}
+.pick:has(input:checked){border-color:#f28a2e;background:rgba(242,138,46,.07)}
+.pay-note{font-size:15px;line-height:1.5;color:#c9c5be;max-width:520px}
+.steps{display:flex;flex-direction:column;gap:0;max-width:520px;width:100%;box-sizing:border-box;padding:22px 24px}
+.step{display:flex;gap:16px;align-items:flex-start;padding:10px 0}
+.step-n{flex:0 0 auto;width:32px;height:32px;border-radius:50%;border:1.5px solid #f28a2e;color:#f28a2e;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center}
+.step-t{font-size:16px;line-height:1.5;color:#e4e0d9;padding-top:4px}
+.step-t b{color:#f4f1ec}
 </style>
 
 <link rel="stylesheet" href="cookie-consent.css">
@@ -52,29 +99,31 @@ a.navlink:hover{color:#f28a2e}
 <a href="#top" class="navlogo"><img src="logo.png" alt="Школа PRO продажи Оксаны Пантелеевой"></a>
 <div class="navwrap navlinks" style="display: flex; gap: 20px; overflow-x: auto; align-items: center;">
 <a class="navlink" href="#programma">Программа</a>
+<a class="navlink" href="#format">Формат</a>
+<a class="navlink" href="#tarify">Тарифы</a>
 <a class="navlink" href="#otzyvy">Отзывы</a>
 <a class="navlink" href="#oksana">Об Оксане</a>
 <a class="navlink" href="#faq">Вопросы</a>
 </div>
-<a class="pill navcta" href="#zapis" style="display: inline-flex; align-items: center; min-height: 40px; padding: 0 18px; box-sizing: border-box; border: 1px solid rgba(242,138,46,0.55); border-radius: 999px; color: #ece8e2; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap;">Записаться</a>
+<a class="pill navcta" href="#tarify" style="display: inline-flex; align-items: center; min-height: 40px; padding: 0 18px; box-sizing: border-box; border: 1px solid rgba(242,138,46,0.55); border-radius: 999px; color: #ece8e2; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap;">Записаться</a>
 </div>
 </div>
 
 <div style="background: radial-gradient(60% 80% at 85% 25%, rgba(226,110,40,0.20), rgba(12,12,14,0) 70%);">
 <div style="max-width: 1160px; margin: 0 auto; padding: 40px 24px 88px; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 48px; align-items: center; justify-content: center;">
 <div style="flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 28px;">
-<div style="font-size: 13px; letter-spacing: 0.3em; color: #f28a2e; font-weight: 700; text-transform: uppercase;">Практический курс по продажам</div>
+<div style="font-size: 13px; letter-spacing: 0.3em; color: #f28a2e; font-weight: 700; text-transform: uppercase;">PRO Продажи · От сообщения до оплаты</div>
 <h1 style="margin: 0; font-family: Lora,Georgia,serif; font-weight: 600; font-size: clamp(36px, 6vw, 68px); line-height: 1.08; color: #f4f1ec;">От «я не продажник» до эксперта, который <span style="color: #f28a2e;">уверенно называет цену</span></h1>
-<p style="margin: 0; font-size: clamp(18px, 2.2vw, 21px); line-height: 1.55; color: #c9c5be; max-width: 600px;">Что сказать клиенту, как назвать цену и довести разговор до сделки — без давления.</p>
+<p style="margin: 0; font-size: clamp(18px, 2.2vw, 21px); line-height: 1.55; color: #c9c5be; max-width: 600px;">За 6 недель выстроите собственную систему продаж услуг: от первого сообщения клиента до уверенного обсуждения цены и решения о покупке.</p>
 <div style="display: flex; flex-wrap: wrap; gap: 10px;">
 <div style="padding: 8px 16px; border: 1px solid rgba(242,138,46,0.4); background: rgba(242,138,46,0.08); border-radius: 999px; font-size: 15px; color: #f4f1ec; font-weight: 600;">22 года в продажах</div>
-<div style="padding: 8px 16px; border: 1px solid rgba(255,255,255,0.16); border-radius: 999px; font-size: 15px; color: #d8d4cd;">6 шагов</div>
+<div style="padding: 8px 16px; border: 1px solid rgba(255,255,255,0.16); border-radius: 999px; font-size: 15px; color: #d8d4cd;">6 недель</div>
+<div style="padding: 8px 16px; border: 1px solid rgba(255,255,255,0.16); border-radius: 999px; font-size: 15px; color: #d8d4cd;">6 живых Zoom-практикумов</div>
 <div style="padding: 8px 16px; border: 1px solid rgba(255,255,255,0.16); border-radius: 999px; font-size: 15px; color: #d8d4cd;">Онлайн</div>
-<div style="padding: 8px 16px; border: 1px solid rgba(255,255,255,0.16); border-radius: 999px; font-size: 15px; color: #d8d4cd;">Старт — в ноябре</div>
-<div class="price-deadline-tag" style="padding: 8px 16px; border: 1px solid rgba(242,138,46,0.5); background: rgba(242,138,46,0.1); border-radius: 999px; font-size: 15px; color: #f4f1ec; font-weight: 600;">Спеццена до 13 октября</div>
+<div style="padding: 8px 16px; border: 1px solid rgba(255,255,255,0.16); border-radius: 999px; font-size: 15px; color: #d8d4cd;">Старт - в ноябре</div>
 </div>
 <div style="display: flex; flex-direction: column; gap: 14px; align-items: flex-start;">
-<a class="btn" href="#zapis" style="display: inline-flex; align-items: center; justify-content: center; min-height: 60px; padding: 0 40px; box-sizing: border-box; border-radius: 999px; background: linear-gradient(180deg, #ee7b2f, #c9480f); color: #ffffff; font-weight: 700; font-size: 18px; letter-spacing: 0.12em; text-transform: uppercase; box-shadow: 0 10px 30px rgba(226,90,20,0.30);">Хочу научиться продавать</a>
+<a class="btn" href="#tarify" style="display: inline-flex; align-items: center; justify-content: center; min-height: 60px; padding: 0 40px; box-sizing: border-box; border-radius: 999px; background: linear-gradient(180deg, #ee7b2f, #c9480f); color: #ffffff; font-weight: 700; font-size: 18px; letter-spacing: 0.12em; text-transform: uppercase; box-shadow: 0 10px 30px rgba(226,90,20,0.30);">Хочу научиться продавать</a>
 <div style="font-size: 15px; line-height: 1.5; color: #9d9a94;">Пишите Оксане в <a href="https://t.me/Oxi071280" target="_blank" rel="noopener">Telegram</a> или <a href="https://www.instagram.com/oxi0712" target="_blank" rel="noopener">Instagram Direct</a>. Instagram — запрещённая социальная сеть на территории РФ.</div>
 <a href="guide.pdf" target="_blank" style="font-size: 15px; color: #d8d4cd; text-decoration: underline; text-underline-offset: 3px;">Не готовы сразу? Заберите бесплатный гайд-самопроверку →</a>
 </div>
@@ -171,31 +220,34 @@ a.navlink:hover{color:#f28a2e}
 </div>
 </div>
 
-<div style="background: #111114; border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06);">
-<div style="max-width: 1160px; margin: 0 auto; padding: 72px 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 32px;">
-<div style="display: flex; flex-direction: column; gap: 16px;">
-<div style="font-size: 13px; letter-spacing: 0.3em; color: #f28a2e; font-weight: 700; text-transform: uppercase;">Итог курса</div>
-<h2 style="margin: 0; font-family: Lora,Georgia,serif; font-weight: 600; font-size: clamp(28px, 4vw, 44px); line-height: 1.15; color: #f4f1ec;">В итоге вы будете знать</h2>
+<div id="format" style="background: #111114; border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06);">
+<div class="wrap" style="padding-top: 80px; padding-bottom: 80px; display: flex; flex-direction: column; gap: 40px;">
+<div style="display: flex; flex-direction: column; gap: 16px; max-width: 820px;"><div class="kicker">Формат обучения</div><h2 class="h2">Не 6 модулей в записи, а 6 недель работы над вашими продажами</h2><p style="margin: 0; font-size: 19px; line-height: 1.6; color: #c9c5be;">Короткие уроки, живая практика и обратная связь. Вы внедряете каждый шаг сразу в работе с клиентами.</p></div>
+<div class="stats">
+<div class="card stat"><div class="stat-num">6</div><div class="stat-label">практических модулей</div></div>
+<div class="card stat"><div class="stat-num">6</div><div class="stat-label">живых Zoom-встреч</div></div>
+<div class="card stat"><div class="stat-num">15-20</div><div class="stat-label">минут длится один видеоурок</div></div>
+<div class="card stat"><div class="stat-num">6</div><div class="stat-label">недель до своей системы продаж</div></div>
 </div>
-<div style="display: flex; flex-wrap: wrap; gap: 12px; align-items: center;">
-<div style="padding: 10px 18px; border: 1px solid rgba(242,138,46,0.5); border-radius: 999px; background: rgba(242,138,46,0.07); font-size: 17px; color: #f4f1ec;">кому продавать</div>
-<div style="color: #f28a2e; font-size: 20px;">→</div>
-<div style="padding: 10px 18px; border: 1px solid rgba(242,138,46,0.5); border-radius: 999px; background: rgba(242,138,46,0.07); font-size: 17px; color: #f4f1ec;">что продавать</div>
-<div style="color: #f28a2e; font-size: 20px;">→</div>
-<div style="padding: 10px 18px; border: 1px solid rgba(242,138,46,0.5); border-radius: 999px; background: rgba(242,138,46,0.07); font-size: 17px; color: #f4f1ec;">как начать разговор</div>
-<div style="color: #f28a2e; font-size: 20px;">→</div>
-<div style="padding: 10px 18px; border: 1px solid rgba(242,138,46,0.5); border-radius: 999px; background: rgba(242,138,46,0.07); font-size: 17px; color: #f4f1ec;">какие вопросы задать</div>
-<div style="color: #f28a2e; font-size: 20px;">→</div>
-<div style="padding: 10px 18px; border: 1px solid rgba(242,138,46,0.5); border-radius: 999px; background: rgba(242,138,46,0.07); font-size: 17px; color: #f4f1ec;">как показать ценность</div>
-<div style="color: #f28a2e; font-size: 20px;">→</div>
-<div style="padding: 10px 18px; border: 1px solid rgba(242,138,46,0.5); border-radius: 999px; background: rgba(242,138,46,0.07); font-size: 17px; color: #f4f1ec;">как назвать цену</div>
-<div style="color: #f28a2e; font-size: 20px;">→</div>
-<div style="padding: 10px 18px; border: 1px solid rgba(242,138,46,0.5); border-radius: 999px; background: rgba(242,138,46,0.07); font-size: 17px; color: #f4f1ec;">что ответить на «дорого»</div>
-<div style="color: #f28a2e; font-size: 20px;">→</div>
-<div style="padding: 10px 18px; border: 1px solid rgba(242,138,46,0.5); border-radius: 999px; background: rgba(242,138,46,0.07); font-size: 17px; color: #f4f1ec;">как довести клиента до решения</div>
-</div>
-</div>
-</div>
+<div style="display: flex; flex-direction: column; gap: 22px;"><h3 style="margin: 0; font-family: Lora,Georgia,serif; font-weight: 600; font-size: clamp(22px, 3vw, 30px); color: #f4f1ec;">Что входит в обучение</h3><div class="feat-grid">
+<div class="card feat"><div class="feat-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3"/></svg></div><h3>6 живых Zoom-практикумов</h3><p>Не просто ответы на вопросы, а разборы реальных переписок, ролевые переговоры и тренировка навыков. Шесть встреч по 60-90 минут.</p></div>
+<div class="card feat"><div class="feat-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/></svg></div><h3>Практика с обратной связью</h3><p>Задания на реальных клиентах. Например, после третьего модуля вы проводите два диалога по новой структуре и сдаёте их на разбор с обратной связью.</p></div>
+<div class="card feat"><div class="feat-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div><h3>PRO-набор продавца</h3><p>Авторская библиотека: карта продаж, 20 диагностических вопросов, шаблоны сообщений, матрица возражений, чек-лист консультации, таблица учёта клиентов и сценарии последующих касаний.</p></div>
+<div class="card feat"><div class="feat-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><h3>Закрытый чат участников</h3><p>Вопросы, обмен опытом и поддержка все 6 недель обучения. Вы не остаётесь один на один с материалами.</p></div>
+<div class="card feat"><div class="feat-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></div><h3>Диагностика до и после</h3><p>На старте фиксируем количество заявок, конверсию, основные трудности и уровень навыков. В конце повторяем диагностику и видим реальный прогресс.</p></div>
+</div></div>
+</div></div>
+
+<div class="wrap" style="padding-top: 80px; padding-bottom: 80px; display: flex; flex-direction: column; gap: 32px;">
+<div style="display: flex; flex-direction: column; gap: 16px; max-width: 760px;"><div class="kicker">Результат</div><h2 class="h2">Что вы создадите за время обучения</h2><p style="margin: 0; font-size: 19px; line-height: 1.6; color: #c9c5be;">Вы уходите не с конспектом, а с готовыми инструментами под свой продукт.</p></div>
+<div class="create-grid">
+<div class="card create-item"><div class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M4 12.5L9.5 18L20 6" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Сильный оффер своего продукта</span></div>
+<div class="card create-item"><div class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M4 12.5L9.5 18L20 6" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Собственный алгоритм продаж</span></div>
+<div class="card create-item"><div class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M4 12.5L9.5 18L20 6" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Сценарии диалогов и переписок</span></div>
+<div class="card create-item"><div class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M4 12.5L9.5 18L20 6" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Матрицу ответов на возражения</span></div>
+<div class="card create-item"><div class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M4 12.5L9.5 18L20 6" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Систему последующих касаний</span></div>
+<div class="card create-item"><div class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M4 12.5L9.5 18L20 6" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>План развития продаж на 30 дней</span></div>
+</div></div>
 
 <div id="otzyvy" style="max-width: 1160px; margin: 0 auto; padding: 24px 24px 96px; box-sizing: border-box; display: flex; flex-direction: column; gap: 36px;">
 <div style="display: flex; flex-direction: column; gap: 16px; max-width: 760px;">
@@ -245,6 +297,58 @@ a.navlink:hover{color:#f28a2e}
 </div>
 </div>
 
+<div id="tarify" style="background: #111114; border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06);">
+<div class="wrap" style="padding-top: 80px; padding-bottom: 88px; display: flex; flex-direction: column; gap: 44px;">
+<div style="display: flex; flex-direction: column; gap: 16px; max-width: 760px;"><div class="kicker">Тарифы · Первый поток</div><h2 class="h2">Выберите свой формат участия</h2><p style="margin: 0; font-size: 19px; line-height: 1.6; color: #c9c5be;">Во всех тарифах - 6 модулей, PRO-набор продавца и доступ к материалам на 6 месяцев.</p></div>
+<div class="tariffs">
+
+<div class="card tariff">
+<h3 class="tariff-name">Самостоятельный</h3>
+<p class="tariff-for">Для тех, кому нужен алгоритм и материалы</p>
+<div class="tariff-price">24 900 ₽</div>
+<ul>
+<li>6 модулей в записи</li>
+<li>Задания для самостоятельной работы</li>
+<li>PRO-набор инструментов продавца</li>
+<li>Доступ к материалам на 6 месяцев</li>
+<li class="muted">Без персональной проверки заданий</li>
+</ul>
+<button type="button" class="btn-t" data-tariff="self">Выбрать тариф</button>
+</div>
+
+<div class="card tariff main">
+<div class="tariff-badge">Рекомендуем</div>
+<h3 class="tariff-name">Практика PRO</h3>
+<p class="tariff-for">Для тех, кто хочет результат через практику</p>
+<div class="tariff-price">49 900 ₽</div>
+<ul>
+<li>Всё из тарифа «Самостоятельный»</li>
+<li class="plus">6 живых Zoom-практикумов</li>
+<li class="plus">Обратная связь по заданиям</li>
+<li class="plus">Разборы ваших реальных диалогов</li>
+<li class="plus">Закрытый чат участников</li>
+<li class="plus">Итоговый план продаж на 30 дней</li>
+</ul>
+<button type="button" class="btn-t" data-tariff="pro">Выбрать тариф</button>
+</div>
+
+<div class="card tariff">
+<h3 class="tariff-name">Личное сопровождение</h3>
+<p class="tariff-for">Для тех, кому нужен индивидуальный разбор</p>
+<div class="tariff-price">89 900 ₽</div>
+<ul>
+<li>Всё из тарифа «Практика PRO»</li>
+<li class="plus">2 индивидуальные встречи с Оксаной</li>
+<li class="plus">Персональный аудит ваших диалогов</li>
+<li class="plus">Рекомендации по вашей системе продаж</li>
+</ul>
+<button type="button" class="btn-t" data-tariff="vip">Выбрать тариф</button>
+</div>
+
+</div>
+</div>
+</div>
+
 <div id="faq" style="max-width: 1160px; margin: 0 auto; padding: 24px 24px 88px; box-sizing: border-box; display: flex; flex-direction: column; gap: 36px;">
 <div style="display: flex; flex-direction: column; gap: 16px; max-width: 760px;">
 <div style="font-size: 13px; letter-spacing: 0.3em; color: #f28a2e; font-weight: 700; text-transform: uppercase;">Частые вопросы</div>
@@ -264,7 +368,7 @@ a.navlink:hover{color:#f28a2e}
 
 <div style="box-sizing: border-box; padding: 24px 28px; background: #151518; border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; display: flex; flex-direction: column; gap: 10px;">
 <div style="font-family: Lora,Georgia,serif; font-weight: 600; font-size: 19px; color: #f4f1ec;">Я уже проходил(а) тренинги по продажам, и не сработало</div>
-<div style="font-size: 17px; line-height: 1.6; color: #c9c5be;">На мастермайнде разбираются ваши реальные диалоги с вашими клиентами — а не общие скрипты «для всех».</div>
+<div style="font-size: 17px; line-height: 1.6; color: #c9c5be;">На Zoom-практикумах разбираются ваши реальные диалоги с вашими клиентами, а не общие скрипты «для всех». Плюс обратная связь по заданиям и диагностика до и после, чтобы вы видели свой прогресс.</div>
 </div>
 
 <div style="box-sizing: border-box; padding: 24px 28px; background: #151518; border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; display: flex; flex-direction: column; gap: 10px;">
@@ -274,7 +378,12 @@ a.navlink:hover{color:#f28a2e}
 
 <div style="box-sizing: border-box; padding: 24px 28px; background: #151518; border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; display: flex; flex-direction: column; gap: 10px;">
 <div style="font-family: Lora,Georgia,serif; font-weight: 600; font-size: 19px; color: #f4f1ec;">Как проходит обучение?</div>
-<div style="font-size: 17px; line-height: 1.6; color: #c9c5be;">Онлайн, 6 последовательных шагов от структуры продаж до отработки на реальных клиентах. Подробности по формату и стоимости — в личном сообщении Оксане.</div>
+<div style="font-size: 17px; line-height: 1.6; color: #c9c5be;">Онлайн, 6 недель. Каждую неделю - модуль из коротких видеоуроков по 15-20 минут и практическое задание. В тарифах «Практика PRO» и «Личное сопровождение» - еженедельный Zoom-практикум, закрытый чат и обратная связь по заданиям. Материалы доступны 6 месяцев.</div>
+</div>
+
+<div style="box-sizing: border-box; padding: 24px 28px; background: #151518; border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; display: flex; flex-direction: column; gap: 10px;">
+<div style="font-family: Lora,Georgia,serif; font-weight: 600; font-size: 19px; color: #f4f1ec;">Какой тариф выбрать?</div>
+<div style="font-size: 17px; line-height: 1.6; color: #c9c5be;">Если вы дисциплинированы и вам нужен алгоритм - «Самостоятельный». Если хотите отработать навык на практике и получить разбор своих диалогов - «Практика PRO», с ним результат приходит быстрее всего. Если нужен персональный аудит и внимание Оксаны - «Личное сопровождение». Сомневаетесь - напишите Оксане, она подскажет.</div>
 </div>
 
 </div>
@@ -285,14 +394,26 @@ a.navlink:hover{color:#f28a2e}
 <div style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 26px;">
 <div style="font-size: 13px; letter-spacing: 0.3em; color: #f28a2e; font-weight: 700; text-transform: uppercase;">Следующий шаг</div>
 <h2 style="margin: 0; font-family: Lora,Georgia,serif; font-weight: 600; font-size: clamp(30px, 4.6vw, 50px); line-height: 1.1; color: #f4f1ec;">Готовы навести порядок в своих продажах?</h2>
-<p style="margin: 0; font-size: 19px; line-height: 1.6; color: #c9c5be;">Оплатите участие онлайн — это займёт пару минут.</p>
-<div class="price-deadline-tag" style="font-size: 15px; font-weight: 700; letter-spacing: 0.04em; color: #f28a2e;">Спеццена действует до 13 октября — дальше дороже. Старт потока — в ноябре.</div>
+<p style="margin: 0; font-size: 19px; line-height: 1.6; color: #c9c5be;">Выберите тариф и оплатите участие онлайн - это займёт пару минут. Старт потока - в ноябре.</p>
+<div class="picker" role="radiogroup" aria-label="Тариф">
+<label class="pick"><input type="radio" name="tariff" value="self"><span class="pick-name">Самостоятельный</span><span class="pick-price">24 900 ₽</span></label>
+<label class="pick"><input type="radio" name="tariff" value="pro" checked><span class="pick-name">Практика PRO</span><span class="pick-price">49 900 ₽</span></label>
+<label class="pick"><input type="radio" name="tariff" value="vip"><span class="pick-name">Личное сопровождение</span><span class="pick-price">89 900 ₽</span></label>
+</div>
 <label class="consent" for="consent"><input type="checkbox" id="consent"><span>Я принимаю условия <a href="oferta.html" target="_blank">публичной оферты</a> и даю <a href="soglasie.html" target="_blank">согласие на обработку персональных данных</a> в соответствии с <a href="privacy.html" target="_blank">политикой обработки персональных данных</a></span></label>
 <div id="consent-hint" class="consent-hint" hidden>Отметьте галочку выше, чтобы перейти к оплате</div>
-<a class="btn" id="pay-btn" href="https://securepayecom.com/sc/gYJHDMxYNAJEsRRN" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; justify-content: center; align-self: flex-start; min-height: 60px; padding: 0 40px; box-sizing: border-box; border-radius: 999px; background: linear-gradient(180deg, #ee7b2f, #c9480f); color: #ffffff; font-weight: 700; font-size: 18px; letter-spacing: 0.12em; text-transform: uppercase; box-shadow: 0 10px 30px rgba(226,90,20,0.30);">Хочу научиться продавать</a>
+<a class="btn" id="pay-btn" href="https://securepayecom.com/sc/gYJHDMxYNAJEsRRN" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; justify-content: center; align-self: flex-start; min-height: 60px; padding: 0 40px; box-sizing: border-box; border-radius: 999px; background: linear-gradient(180deg, #ee7b2f, #c9480f); color: #ffffff; font-weight: 700; font-size: 18px; letter-spacing: 0.12em; text-transform: uppercase; box-shadow: 0 10px 30px rgba(226,90,20,0.30);">Перейти к оплате</a>
+<div id="pay-note" class="pay-note" hidden>Для этого тарифа оплата оформляется через Оксану: напишите ей в Telegram, и она пришлёт ссылку на оплату.</div>
+<div class="card steps">
+<div class="kicker" style="margin-bottom: 8px;">Что будет после оплаты</div>
+<div class="step"><div class="step-n">1</div><div class="step-t"><b>Оплачиваете</b> выбранный тариф онлайн</div></div>
+<div class="step"><div class="step-n">2</div><div class="step-t"><b>Получаете письмо</b> на почту с подтверждением участия</div></div>
+<div class="step"><div class="step-n">3</div><div class="step-t"><b>Попадаете в закрытый Telegram-канал</b> участников потока</div></div>
+<div class="step"><div class="step-n">4</div><div class="step-t"><b>В день старта</b> присылаем доступы к урокам на платформе</div></div>
+</div>
 <div style="width: 100%; max-width: 460px; box-sizing: border-box; padding: 18px 22px; background: #151518; border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; display: flex; align-items: center; gap: 18px;">
 <img src="qr-pay.jpg" alt="QR-код для оплаты" style="display: block; width: 72px; height: 72px; border-radius: 10px; flex: 0 0 auto;">
-<div style="font-size: 15px; line-height: 1.4; color: #c9c5be;">Или отсканируйте QR-код, чтобы перейти к оплате с телефона. Оплачивая, вы принимаете условия <a href="oferta.html" target="_blank">оферты</a>.</div>
+<div style="font-size: 15px; line-height: 1.4; color: #c9c5be;">Тариф «Практика PRO» можно оплатить по QR-коду с телефона. Оплачивая, вы принимаете условия <a href="oferta.html" target="_blank">оферты</a>.</div>
 </div>
 <div style="display: flex; flex-direction: column; gap: 12px; max-width: 460px;">
 <div style="font-size: 15px; color: #9d9a94;">Остались личные вопросы? Напишите Оксане:</div>
@@ -332,10 +453,32 @@ if (!box.checked) { e.preventDefault(); if (hint) hint.hidden = false; box.focus
 sync();
 })();
 (function(){
-var deadline = new Date('2026-10-13T20:59:59Z');
-if (new Date() > deadline) {
-document.querySelectorAll('.price-deadline-tag').forEach(function(el){ el.style.display = 'none'; });
+// Ссылки на оплату по тарифам. Пустая строка = оплата через личку Оксаны.
+var PAY_LINKS = {
+  self: '',
+  pro: 'https://securepayecom.com/sc/gYJHDMxYNAJEsRRN',
+  vip: ''
+};
+var DM = 'https://t.me/Oxi071280';
+var btn = document.getElementById('pay-btn');
+var note = document.getElementById('pay-note');
+var radios = document.querySelectorAll('input[name="tariff"]');
+function apply(){
+  var cur = document.querySelector('input[name="tariff"]:checked');
+  var t = cur ? cur.value : 'pro';
+  var link = PAY_LINKS[t];
+  if (link) { btn.href = link; btn.textContent = 'Перейти к оплате'; note.hidden = true; }
+  else { btn.href = DM; btn.textContent = 'Написать Оксане'; note.hidden = false; }
 }
+radios.forEach(function(r){ r.addEventListener('change', apply); });
+document.querySelectorAll('[data-tariff]').forEach(function(b){
+  b.addEventListener('click', function(){
+    var r = document.querySelector('input[name="tariff"][value="'+b.getAttribute('data-tariff')+'"]');
+    if (r) { r.checked = true; apply(); }
+    document.getElementById('zapis').scrollIntoView({behavior:'smooth'});
+  });
+});
+apply();
 })();
 </script>
 
