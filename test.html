@@ -143,6 +143,47 @@ button{font-family:var(--font-body); cursor:pointer}
 .btn-ghost svg{width:14px; height:14px}
 .btn-ghost.copied{color:var(--good); border-color:var(--good)}
 
+/* deal meter */
+.meter{background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:12px 14px; display:flex; flex-direction:column; gap:8px; position:relative}
+.meter-top{display:flex; justify-content:space-between; align-items:baseline; font-family:var(--font-mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--steel)}
+.meter-top b{font-size:18px; letter-spacing:0; color:var(--ink); font-family:var(--font-display)}
+.meter-track{height:9px; border-radius:6px; background:var(--panel-2); border:1px solid var(--line); overflow:hidden}
+.meter-fill{height:100%; width:40%; border-radius:6px; background:linear-gradient(90deg,#c94a2c,var(--o2) 50%,var(--good)); background-size:300% 100%; transition:width .6s cubic-bezier(.2,.8,.2,1)}
+.delta{position:absolute; right:14px; top:-12px; font-family:var(--font-mono); font-weight:700; font-size:13px; padding:2px 8px; border-radius:999px; opacity:0; transform:translateY(6px); transition:opacity .25s, transform .25s}
+.delta.show{opacity:1; transform:translateY(0)}
+.delta.up{background:rgba(95,212,154,.15); color:var(--good); border:1px solid rgba(95,212,154,.4)}
+.delta.down{background:rgba(232,90,60,.15); color:#ff8a6a; border:1px solid rgba(232,90,60,.4)}
+.sys{align-self:center; font-family:var(--font-mono); font-size:11px; letter-spacing:.08em; color:var(--steel); background:var(--panel-2); border:1px solid var(--line); border-radius:999px; padding:5px 12px; text-align:center}
+.btn-finish{appearance:none; border:none; border-radius:999px; padding:15px 20px; font-size:15px; font-weight:800; color:#160a04; background:linear-gradient(90deg,var(--o1),var(--o3)); box-shadow:0 10px 24px -8px rgba(244,123,32,.55)}
+/* outcome */
+.outcome{border-radius:18px; padding:20px 20px 18px; display:flex; flex-direction:column; gap:8px; border:1px solid}
+.outcome.win{background:linear-gradient(160deg,rgba(95,212,154,.16),rgba(95,212,154,.03)); border-color:rgba(95,212,154,.45)}
+.outcome.mid{background:linear-gradient(160deg,rgba(244,123,32,.16),rgba(244,123,32,.03)); border-color:rgba(244,123,32,.45)}
+.outcome.lose{background:linear-gradient(160deg,rgba(232,90,60,.18),rgba(232,90,60,.03)); border-color:rgba(232,90,60,.45)}
+.outcome .o-k{font-family:var(--font-mono); font-size:10.5px; letter-spacing:.18em; text-transform:uppercase; color:var(--steel)}
+.outcome h2{font-size:clamp(22px,6vw,27px); line-height:1.15}
+.outcome p{font-size:14px; color:#d7d4ce}
+.calc{display:flex; flex-direction:column; gap:10px}
+.calc-big{font-family:var(--font-display); font-size:30px; font-weight:700; color:var(--o1); line-height:1}
+.calc-row{display:flex; align-items:center; gap:10px; flex-wrap:wrap; font-size:13.5px; color:var(--ink-dim)}
+.calc-row input{width:120px; background:var(--panel-2); border:1px solid var(--line); border-radius:10px; color:var(--ink); padding:9px 11px; font-size:15px; font-family:var(--font-body)}
+.calc-row input:focus{outline:none; border-color:var(--o2)}
+.calc small{font-size:11.5px; color:var(--steel-dim)}
+.course{background:linear-gradient(150deg,rgba(244,123,32,.18),#141416 60%); border:1.5px solid rgba(244,123,32,.6); border-radius:18px; padding:20px; display:flex; flex-direction:column; gap:12px}
+.course h3{font-size:20px; line-height:1.2}
+.course p{font-size:13.5px; color:#d7d4ce; line-height:1.5}
+.course ul{margin:0; padding-left:18px; display:flex; flex-direction:column; gap:7px; font-size:13.5px; color:#e6e3dd; line-height:1.45}
+.course ul b{color:var(--o1)}
+.course .lbl2{font-family:var(--font-mono); font-size:10px; letter-spacing:.18em; color:var(--o1); text-transform:uppercase; font-weight:700}
+.tags{display:flex; flex-wrap:wrap; gap:6px}
+.tags span{font-size:11.5px; padding:4px 10px; border-radius:999px; border:1px solid rgba(255,255,255,.16); color:var(--ink-dim)}
+.tags span.hot{border-color:rgba(244,123,32,.6); color:var(--ink); background:rgba(244,123,32,.12)}
+.btn-main{display:flex; align-items:center; justify-content:center; gap:8px; text-decoration:none; border-radius:999px; padding:15px 18px; font-size:14.5px; font-weight:800; letter-spacing:.03em; color:#160a04; background:linear-gradient(90deg,var(--o1),var(--o3)); box-shadow:0 10px 24px -8px rgba(244,123,32,.55)}
+.guide-link{display:flex; align-items:center; gap:12px; text-decoration:none; color:var(--ink); background:var(--panel); border:1px solid var(--line); border-radius:14px; padding:13px 14px}
+.guide-link .gi{flex:none; width:36px; height:36px; border-radius:10px; background:rgba(244,123,32,.14); display:flex; align-items:center; justify-content:center}
+.guide-link small{display:block; font-family:var(--font-mono); font-size:9.5px; letter-spacing:.14em; color:var(--o1); text-transform:uppercase}
+.guide-link b{display:block; font-size:14px; margin-top:2px}
+
 @media (prefers-reduced-motion: reduce){ .bar-fill{transition:none} .typing i{animation:none} }
 </style>
 <link rel="stylesheet" href="cookie-consent.css">
@@ -160,13 +201,13 @@ button{font-family:var(--font-body); cursor:pointer}
       <div class="hero-tag">6 ситуаций · реальный диалог с клиентом</div>
     </div>
     <h1>Какой вы <em>продавец</em>?</h1>
-    <p class="lead">Узнайте за 2 минуты, на каком шаге разговора вы теряете клиентов - и деньги вместе с ними.</p>
+    <p class="lead">Сможете ли вы довести до оплаты клиентку, которая сомневается в каждом слове? За 2 минуты узнаете, чем закончится разговор, ваш тип продавца и сколько денег уходит мимо вас.</p>
     <div class="stat-row">
       <div class="stat-chip"><b>6</b><span>ситуаций</span></div>
       <div class="stat-chip"><b>4</b><span>типа продавца</span></div>
       <div class="stat-chip"><b>2 мин</b><span>без регистрации</span></div>
     </div>
-    <p class="scenario-note"><b>Вам написала Марина.</b> Она уже обожглась на дорогих курсах и теперь сомневается в каждом слове. Отвечайте так, как отвечаете обычно - в этом и есть тест.</p>
+    <p class="scenario-note"><b>Вам написала Марина.</b> Она уже обожглась на дорогих курсах и теперь сомневается в каждом слове. После каждого ответа вы увидите, как меняется <b>шанс оплаты</b>. Отвечайте так, как отвечаете обычно - в этом и есть тест.</p>
     <button class="btn-start" id="btnStart">Пройти тест бесплатно <svg viewBox="0 0 24 24" stroke="#1c0d03" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
     <div class="brand">ШКОЛА <b>PRO</b> ПРОДАЖИ · ОКСАНЫ ПАНТЕЛЕЕВОЙ</div>
   </section>
@@ -179,6 +220,11 @@ button{font-family:var(--font-body); cursor:pointer}
       <span>Диалог с клиентом</span>
       <b id="roundNum">01 / 06</b>
     </div>
+    <div class="meter" id="meter">
+      <div class="meter-top"><span>Шанс оплаты</span><b id="meterVal">40%</b></div>
+      <div class="meter-track"><div class="meter-fill" id="meterFill"></div></div>
+      <span class="delta" id="meterDelta"></span>
+    </div>
     <div class="thread" id="thread"></div>
     <div class="options" id="options"></div>
   </section>
@@ -186,6 +232,13 @@ button{font-family:var(--font-body); cursor:pointer}
   <!-- ===== RESULT ===== -->
   <section id="result">
     <div class="eyebrow">Результат</div>
+
+    <div class="outcome" id="outcome">
+      <span class="o-k">Чем закончился разговор</span>
+      <h2 id="out-title"></h2>
+      <p id="out-text"></p>
+    </div>
+
     <div class="res-card">
       <div class="res-eyebrow"><img class="face" src="test-face.jpg" alt=""><span class="eyebrow" style="color:var(--steel)">Ваш тип продавца</span></div>
       <h2 id="res-name"></h2>
@@ -199,23 +252,44 @@ button{font-family:var(--font-body); cursor:pointer}
       <ul id="res-leaks"></ul>
     </div>
 
+    <div class="block calc">
+      <div class="lbl2" style="margin-bottom:0">Сколько это в деньгах</div>
+      <p style="font-size:13.5px; color:#d7d4ce">С таким стилем разговора из 10 похожих клиентов до оплаты доходят примерно <b id="calc-paid" style="color:var(--ink)"></b>.</p>
+      <div class="calc-row">Ваш средний чек, ₽ <input id="calc-check" type="text" inputmode="numeric" value="10 000" aria-label="Средний чек"></div>
+      <div><div class="calc-big" id="calc-loss"></div><p style="font-size:13px; color:var(--ink-dim); margin-top:6px">недополучаете с каждых 10 обращений</p></div>
+      <small>Оценка по ответам в игре, а не точный расчёт.</small>
+    </div>
+
     <div class="block tip">
       <div class="lbl2">Что попробовать уже в следующем диалоге</div>
       <ul id="res-tips"></ul>
     </div>
 
-    <div class="cta">
-      <h3>Хотите узнать, где теряете деньги именно вы?</h3>
-      <p>Пришлите мне скрин результата и слово <span class="pill">ДИАГНОСТИКА</span>. Запишу голосовое на 3–5 минут: скажу, на чём вы теряете клиентов, и что сделать уже в следующем разговоре.</p>
-      <div class="links">
-        <a class="lnk" href="https://t.me/Oxi071280" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24"><path d="M21 4 3 11l5.5 2L10 19l3-3.5 5 3.7z"/><path d="M8.5 13 21 4"/></svg></span><span><small>Telegram · личные сообщения</small><b>@Oxi071280</b></span></a>
-        <a class="lnk" href="https://www.instagram.com/oxi0712" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r=".6"/></svg></span><span><small>Instagram · direct</small><b>@oxi0712</b></span></a>
-        <a class="lnk" href="https://t.me/noise_25" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24"><path d="M21 4 3 11l5.5 2L10 19l3-3.5 5 3.7z"/><path d="M8.5 13 21 4"/></svg></span><span><small>Telegram-канал</small><b>@noise_25</b></span></a>
-      </div>
+    <div class="course">
+      <span class="eyebrow">Курс Оксаны Пантелеевой</span>
+      <h3>PRO Продажи. От сообщения до оплаты</h3>
+      <p>6 недель практики: выстраиваете свой алгоритм продаж, отрабатываете его на реальных диалогах и получаете обратную связь.</p>
+      <div class="lbl2" style="margin:2px 0 0" id="course-for"></div>
+      <ul id="course-mods"></ul>
+      <div class="tags"><span>Старт 15 ноября</span><span class="price-deadline-tag hot">Лучшие цены до 10 ноября</span><span>3 тарифа</span></div>
+      <a class="btn-main" href="index.html#tarify">Смотреть программу и тарифы <svg width="16" height="16" viewBox="0 0 24 24" stroke="#1c0d03" stroke-width="2.4" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
 
+    <div class="cta">
+      <h3>Хотите личный разбор?</h3>
+      <p>Пришлите скрин результата и слово <span class="pill">ДИАГНОСТИКА</span>. Запишу голосовое на 3-5 минут: на чём именно вы теряете клиентов и что сделать в следующем разговоре.</p>
+      <div class="links">
+        <a class="lnk" href="https://t.me/Oxi071280" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24"><path d="M21 4 3 11l5.5 2L10 19l3-3.5 5 3.7z"/><path d="M8.5 13 21 4"/></svg></span><span><small>Telegram · личные сообщения</small><b>@Oxi071280</b></span></a>
+        <a class="lnk" href="https://max.ru/u/f9LHodD0cOLfUrJS78l_kEc0COptckK-t9AedTTkOhEpouXCO49UxQG8S5Y" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></svg></span><span><small>MAX · личные сообщения</small><b>Оксана Пантелеева</b></span></a>
+        <a class="lnk" href="https://www.instagram.com/oxi0712" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r=".6"/></svg></span><span><small>Instagram · direct</small><b>@oxi0712</b></span></a>
+      </div>
+      <p style="font-size:11.5px; color:var(--steel-dim)">Instagram - запрещённая социальная сеть на территории РФ.</p>
+    </div>
+
+    <a class="guide-link" href="guide.pdf" target="_blank"><span class="gi"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ff9a4a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6"/></svg></span><span><small>Бесплатный гайд · PDF</small><b>Самодиагностика продаж: 7 этапов</b></span></a>
+
     <div class="row2">
-      <button class="btn-ghost" id="btnCopy"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M4 16V5a1 1 0 0 1 1-1h11"/></svg><span>Скопировать результат</span></button>
+      <button class="btn-ghost" id="btnShare"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="M8.6 13.5l6.8 4M15.4 6.5l-6.8 4"/></svg><span>Поделиться тестом</span></button>
       <button class="btn-ghost" id="btnRestart"><svg viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg><span>Пройти ещё раз</span></button>
     </div>
     <div class="brand">ШКОЛА <b>PRO</b> ПРОДАЖИ · ОКСАНЫ ПАНТЕЛЕЕВОЙ</div>
@@ -276,6 +350,22 @@ button{font-family:var(--font-body); cursor:pointer}
       ]
     }
   };
+  var COURSE = {
+    hs: { forT:"Что даст курс «Хозяйке сделки»", mods:[
+      "<b>Модуль 04.</b> Продажи в переписке и на консультации: сильные вопросы и голосовые, чтобы ваш уверенный стиль звучал тепло",
+      "<b>Модуль 06.</b> Разбор ваших реальных диалогов: из удачных разговоров - в систему, которая работает каждый раз"]},
+    sb: { forT:"Что даст курс «Справочному бюро»", mods:[
+      "<b>Модуль 03.</b> Алгоритм продажи: как перейти от ответов на вопросы к предложению",
+      "<b>Модуль 04.</b> Сильные вопросы, чтобы разговор вели вы, а не клиент"]},
+    te: { forT:"Что даст курс «Тихому эксперту»", mods:[
+      "<b>Модуль 00.</b> Работа с мышлением: уверенность и спокойное отношение к продажам",
+      "<b>Модуль 05.</b> Что отвечать на «дорого» и «я подумаю», чтобы разговор не гас"]},
+    op: { forT:"Что даст курс «Оправдашке»", mods:[
+      "<b>Модуль 00.</b> Работа с мышлением: перестать стыдиться своей цены",
+      "<b>Модуль 01.</b> Говорить о ценности без оправданий и скидок"]}
+  };
+  var DELTA = { hs: 12, sb: 4, te: -8, op: -10 };
+  var START_CHANCE = 40;
   var ORDER = ["hs","sb","te","op"];
 
   var ROUNDS = [
@@ -365,6 +455,28 @@ button{font-family:var(--font-body); cursor:pointer}
   var elThread = document.getElementById("thread");
   var elOptions = document.getElementById("options");
   var elBack = document.getElementById("btnBack");
+  var elMeterVal = document.getElementById("meterVal");
+  var elMeterFill = document.getElementById("meterFill");
+  var elDelta = document.getElementById("meterDelta");
+  var deltaTimer = null;
+
+  function chance(){
+    var c = START_CHANCE;
+    state.answers.forEach(function(a){ c += DELTA[a.k]; });
+    return Math.max(5, Math.min(90, c));
+  }
+  function paintMeter(d){
+    var c = chance();
+    elMeterVal.textContent = c + "%";
+    elMeterFill.style.width = c + "%";
+    elMeterFill.style.backgroundPosition = (100 - c) + "% 0";
+    if (typeof d === "number"){
+      elDelta.textContent = (d > 0 ? "+" : "") + d + "%";
+      elDelta.className = "delta show " + (d >= 0 ? "up" : "down");
+      window.clearTimeout(deltaTimer);
+      deltaTimer = window.setTimeout(function(){ elDelta.className = "delta"; }, 1300);
+    }
+  }
 
   function buildProgress(){
     elProgress.innerHTML = "";
@@ -400,6 +512,7 @@ button{font-family:var(--font-body); cursor:pointer}
     opts = opts || {};
     var r = ROUNDS[state.step];
     paintProgress();
+    paintMeter();
     elRoundNum.textContent = String(state.step+1).padStart(2,"0") + " / " + String(ROUNDS.length).padStart(2,"0");
     updateBackButton();
 
@@ -464,12 +577,42 @@ button{font-family:var(--font-body); cursor:pointer}
     state.answers.push({ text: o.t, k: o.k, round: r.label });
     elThread.appendChild(bubble("me", o.t));
     scrollThread();
+    paintMeter(DELTA[o.k]);
     state.step++;
     if (state.step >= ROUNDS.length){
-      window.setTimeout(showResult, 420);
+      window.setTimeout(finalScene, 650);
     } else {
       window.setTimeout(function(){ renderRound(); }, 420);
     }
+  }
+
+  function outcomeKind(){
+    var c = chance();
+    return c >= 70 ? "win" : (c >= 45 ? "mid" : "lose");
+  }
+  var OUT = {
+    win: { client:"Убедили. Давайте начнём! Куда можно оплатить? 🙌", sys:null,
+           title:"Марина оплатила", text:"Вы провели её от первого вопроса до оплаты: сняли сомнения, спокойно назвали цену и предложили понятный следующий шаг." },
+    mid: { client:"Хорошо, я подумаю и напишу вам", sys:"Прошло 3 дня. Марина пока не написала",
+           title:"Марина ушла «подумать»", text:"Интерес был, но в нескольких моментах разговор вела она, а не вы. Без договорённости о следующем шаге такие клиенты чаще всего покупают у другого." },
+    lose:{ client:"Спасибо, я подумаю", sys:"Марина прочитала и больше не ответила",
+           title:"Марина пропала", text:"Она так и не поняла, почему стоит выбрать именно вас. Это не про ваш уровень как специалиста - это про то, как устроен разговор." }
+  };
+  function finalScene(){
+    var o = OUT[outcomeKind()];
+    var typingMsg = bubble("client", null, true);
+    elThread.appendChild(typingMsg); scrollThread();
+    window.setTimeout(function(){
+      typingMsg.querySelector(".bubble").innerHTML = escapeHtml(o.client);
+      if (o.sys){ var sy=document.createElement("div"); sy.className="sys"; sy.textContent=o.sys; elThread.appendChild(sy); }
+      scrollThread();
+      elOptions.innerHTML = "";
+      var b = document.createElement("button");
+      b.className = "btn-finish"; b.textContent = "Узнать свой результат →";
+      b.addEventListener("click", showResult);
+      elOptions.appendChild(b);
+      var dots = elProgress.children; for (var i=0;i<dots.length;i++) dots[i].className="done";
+    }, 700);
   }
 
   function goBack(){
@@ -496,8 +639,19 @@ button{font-family:var(--font-body); cursor:pointer}
     elChat.classList.remove("active");
     elResult.classList.add("active");
 
+    window.scrollTo(0,0);
+    var kind = outcomeKind();
+    var outEl = document.getElementById("outcome");
+    outEl.className = "outcome " + kind;
+    document.getElementById("out-title").textContent = OUT[kind].title;
+    document.getElementById("out-text").textContent = OUT[kind].text + " Шанс оплаты в конце разговора: " + chance() + "%.";
+
     var w = winner();
     var type = TYPES[w];
+    document.getElementById("course-for").textContent = COURSE[w].forT;
+    var cm = document.getElementById("course-mods"); cm.innerHTML = "";
+    COURSE[w].mods.forEach(function(t){ var li=document.createElement("li"); li.innerHTML=t; cm.appendChild(li); });
+    paintCalc();
     document.getElementById("res-name").textContent = type.name;
     document.getElementById("res-sub").textContent = type.sub;
 
@@ -532,29 +686,41 @@ button{font-family:var(--font-body); cursor:pointer}
     saveProgress();
   }
 
+  function paidOf10(){ return Math.max(0, Math.min(10, Math.round(chance()/10))); }
+  function fmt(n){ return String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, " "); }
+  function paintCalc(){
+    var paid = paidOf10();
+    document.getElementById("calc-paid").textContent = paid + " из 10";
+    var raw = (document.getElementById("calc-check").value || "").replace(/\D/g, "");
+    var check = parseInt(raw, 10) || 0;
+    document.getElementById("calc-loss").textContent = check ? "≈ " + fmt((10 - paid) * check) + " ₽" : "—";
+  }
+  document.getElementById("calc-check").addEventListener("input", function(){
+    var raw = this.value.replace(/\D/g, "").slice(0, 9);
+    this.value = raw ? fmt(parseInt(raw,10)) : "";
+    paintCalc();
+  });
+
   function resultAsText(){
     var w = winner();
     var type = TYPES[w];
-    var lines = ["Мой тип продавца: " + type.name, "", type.sub, "", "Тест «Какой вы продавец» — Школа PRO продажи Оксаны Пантелеевой"];
+    var lines = ["Мой тип продавца: " + type.name, "Итог разговора: " + OUT[outcomeKind()].title + " (шанс оплаты " + chance() + "%)", "", type.sub, "", "Тест «Какой вы продавец» - Школа PRO продажи Оксаны Пантелеевой"];
     return lines.join("\n");
   }
 
-  document.getElementById("btnCopy").addEventListener("click", function(){
+  document.getElementById("btnShare").addEventListener("click", function(){
     var btn = this;
-    var text = resultAsText();
-    function done(){
-      btn.classList.add("copied");
-      btn.querySelector("span").textContent = "Скопировано";
-      window.setTimeout(function(){
-        btn.classList.remove("copied");
-        btn.querySelector("span").textContent = "Скопировать результат";
-      }, 1800);
+    var url = location.href.split("#")[0];
+    var data = { title: "Какой вы продавец?", text: "Прошла игру-тест: " + TYPES[winner()].name + ". Проверьте, какой вы продавец - 2 минуты:", url: url };
+    function done(msg){
+      btn.classList.add("copied"); btn.querySelector("span").textContent = msg;
+      window.setTimeout(function(){ btn.classList.remove("copied"); btn.querySelector("span").textContent = "Поделиться тестом"; }, 1800);
     }
+    if (navigator.share){ navigator.share(data).catch(function(){}); return; }
+    var text = data.text + " " + url;
     if (navigator.clipboard && navigator.clipboard.writeText){
-      navigator.clipboard.writeText(text).then(done).catch(function(){ fallbackCopy(text); done(); });
-    } else {
-      fallbackCopy(text); done();
-    }
+      navigator.clipboard.writeText(text).then(function(){ done("Ссылка скопирована"); }).catch(function(){ fallbackCopy(text); done("Ссылка скопирована"); });
+    } else { fallbackCopy(text); done("Ссылка скопирована"); }
   });
   function fallbackCopy(text){
     var ta = document.createElement("textarea");
@@ -569,6 +735,8 @@ button{font-family:var(--font-body); cursor:pointer}
   document.getElementById("btnRestart").addEventListener("click", function(){
     state = { step: 0, tally: {hs:0, sb:0, te:0, op:0}, answers: [] };
     elThread.innerHTML = "";
+    paintMeter();
+    window.scrollTo(0,0);
     elResult.classList.remove("active");
     elIntro.style.display = "flex";
     elChat.classList.remove("active");
@@ -596,6 +764,8 @@ button{font-family:var(--font-body); cursor:pointer}
   } else {
     start({});
   }
+  var deadline = new Date("2026-11-10T20:59:59Z");
+  if (new Date() > deadline){ document.querySelectorAll(".price-deadline-tag").forEach(function(el){ el.style.display="none"; }); }
 })();
 </script>
 </body>
