@@ -532,12 +532,9 @@ var PAY_LINKS = {
 var DM = 'https://t.me/Oxi071280';
 // QR-коды по тарифам. Пустая строка = QR для тарифа нет, блок скрывается.
 var QR = { self: 'qr-self.png', pro: 'qr-pay.jpg', vip: 'qr-vip.png' };
-// С 11 ноября: ссылки и QR на новые цены (27 000 / 55 000 / 99 000).
-// Пока ссылок нет, кнопка ведёт в личку Оксаны, а QR скрыт.
-var PAY_LINKS_LATER = { self: '', pro: '', vip: '' };
-var QR_LATER = { self: '', pro: '', vip: '' };
+// С 11 ноября ссылки и QR те же - сумму в них Оксана меняет в Альфа-банке.
+// Сайт сам меняет только цифры цен.
 if (AFTER_DEADLINE) {
-  PAY_LINKS = PAY_LINKS_LATER; QR = QR_LATER;
   document.querySelectorAll('[data-later]').forEach(function(el){ el.textContent = el.getAttribute('data-later'); });
 }
 var NAMES = { self: 'Самостоятельный', pro: 'Практика PRO', vip: 'Личное сопровождение' };
