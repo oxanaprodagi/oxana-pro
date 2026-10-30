@@ -77,6 +77,8 @@ a.navlink:hover{color:#f28a2e}
 .pick input{accent-color:#ee7b2f;width:18px;height:18px;margin:0;flex:0 0 auto;cursor:pointer}
 .pick-name{flex:1 1 auto;font-size:17px;font-weight:600;color:#f4f1ec}
 .pick-price{font-size:17px;font-weight:700;color:#f28a2e;white-space:nowrap}
+.price-later{font-size:14px;color:#9d9a94;margin-top:-10px}
+.price-later s{color:#c9c5be}
 .pick:has(input:checked){border-color:#f28a2e;background:rgba(242,138,46,.07)}
 .pay-note{font-size:15px;line-height:1.5;color:#c9c5be;max-width:520px}
 .steps{display:flex;flex-direction:column;gap:0;max-width:520px;width:100%;box-sizing:border-box;padding:22px 24px}
@@ -365,7 +367,8 @@ a.navlink:hover{color:#f28a2e}
 <div class="card tariff">
 <h3 class="tariff-name">Самостоятельный</h3>
 <p class="tariff-for">Для тех, кому нужен алгоритм и материалы</p>
-<div class="tariff-price">24 900 ₽</div>
+<div class="tariff-price" data-later="27 390 ₽">24 900 ₽</div>
+<div class="price-later price-deadline-tag">До 10 ноября. С 11 ноября - 27 390 ₽</div>
 <ul>
 <li>6 модулей в записи</li>
 <li>Задания для самостоятельной работы</li>
@@ -380,7 +383,8 @@ a.navlink:hover{color:#f28a2e}
 <div class="tariff-badge">Рекомендуем</div>
 <h3 class="tariff-name">Практика PRO</h3>
 <p class="tariff-for">Для тех, кто хочет результат через практику</p>
-<div class="tariff-price">49 900 ₽</div>
+<div class="tariff-price" data-later="54 890 ₽">49 900 ₽</div>
+<div class="price-later price-deadline-tag">До 10 ноября. С 11 ноября - 54 890 ₽</div>
 <ul>
 <li>Всё из тарифа «Самостоятельный»</li>
 <li class="plus">6 живых Zoom-практикумов</li>
@@ -395,7 +399,8 @@ a.navlink:hover{color:#f28a2e}
 <div class="card tariff">
 <h3 class="tariff-name">Личное сопровождение</h3>
 <p class="tariff-for">Для тех, кому нужен индивидуальный разбор</p>
-<div class="tariff-price">89 900 ₽</div>
+<div class="tariff-price" data-later="98 890 ₽">89 900 ₽</div>
+<div class="price-later price-deadline-tag">До 10 ноября. С 11 ноября - 98 890 ₽</div>
 <ul>
 <li>Всё из тарифа «Практика PRO»</li>
 <li class="plus">2 индивидуальные встречи с Оксаной</li>
@@ -456,9 +461,9 @@ a.navlink:hover{color:#f28a2e}
 <h2 style="margin: 0; font-family: Lora,Georgia,serif; font-weight: 600; font-size: clamp(30px, 4.6vw, 50px); line-height: 1.1; color: #f4f1ec;">Готовы навести порядок в своих продажах?</h2>
 <p style="margin: 0; font-size: 19px; line-height: 1.6; color: #c9c5be;">Выберите тариф и оплатите участие онлайн - это займёт пару минут. Старт потока - 15 ноября.</p>
 <div class="picker" role="radiogroup" aria-label="Тариф">
-<label class="pick"><input type="radio" name="tariff" value="self"><span class="pick-name">Самостоятельный</span><span class="pick-price">24 900 ₽</span></label>
-<label class="pick"><input type="radio" name="tariff" value="pro" checked><span class="pick-name">Практика PRO</span><span class="pick-price">49 900 ₽</span></label>
-<label class="pick"><input type="radio" name="tariff" value="vip"><span class="pick-name">Личное сопровождение</span><span class="pick-price">89 900 ₽</span></label>
+<label class="pick"><input type="radio" name="tariff" value="self"><span class="pick-name">Самостоятельный</span><span class="pick-price" data-later="27 390 ₽">24 900 ₽</span></label>
+<label class="pick"><input type="radio" name="tariff" value="pro" checked><span class="pick-name">Практика PRO</span><span class="pick-price" data-later="54 890 ₽">49 900 ₽</span></label>
+<label class="pick"><input type="radio" name="tariff" value="vip"><span class="pick-name">Личное сопровождение</span><span class="pick-price" data-later="98 890 ₽">89 900 ₽</span></label>
 </div>
 <label class="consent" for="consent"><input type="checkbox" id="consent"><span>Я принимаю условия <a href="oferta.html" target="_blank">публичной оферты</a> и даю <a href="soglasie.html" target="_blank">согласие на обработку персональных данных</a> в соответствии с <a href="privacy.html" target="_blank">политикой обработки персональных данных</a></span></label>
 <div id="consent-hint" class="consent-hint" hidden>Отметьте галочку выше, чтобы перейти к оплате</div>
@@ -513,8 +518,12 @@ if (!box.checked) { e.preventDefault(); if (hint) hint.hidden = false; box.focus
 });
 sync();
 })();
+// Цены первого потока до 10 ноября 23:59 мск, с 11 ноября +10%.
+// Проверить, как сайт будет выглядеть после дедлайна: добавить к адресу ?preview=after
+var PRICE_DEADLINE = new Date('2026-11-10T20:59:59Z');
+var AFTER_DEADLINE = new Date() > PRICE_DEADLINE || /[?&]preview=after/.test(location.search);
 (function(){
-// Ссылки на оплату по тарифам. Пустая строка = оплата через личку Оксаны.
+// Ссылки на оплату по тарифам. Пустая строка = оплата через личку Оксаны. Пустая строка = оплата через личку Оксаны.
 var PAY_LINKS = {
   self: 'https://securepayecom.com/sc/LwzrVZougpIEJCFt',
   pro: 'https://securepayecom.com/sc/gYJHDMxYNAJEsRRN',
@@ -523,6 +532,14 @@ var PAY_LINKS = {
 var DM = 'https://t.me/Oxi071280';
 // QR-коды по тарифам. Пустая строка = QR для тарифа нет, блок скрывается.
 var QR = { self: 'qr-self.png', pro: 'qr-pay.jpg', vip: 'qr-vip.png' };
+// С 11 ноября: ссылки и QR на новые цены (27 390 / 54 890 / 98 890).
+// Пока ссылок нет, кнопка ведёт в личку Оксаны, а QR скрыт.
+var PAY_LINKS_LATER = { self: '', pro: '', vip: '' };
+var QR_LATER = { self: '', pro: '', vip: '' };
+if (AFTER_DEADLINE) {
+  PAY_LINKS = PAY_LINKS_LATER; QR = QR_LATER;
+  document.querySelectorAll('[data-later]').forEach(function(el){ el.textContent = el.getAttribute('data-later'); });
+}
 var NAMES = { self: 'Самостоятельный', pro: 'Практика PRO', vip: 'Личное сопровождение' };
 var qrBox = document.getElementById('qr-box');
 var qrImg = document.getElementById('qr-img');
@@ -551,8 +568,7 @@ apply();
 })();
 (function(){
 // Плашки «лучшие цены» прячутся после 10 ноября 23:59 мск
-var deadline = new Date('2026-11-10T20:59:59Z');
-if (new Date() > deadline) {
+if (AFTER_DEADLINE) {
 document.querySelectorAll('.price-deadline-tag').forEach(function(el){ el.style.display = 'none'; });
 }
 })();
