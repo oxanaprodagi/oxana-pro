@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Кто сорвал сделку</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Lora:ital,wght@0,500;1,500&family=Source+Sans+3:wght@400;500;600;700&display=swap">
+<style>
+/* Тренажёр-детектив в стиле школы Оксаны: тёмная сцена, оранжевая улика. Один экран за раз, телефон в приоритете. */
+:root{
+  --bg:#0E0C0D;
+  --panel:#1C1719;
+  --line:#3A3134;
+  --ink:#F3EDE4;
+  --soft:#C9C0B5;
+  --mute:#8C847C;
+  --accent:#F07A2B;
+  --accent-deep:#B8420C;
+  --good:#7CC59A;
+  --good-bg:#14261C;
+  --bad-bg:#2B1710;
+  --display:"Oswald","Arial Narrow",Arial,sans-serif;
+  --serif:"Lora",Georgia,serif;
+  --body:"Source Sans 3","Segoe UI",Roboto,Arial,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.5 var(--body);min-height:100vh;
+  padding-block:0 48px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:10}
+p{margin:0}
+h1,h2{font-family:var(--display);font-weight:700;text-transform:uppercase;margin:0;line-height:1;letter-spacing:-.5px;text-wrap:balance}
+h1{font-size:clamp(46px,13vw,68px)}
+h1 em{font-style:normal;color:var(--accent)}
+h2{font-size:clamp(28px,7.5vw,36px);line-height:1.05}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line);margin:0 calc(-1*max(16px,env(safe-area-inset-left,0px)));padding:10px max(16px,env(safe-area-inset-right,0px)) 10px max(16px,env(safe-area-inset-left,0px))}
+.top-in{max-width:560px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:12px;font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--mute);font-weight:600}
+.score{font:600 14px var(--display);letter-spacing:1px;color:var(--bg);background:var(--accent);padding:5px 12px;border-radius:999px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.score.bump{animation:bump .45s ease}
+@keyframes bump{40%{transform:scale(1.15)}}
+.wrap{max-width:560px;margin:0 auto;padding-top:22px}
+.panel{display:flex;flex-direction:column;gap:18px;animation:in .3s ease both}
+@keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.eyebrow{font-size:13px;letter-spacing:4px;text-transform:uppercase;color:var(--accent);font-weight:700}
+.muted{color:var(--soft);font-size:15px}
+.lead{font-size:19px;color:var(--soft)}
+
+.say{display:flex;gap:12px;align-items:flex-start;min-width:0}
+.say.right{flex-direction:row-reverse}
+.face{flex:none;width:52px;height:52px;border-radius:50%;overflow:hidden;background:var(--panel);display:grid;place-items:center;font:700 22px var(--display);color:var(--accent);border:2px solid var(--line)}
+.face.ox{border-color:var(--accent)}
+.face img{width:100%;height:100%;object-fit:cover;display:block}
+.bubble{min-width:0;background:var(--panel);border-radius:4px 18px 18px 18px;padding:11px 15px;font-size:17px;line-height:1.45}
+.say.right .bubble{border-radius:18px 4px 18px 18px;background:#2A2023}
+.bubble small{display:block;font:600 12px var(--body);letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:2px}
+.story{border-left:5px solid var(--accent);padding:4px 0 4px 18px;font:italic 500 20px/1.45 var(--serif);color:var(--ink)}
+
+.choices{display:flex;flex-direction:column;gap:10px}
+.ch{appearance:none;cursor:pointer;text-align:left;font:600 17px/1.3 var(--body);color:var(--ink);background:var(--panel);border:1.5px solid var(--line);border-radius:14px;padding:16px;min-height:52px;transition:border-color .15s,transform .1s}
+.ch:hover{border-color:var(--accent)}
+.ch:active{transform:translateY(1px)}
+.ch.primary{background:var(--accent);border-color:var(--accent);color:#120A05;text-align:center;font-family:var(--display);font-size:20px;letter-spacing:1px;text-transform:uppercase;font-weight:600}
+.ch.primary:hover{background:#FF8C3F}
+.ch.ghost{background:transparent;text-align:center;color:var(--soft);font-weight:500}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+
+.map{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.loc{appearance:none;cursor:pointer;text-align:left;background:var(--panel);border:1.5px solid var(--line);border-radius:16px;padding:14px;display:flex;flex-direction:column;gap:6px;color:var(--ink);font:600 17px/1.2 var(--display);text-transform:uppercase;letter-spacing:.3px;min-height:128px;position:relative}
+.loc:hover{border-color:var(--accent)}
+.loc small{font:400 14px/1.3 var(--body);text-transform:none;letter-spacing:0;color:var(--soft)}
+.loc .lt{font:700 12px var(--body);letter-spacing:3px;color:var(--accent)}
+.loc.done{background:var(--good-bg);border-color:#2F5E43}
+.loc.done::after{content:"улика";position:absolute;top:12px;right:12px;font:700 11px var(--body);letter-spacing:2px;text-transform:uppercase;color:var(--good)}
+.map .loc:last-child:nth-child(odd){grid-column:1/-1;min-height:0}
+
+/* экраны-улики: телефон Лены */
+.phone{background:#141011;border:1.5px solid var(--line);border-radius:22px;padding:14px;display:flex;flex-direction:column;gap:9px}
+.ph-h{display:flex;align-items:center;gap:10px;font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--mute);font-weight:600;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.msg{max-width:92%;padding:9px 12px;border-radius:4px 14px 14px 14px;background:var(--panel);font-size:16px;line-height:1.4}
+.msg.me{align-self:flex-end;border-radius:14px 4px 14px 14px;background:#2E2024}
+.msg.client{background:#222A2E}
+.msg.thought{align-self:center;max-width:100%;background:transparent;border:1.5px dashed var(--line);border-radius:14px;font:italic 500 17px/1.4 var(--serif);color:var(--soft)}
+.msg small{display:block;font:600 11px var(--body);letter-spacing:2px;text-transform:uppercase;color:var(--mute);margin-bottom:2px}
+.note{padding:10px 13px;border-radius:12px;background:var(--panel);font-size:16px;line-height:1.4}
+
+[data-spot]{cursor:pointer;outline:2px dashed transparent;outline-offset:3px;transition:outline-color .2s,background .2s}
+.hunt [data-spot]{outline-color:rgba(240,122,43,.35);animation:pulse 1.9s ease-in-out infinite}
+@keyframes pulse{50%{outline-color:rgba(240,122,43,.8)}}
+[data-spot].fine{outline:2px solid #2F5E43;animation:none;background:var(--good-bg)}
+[data-spot].caught{outline:3px solid var(--accent);animation:none;background:var(--bad-bg)}
+.hint{font-size:15px;color:var(--soft)}
+
+.fb{border-radius:14px;padding:13px 16px;font-size:16.5px;animation:in .25s ease both}
+.fb b{display:block;font:600 13px var(--display);letter-spacing:2.5px;text-transform:uppercase;margin-bottom:3px}
+.fb.good{background:var(--good-bg);color:#CFE8D8}.fb.good b{color:var(--good)}
+.fb.bad{background:var(--bad-bg);color:#F1D3C2}.fb.bad b{color:var(--accent)}
+.fb.clue{background:var(--accent);color:#1A0D04}.fb.clue b{color:#4A1E05}
+
+.vs{display:grid;grid-template-columns:1fr;gap:10px}
+.opt{appearance:none;cursor:pointer;text-align:left;background:var(--panel);border:2px solid var(--line);border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:6px;font:inherit;color:inherit}
+.opt:hover{border-color:var(--accent)}
+.opt .lab{font:700 12px var(--body);letter-spacing:3px;text-transform:uppercase;color:var(--mute)}
+.opt .mini{font-size:17px;line-height:1.4}
+.opt.right{border-color:var(--good);background:var(--good-bg)}
+.opt.wrong{opacity:.55}
+.opt[disabled]{cursor:default}
+
+.tip{border:1.5px solid var(--line);border-radius:14px;padding:13px 16px;font-size:16.5px;background:var(--panel)}
+.tip b{display:block;font:600 13px var(--display);letter-spacing:2.5px;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
+
+.chain{display:flex;flex-direction:column;gap:0}
+.chain span{background:var(--panel);border:1.5px solid var(--line);border-radius:12px;padding:10px 14px;font-weight:600;font-size:16.5px}
+.chain span small{display:block;font:600 11px var(--body);letter-spacing:2.5px;text-transform:uppercase;color:var(--accent)}
+.chain i{font-style:normal;color:var(--accent);font:700 18px var(--display);padding:2px 0 2px 22px;line-height:1.2}
+.stamp{align-self:flex-start;font:700 20px var(--display);letter-spacing:2px;text-transform:uppercase;padding:6px 14px;border:3px solid currentColor;border-radius:8px;transform:rotate(-3deg);color:var(--accent)}
+.stamp.top3{color:var(--good)}
+.week{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:8px}
+.week li::marker{color:var(--accent);font-weight:700}
+.recap{display:flex;flex-direction:column;gap:8px;margin:0;padding:0;list-style:none}
+.recap li{display:flex;gap:12px;align-items:baseline;font-size:16.5px}
+.recap li b{flex:none;font:600 13px var(--display);letter-spacing:2px;text-transform:uppercase;color:var(--accent);width:112px}
+.cta{background:var(--panel);border:1.5px solid var(--line);border-radius:20px;padding:20px 18px;display:flex;flex-direction:column;gap:12px}
+.qprog{display:flex;gap:6px}
+.qprog i{flex:1;height:5px;border-radius:3px;background:var(--line)}
+.qprog i.on{background:var(--accent)}
+.foot{max-width:560px;margin:30px auto 0;font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--mute);text-align:center}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+
+<div class="top"><div class="top-in"><span>Школа PRO продажи · Урок 3</span><span class="score" id="score">Дело №3</span></div></div>
+<div class="wrap"><main id="app"></main></div>
+<p class="foot">Практикум по материалам первой недели</p>
+
+<script>
+const FACE = "data:image/jpeg;base64,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";
+
+/* три героя: меняются роль, продукт, цена и реплики. Улики одни и те же. */
+const HEROES = {
+  expert:{name:"Анна", role:"нутрициолог", a:"а",
+    ask:"Здравствуйте! Видела ваш канал. Сколько стоит ваше сопровождение?",
+    Prod:"Сопровождение", price:"45 000 ₽", incl:"разбор питания, меню и поддержка в чате",
+    small:"просто даю советы",
+    good1:"Я хорошо знаю тему, мои клиентки получают результат",
+    good2:"Моё сопровождение помогает худеть без срывов",
+    envy:"У Светы клиенты, потому что у неё много подписчиков."},
+  business:{name:"Лена", role:"дизайнер интерьеров", a:"а",
+    ask:"Здравствуйте! Видела ваши работы. Сколько стоит дизайн-проект двушки?",
+    Prod:"Проект", price:"60 000 ₽", incl:"обмеры, планировка и визуализация",
+    small:"просто рисую картинки",
+    good1:"Я хорошо знаю тему и довожу проекты до конца",
+    good2:"Мой проект экономит людям время и нервы на ремонте",
+    envy:"У Светки заказы, потому что у неё богатый муж."},
+  manager:{name:"Игорь", role:"менеджер по продажам", a:"",
+    ask:"Здравствуйте! Нашла вашу компанию в интернете. Сколько стоит годовое обслуживание оборудования?",
+    Prod:"Договор", price:"120 000 ₽", incl:"плановые выезды, запчасти и поддержка в любое время",
+    small:"просто звоню и предлагаю",
+    good1:"Я хорошо знаю оборудование и решаю вопросы клиентов",
+    good2:"Мой договор избавляет клиентов от поломок и простоев",
+    envy:"У Димы продажи, потому что ему достались лёгкие клиенты."}
+};
+let H = HEROES.business;
+const A = () => H.a;
+const R = () => H.a ? "ась" : "ся";
+
+const face = k => k === "ox" ? `<div class="face ox"><img src="${FACE}" alt="Оксана"></div>` : `<div class="face">${H.name[0]}</div>`;
+const say = (who, name, text, right) => `<div class="say${right ? " right" : ""}">${face(who)}<div class="bubble"><small>${name}</small>${text}</div></div>`;
+const ox = t => say("ox", "Оксана", t);
+
+const app = document.getElementById("app");
+const scoreEl = document.getElementById("score");
+const MAXS = 10;
+let clues = new Set(), score = 0, got = {};
+
+function point(key){
+  if (got[key]) return; got[key] = 1; score++;
+  scoreEl.textContent = `Чутьё: ${score} из ${MAXS}`;
+  scoreEl.classList.remove("bump"); void scoreEl.offsetWidth; scoreEl.classList.add("bump");
+}
+function render(html){ app.innerHTML = `<div class="panel">${html}</div>`; window.scrollTo({top:0}); }
+function btns(list){ return `<div class="choices">${list.map(b => `<button class="ch ${b[2] || ""}" id="${b[0]}">${b[1]}</button>`).join("")}</div>`; }
+function on(id, fn){ const el = document.getElementById(id); if (el) el.onclick = fn; }
+
+/* ---------- 5 мест обыска ---------- */
+const ORDER = ["chat","mind","notes","refuse","excuse"];
+const PLACES = {
+  chat:{lt:"Урок 1", name:"Переписка", sub:"как назвали цену",
+    suspect:"Стыд и страх в переписке",
+    clue:() => `${H.name} извинил${R()} за цену ещё до того, как клиентка что-то сказала, и сам${A()} предложил${A()} скидку. Цена прозвучала как вина.`,
+    tip:"Откройте свою последнюю переписку, где вы называли цену. Есть ли там «только не пугайтесь», «к сожалению» или скидка раньше возражения?"},
+  mind:{lt:"Урок 2", name:"Мысли", sub:"что думали перед отправкой",
+    suspect:"Ограничивающие убеждения",
+    clue:() => `Перед тем как отправить цену, ${H.name} думал${A()}: «деньги - это тяжёлый труд» и «большие деньги только своруешь». С такими мыслями цену не называют уверенно.`,
+    tip:"Допишите фразу: «Большие деньги - это...». Первое, что пришло в голову, и есть ваше убеждение. Чьё оно: ваше или услышанное в детстве?"},
+  notes:{lt:"Урок 2", name:"Заметки", sub:"итоги месяца в телефоне",
+    suspect:"Мышление бедности",
+    clue:() => "Кредит под кредит, жалость к себе и зависть к чужим успехам. Это три признака из списка мышления бедности, и все три в одной заметке.",
+    tip:"Поймайте себя за день хотя бы на одном признаке: жалость, зависть, нытьё, откладывание на потом. Просто заметьте. Уже это сдвигает привычку."},
+  refuse:{lt:"Урок 2", name:"Первый отказ", sub:"ответ на «подумаю»",
+    suspect:"Сдача после первого отказа",
+    clue:() => `Клиентка написала «дороговато, подумаю». ${H.name} не задал${A()} ни одного вопроса и попрощал${R()}. Правило трёх отказов даже не начало работать.`,
+    tip:"Выпишите три вопроса на случай «дорого» или «подумаю»: «Что смущает?», «Какой информации не хватило?», «Что я не рассказал(а)?»."},
+  excuse:{lt:"Урок 2", name:"Оправдания", sub:"что сказали коллеге",
+    suspect:"Рационализация",
+    clue:() => "«Клиентка капризная, такие мне не нужны» - зелёный виноград. Разумная причина закрыла тему, а вывод из переписки так и не сделан.",
+    tip:"Вспомните последний провал в продажах. Что вы тогда сказали себе или друзьям? Это было объяснение или разбор?"}
+};
+
+function intro(){
+  clues = new Set(); score = 0; got = {}; scoreEl.textContent = "Дело №3";
+  render(`
+    <span class="eyebrow">Дело №3 · 23:40</span>
+    <h1>Кто сорвал <em>сделку?</em></h1>
+    <div class="story">Клиентка спросила цену, получила ответ и пропала. Продавец не понимает, что пошло не так. Нужен детектив.</div>
+    ${ox("Вы детектив, я напарник. Скажите, кто вы в продажах, и я подберу дело. Ниша не важна: история подстроится, а улики из первой недели одни и те же.")}
+    ${btns([["h-expert","Я эксперт: консультирую и веду клиентов"],["h-business","Я предприниматель: продаю свою услугу или продукт"],["h-manager","Я менеджер: продаю в компании"]])}
+    <p class="muted">5 мест · около 10 минут · можно проходить заново</p>
+  `);
+  Object.keys(HEROES).forEach(k => on("h-" + k, () => caseStart(k)));
+}
+
+function caseStart(k){
+  H = HEROES[k];
+  render(`
+    <span class="eyebrow">Дело №3 · ${H.role}</span>
+    <div class="story">${H.name}, ${H.role}, неделю готовил${R()} к этой заявке. Клиентка Ольга спросила цену, получила ответ и пропала. ${H.name} не понимает, что пошло не так.</div>
+    ${say("hero", `${H.name}, ${H.role}`, "Вот переписка, мысли, заметки... Помогите найти, кто сорвал мне сделку!", true)}
+    ${ox("Обыщем пять мест, соберём улики и применим всё, что вы узнали за первую неделю. Ищите прямо на экране.")}
+    ${btns([["go","Взять дело","primary"],["back","Выбрать другую роль","ghost"]])}
+  `);
+  on("go", hub); on("back", intro);
+}
+
+function hub(){
+  const n = clues.size;
+  const hint = n === 0 ? "Начнём с переписки. Там всё случилось."
+    : n < 5 ? `Улик: ${n} из 5. Улики связаны между собой, обыщем остальное.`
+    : "Все пять мест обысканы. Пора называть главного подозреваемого.";
+  render(`
+    <span class="eyebrow">Обыск · ${n} из 5</span>
+    ${ox(hint)}
+    <div class="map">${ORDER.map(k => `<button class="loc${clues.has(k) ? " done" : ""}" id="loc-${k}"><span class="lt">${PLACES[k].lt}</span>${PLACES[k].name}<small>${PLACES[k].sub}</small></button>`).join("")}</div>
+    ${n === 5 ? btns([["accuse","Назвать виновного","primary"]]) : ""}
+  `);
+  ORDER.forEach(k => on("loc-" + k, () => SCENES[k]()));
+}
+
+/* механика 1: найди на экране */
+function hunt(k, intro, mock, spots){
+  const bads = Object.keys(spots).filter(x => spots[x].bad);
+  render(`
+    <span class="eyebrow">${PLACES[k].name}</span>
+    ${intro}
+    <div class="hunt" id="mock">${mock}</div>
+    <p class="hint">Нажмите на то, что мешает продаже. Подозреваемых здесь: ${bads.length}.</p>
+    <div id="fb"></div>
+    <div id="fin"></div>
+  `);
+  let miss = 0, done = false; const caught = new Set();
+  const fb = h => document.getElementById("fb").innerHTML = h;
+  document.querySelectorAll("[data-spot]").forEach(el => el.onclick = () => {
+    if (done) return;
+    const key = el.dataset.spot, sp = spots[key];
+    if (sp.bad) {
+      if (caught.has(key)) return;
+      el.classList.add("caught"); caught.add(key);
+      const left = bads.length - caught.size;
+      fb(`<div class="fb clue"><b>Попался! ${caught.size} из ${bads.length}</b>${sp.note}${left ? `<br><br>Ищите дальше: тут прячется ещё ${left}.` : ""}</div>`);
+      if (!left) {
+        done = true; if (!miss) point(k + "-find");
+        document.getElementById("fin").innerHTML = btns([["next","Дальше: как исправить","primary"]]);
+        on("next", () => COMPARE[k]());
+      }
+    } else {
+      miss++; el.classList.add("fine");
+      fb(`<div class="fb good"><b>Здесь всё в порядке</b>${sp.note}</div>`);
+    }
+  });
+}
+
+/* механика 2: что лучше */
+function compare(k, q, a, b, right, why){
+  if (Math.random() < .5) { [a, b] = [b, a]; right = right === "a" ? "b" : "a"; }
+  render(`
+    <span class="eyebrow">${PLACES[k].name} · как исправить</span>
+    <h2>${q}</h2>
+    <div class="vs">
+      <button class="opt" id="oa"><span class="lab">Вариант 1</span>${a}</button>
+      <button class="opt" id="ob"><span class="lab">Вариант 2</span>${b}</button>
+    </div>
+    <div id="fb"></div>
+  `);
+  const pick = v => {
+    const ok = v === right;
+    if (ok) point(k + "-fix");
+    document.getElementById("o" + right).classList.add("right");
+    document.getElementById("o" + (right === "a" ? "b" : "a")).classList.add("wrong");
+    document.querySelectorAll(".opt").forEach(o => o.disabled = true);
+    document.getElementById("fb").innerHTML = `<div class="fb ${ok ? "good" : "bad"}"><b>${ok ? "В точку" : "Не совсем"}</b>${why}</div>${btns([["next","Приколоть улику к делу","primary"]])}`;
+    on("next", () => clue(k));
+  };
+  on("oa", () => pick("a")); on("ob", () => pick("b"));
+}
+
+function clue(k){
+  clues.add(k);
+  const p = PLACES[k];
+  render(`
+    <span class="eyebrow">Улика ${clues.size} из 5</span>
+    <div class="fb clue"><b>${p.suspect}</b>${p.clue()}</div>
+    <div class="tip"><b>Проверьте у себя</b>${p.tip}</div>
+    ${btns([["back","Вернуться к обыску","primary"]])}
+  `);
+  on("back", hub);
+}
+
+const chat = (inner, head) => `<div class="phone"><div class="ph-h">${head || "Переписка в Telegram · Ольга"}</div>${inner}</div>`;
+
+const SCENES = {
+  chat(){
+    hunt("chat", ox(`Ольга спросила цену. Вот что ответил${A()} ${H.name}. Что здесь мешает продать? Помните: рука дающего сильнее руки просящего.`),
+      chat(`
+        <div class="msg client"><small>Ольга</small>${H.ask}</div>
+        <div class="msg me" data-spot="a">Здравствуйте, Ольга! Рад${A()} знакомству.</div>
+        <div class="msg me" data-spot="b">Только не пугайтесь, цена немаленькая.</div>
+        <div class="msg me" data-spot="c">${H.Prod} стоит ${H.price}. Что получите: ${H.incl}.</div>
+        <div class="msg me" data-spot="d">Если дорого - скажите, сразу сделаю скидку.</div>`),
+      {a:{bad:false, note:"Тёплое приветствие. Вопросов нет."},
+       b:{bad:true, note:"Это стыд. Цену предупреждают заранее, как будто извиняются. Цена - стоимость пользы, а не вина."},
+       c:{bad:false, note:"Спокойно и конкретно: цена и что в неё входит. Это как раз правильная часть."},
+       d:{bad:true, note:"Это страх. Скидка предложена раньше, чем клиентка вообще возразила."}});
+  },
+  mind(){
+    hunt("mind", ox(`Перед тем как нажать «отправить», ${H.name} думал${A()}. Вот мысли. Какие из них ограничивают в продажах?`),
+      chat(`
+        <div class="msg thought" data-spot="a">«Больших денег не заработать, можно только своровать»</div>
+        <div class="msg thought" data-spot="b">«${H.good1}»</div>
+        <div class="msg thought" data-spot="c">«Деньги достаются тяжёлым трудом, а я ${H.small}»</div>
+        <div class="msg thought" data-spot="d">«${H.good2}»</div>`, `Мысли · 21:38`),
+      {a:{bad:true, note:"Ограничивающее убеждение. Все деньги в мире получены продажей чего-то кому-то, если это не мошенничество. Пока человек так думает, больших денег у него не будет."},
+       b:{bad:false, note:"Опора на опыт. Эта мысль помогает продавать."},
+       c:{bad:true, note:`Ещё одно убеждение: обесценивание себя. «Я ${H.small}» говорит человек, который не видит пользы своего продукта.`},
+       d:{bad:false, note:"Мысль про пользу для клиента. Именно с неё нужно начинать разговор о цене."}});
+  },
+  notes(){
+    hunt("notes", ox("Заметки с итогами месяца. Отметьте всё, что относится к мышлению бедности: признаки мы разбирали на втором уроке."),
+      chat(`
+        <div class="note" data-spot="a">Цель на год: 300 000 ₽ в месяц. Сейчас 60 000.</div>
+        <div class="note" data-spot="b">Взять новый кредит, чтобы закрыть старый. Потом разберусь.</div>
+        <div class="note" data-spot="c">Опять клиентка пропала. Мне всегда не везёт.</div>
+        <div class="note" data-spot="d">${H.envy}</div>
+        <div class="note" data-spot="e">Сделал${A()} на 3 контакта больше и записал${A()}, что получилось.</div>`, "Заметки · итоги месяца"),
+      {a:{bad:false, note:"Амбициозная цель, от которой сначала непонятно, как её достичь. Так и должно быть."},
+       b:{bad:true, note:"Кредит, чтобы закрыть другой кредит. Это не инвестиция, а признак мышления бедности."},
+       c:{bad:true, note:"Жалость к себе и роль жертвы: «мне всегда не везёт». Пожалеть себя можно, но 30 минут, а не месяц."},
+       d:{bad:true, note:"Ограничивающая зависть: обесценить чужой результат. Белая зависть звучала бы так: «у неё получилось, и я смогу»."},
+       e:{bad:false, note:"Новое действие и записанный опыт. Именно так мозг привыкает к новому."}});
+  },
+  refuse(){
+    hunt("refuse", ox("Ольга ответила на цену. Смотрите, как отреагировал продавец. Здесь два подозреваемых."),
+      chat(`
+        <div class="msg client" data-spot="a"><small>Ольга</small>Дороговато. Я подумаю.</div>
+        <div class="msg me" data-spot="b">Конечно, не буду вас беспокоить.</div>
+        <div class="msg thought" data-spot="c">«Ну и ладно, без этих денег жил${A()} и проживу»</div>`),
+      {a:{bad:false, note:"Первый отказ - это не приговор, а данные. Клиентка даёт информацию: её что-то смущает."},
+       b:{bad:true, note:"Сдались после первого отказа и не задали ни одного вопроса. Правило: до трёх отказов выясняем, что смущает."},
+       c:{bad:true, note:"Самоуспокоение вместо действия. Эту фразу Оксана приводила как пример: «ну и ладно, без этих денег жилось»."}});
+  },
+  excuse(){
+    hunt("excuse", ox(`Вечером ${H.name} пишет коллеге о срыве. Где работает защитный механизм, а где разбор по-взрослому?`),
+      chat(`
+        <div class="msg me" data-spot="a">Ольга всё равно капризная, такие клиенты мне не нужны.</div>
+        <div class="msg me" data-spot="b">Зато получил${A()} опыт общения. Ничего страшного, польза есть.</div>
+        <div class="msg me" data-spot="c">Обидно. Дам себе 30 минут погрустить и пойду дальше.</div>
+        <div class="msg me" data-spot="d">Разберу переписку: где я извинил${R()} за цену, и запишу вывод.</div>`, "Чат с коллегой"),
+      {a:{bad:true, note:"«Зелёный виноград»: не особо и хотелось. Причина звучит разумно, но чувство остаётся непрожитым, а ошибка неразобранной."},
+       b:{bad:true, note:"«Кислый лимон»: ничего страшного, возьму пользу. Если за этим нет разбора, это тоже рационализация."},
+       c:{bad:false, note:"Чувство названо и получило ограниченное время. Это здоровый способ пережить обиду."},
+       d:{bad:false, note:"Анализ и новый опыт в записи. Именно так провал превращается в ресурс."}});
+  }
+};
+
+const COMPARE = {
+  chat:() => compare("chat","Как лучше назвать цену Ольге?",
+    `<div class="mini">«Ой, ${H.price}... я понимаю, что это много, но могу подумать над скидкой».</div>`,
+    `<div class="mini">«${H.Prod} стоит ${H.price}. Что получите: ${H.incl}. Рассказать, как проходит работа?»</div>`,
+    "b","Назвали цену, сказали, что получит клиент, и предложили следующий шаг. Вы не просите денег, вы даёте пользу, за которую платят."),
+  mind:() => compare("mind","Что делать с убеждением «большие деньги - это нехорошо»?",
+    `<div class="mini">Не думать об этом и просто отправить цену.</div>`,
+    `<div class="mini">Заметить убеждение, спросить «чьё оно?» и заменить рабочим: «все деньги получены продажей, мой продукт даёт пользу».</div>`,
+    "b","Мы не прорабатываем травмы. Мы находим убеждение и трансформируем его. Подавить мысль не получится: психика будет искать ей подтверждения."),
+  notes:() => compare("notes","Как сдвинуть свой уровень нормы в доходе?",
+    `<div class="mini">Поставить цель на 10% выше нынешнего дохода, чтобы не пугать мозг.</div>`,
+    `<div class="mini">Поставить цель, от которой дух захватывает, и сделать в 10 раз больше действий. Даже полцели - это рост в 5 раз.</div>`,
+    "b","Цель должна быть настолько амбициозной, что сначала непонятно, как её достичь. Тогда вы делаете больше действий и накапливаете новый опыт."),
+  refuse:() => compare("refuse","Что написать Ольге после «подумаю»?",
+    `<div class="mini">«Что вас смущает: цена, сроки или результат? Какой информации не хватило?»</div>`,
+    `<div class="mini">«Могу сделать скидку 20%, только не отказывайтесь».</div>`,
+    "a","Задаём вопрос и выясняем, что смущает. Скидка в ответ на отказ - тот же страх. После третьего отказа уходим к другим, а каждый опыт фиксируем."),
+  excuse:() => compare("excuse","Что делать с обидой после срыва?",
+    `<div class="mini">Объяснить себе, почему так даже лучше.</div>`,
+    `<div class="mini">Назвать чувство, прожить его и разобрать переписку.</div>`,
+    "b","Рационализация подбирает разумные причины, но чувства остаются непрожитыми, а вывода нет. Прожить и разобрать - это путь к новому опыту.")
+};
+
+/* ---------- финал ---------- */
+const SUSP = {
+  fear:{n:"Страх", r:"Страх был в сцене со скидкой и «подумаю», но это следствие. Он включается, когда за ним стоит убеждение «просить деньги неловко»."},
+  shame:{n:"Стыд", r:"Стыд сработал сразу: «только не пугайтесь». Но человек стыдится того, во что не верит. Значит, источник глубже."},
+  poverty:{n:"Мышление бедности", r:"Жалость, зависть и долги в заметках - реальные улики. Но они выросли из тех же убеждений о деньгах."},
+  belief:{n:"Ограничивающее убеждение", r:"Это корень. «Деньги - тяжёлый труд, а большие деньги крадут» запустило всю цепочку ниже."},
+  rat:{n:"Рационализация", r:"Она закрыла дело в самом конце: «клиентка капризная». Но сделку сорвала не она, а всё, что было до неё."}
+};
+function accuse(){
+  render(`
+    <span class="eyebrow">Очная ставка</span>
+    <h2>Кто сорвал сделку?</h2>
+    ${ox("Все пять улик у нас на руках. Кого называете главным?")}
+    ${btns(Object.keys(SUSP).map(k => ["s-" + k, SUSP[k].n]))}
+  `);
+  Object.keys(SUSP).forEach(k => on("s-" + k, () => verdict(k)));
+}
+function verdict(k){
+  const root = k === "belief";
+  const rank = score >= 9 ? "Старший детектив" : score >= 6 ? "Детектив" : "Стажёр";
+  const plan = [
+    "Открою последнюю переписку о цене и найду фразу, где извинился(ась).",
+    "Запишу амбициозную цель: на сколько она больше нынешнего дохода.",
+    "Сегодня поймаю у себя один признак мышления бедности.",
+    "На ближайший отказ задам вопрос «что смущает?» вместо «подумаю».",
+    "Допишу: «Большие деньги - это...» и спрошу, чьё это убеждение."
+  ];
+  render(`
+    <span class="eyebrow">Дело закрыто</span>
+    <span class="stamp ${score >= 6 ? "top3" : ""}">${rank}</span>
+    <h2>${root ? "Вы нашли корень" : "Почти: это следствие"}</h2>
+    <p class="lead">${SUSP[k].r}</p>
+    <p class="muted">Чутьё: ${score} из ${MAXS}. ${score >= 9 ? "Почти всё нашли с первого раза." : score >= 6 ? "Хороший результат. Пройдите ещё раз, чтобы закрепить." : "Пройдите ещё раз: каждое прохождение закрепляет материал."}</p>
+    <h2 style="font-size:24px">Как всё сложилось</h2>
+    <div class="chain">
+      <span><small>Убеждение</small>«Большие деньги - это нехорошо»</span><i>↓</i>
+      <span><small>Стыд</small>«Только не пугайтесь»</span><i>↓</i>
+      <span><small>Страх</small>Скидка раньше возражения</span><i>↓</i>
+      <span><small>Сдача</small>Один отказ - и тишина</span><i>↓</i>
+      <span><small>Рационализация</small>«Клиентка капризная»</span>
+    </div>
+    <h2 style="font-size:24px">Что вы повторили</h2>
+    <ul class="recap">
+      <li><b>Урок 1</b><span>Стыд и страх мешают назвать цену. Вы продаёте пользу, а не просите деньги.</span></li>
+      <li><b>Урок 2</b><span>Новый опыт каждый день, амбициозная цель, правило трёх отказов, поиск убеждений.</span></li>
+    </ul>
+    <div class="cta">
+      <h2 style="font-size:24px">План на неделю</h2>
+      <ol class="week">${plan.map(p => `<li>${p}</li>`).join("")}</ol>
+      <button class="ch" id="copy">Скопировать план</button>
+      <p class="muted" id="copied" aria-live="polite"></p>
+    </div>
+    ${btns([["again","Пройти ещё раз","ghost"]])}
+  `);
+  on("again", intro);
+  on("copy", () => {
+    const text = "План на неделю:\n" + plan.map((p, i) => `${i + 1}. ${p}`).join("\n");
+    const ok = () => document.getElementById("copied").textContent = "Скопировано. Вставьте в заметки.";
+    const fail = () => document.getElementById("copied").textContent = "Не удалось скопировать. Выделите список выше и скопируйте вручную.";
+    try { navigator.clipboard.writeText(text).then(ok, fail); } catch(e){ fail(); }
+  });
+}
+
+intro();
+</script>
+
+</body>
+</html>
