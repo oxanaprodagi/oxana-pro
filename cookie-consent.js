@@ -48,3 +48,27 @@
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();
+
+/* Счётчики: запускаются только после согласия на cookie ("Принять"). */
+CookieConsent.onAccept(function () {
+  /* Яндекс Метрика */
+  (function (m, e, t, r, i, k, a) {
+    m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments); };
+    m[i].l = 1 * new Date();
+    for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
+    k = e.createElement(t); a = e.getElementsByTagName(t)[0]; k.async = 1; k.src = r; a.parentNode.insertBefore(k, a);
+  })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js?id=114110225', 'ym');
+  window.dataLayer = window.dataLayer || [];
+  ym(114110225, 'init', { ssr: true, webvisor: true, trackHash: true, clickmap: true, ecommerce: 'dataLayer', referrer: document.referrer, url: location.href, accurateTrackBounce: true, trackLinks: true });
+
+  /* Top.Mail.Ru (VK) */
+  var _tmr = window._tmr || (window._tmr = []);
+  _tmr.push({ id: '3812241', type: 'pageView', start: (new Date()).getTime() });
+  (function (d, w, id) {
+    if (d.getElementById(id)) return;
+    var ts = d.createElement('script'); ts.type = 'text/javascript'; ts.async = true; ts.id = id;
+    ts.src = 'https://top-fwz1.mail.ru/js/code.js';
+    var f = function () { var s = d.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ts, s); };
+    if (w.opera == '[object Opera]') { d.addEventListener('DOMContentLoaded', f, false); } else { f(); }
+  })(document, window, 'tmr-code');
+});
