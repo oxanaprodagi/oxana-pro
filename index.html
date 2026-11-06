@@ -86,6 +86,23 @@ a.navlink:hover{color:#f28a2e}
 .step-n{flex:0 0 auto;width:32px;height:32px;border-radius:50%;border:1.5px solid #f28a2e;color:#f28a2e;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center}
 .step-t{font-size:16px;line-height:1.5;color:#e4e0d9;padding-top:4px}
 .step-t b{color:#f4f1ec}
+.chan{position:relative;overflow:hidden;display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:center;padding:36px 32px;border:1.5px solid rgba(242,138,46,.7);border-radius:28px;background:linear-gradient(135deg,rgba(242,138,46,.18),#151518 62%);box-shadow:0 24px 60px rgba(226,90,20,.18)}
+@media (max-width:860px){.chan{grid-template-columns:1fr;padding:28px 22px}}
+.chan-body{display:flex;flex-direction:column;gap:16px;min-width:0}
+.chan-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.chan-list li{position:relative;padding-left:28px;font-size:17px;line-height:1.5;color:#e4e0d9}
+.chan-list li::before{content:"";position:absolute;left:2px;top:9px;width:10px;height:10px;border-radius:50%;background:#f28a2e}
+.chan-list b{color:#f4f1ec}
+.chan-cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.chan-note{font-size:14px;color:#9d9a94}
+.sheet{box-sizing:border-box;width:100%;max-width:380px;justify-self:center;padding:20px;border-radius:22px;background:#f1eeea;color:#17130f;display:flex;flex-direction:column;gap:10px;box-shadow:0 24px 50px rgba(0,0,0,.4);transform:rotate(1.5deg)}
+@media (max-width:860px){.sheet{transform:none}}
+.sheet small{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#c9480f}
+.sheet .q{align-self:flex-start;background:#fff;border-radius:14px;padding:8px 14px;font-size:16px}
+.sheet .p{align-self:flex-end;background:#f28a2e;border-radius:14px;padding:8px 14px;font-size:16px;font-weight:700;color:#17130f}
+.sheet h3{margin:6px 0 0;font-family:Lora,Georgia,serif;font-weight:700;font-size:25px;line-height:1.15}
+.sheet h3 span{display:inline-block;margin-top:4px;background:#17130f;color:#fff;padding:2px 10px;border-radius:8px}
+.sheet .tag{align-self:flex-start;margin-top:6px;background:#f28a2e;color:#17130f;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:7px 14px;border-radius:999px}
 .free{display:grid;grid-template-columns:1.35fr 1fr;gap:20px}
 @media (max-width:860px){.free{grid-template-columns:1fr}}
 .free-test{position:relative;overflow:hidden;display:grid;grid-template-columns:1fr 210px;gap:0;border:1.5px solid rgba(242,138,46,.7);background:linear-gradient(135deg,rgba(242,138,46,.16),#151518 60%);border-radius:24px;box-shadow:0 24px 60px rgba(226,90,20,.18)}
@@ -153,13 +170,37 @@ a.navlink:hover{color:#f28a2e}
 </div>
 <div style="display: flex; flex-direction: column; gap: 14px; align-items: flex-start;">
 <a class="btn" href="#tarify" style="display: inline-flex; align-items: center; justify-content: center; min-height: 60px; padding: 0 40px; box-sizing: border-box; border-radius: 999px; background: linear-gradient(180deg, #ee7b2f, #c9480f); color: #ffffff; font-weight: 700; font-size: 18px; letter-spacing: 0.12em; text-transform: uppercase; box-shadow: 0 10px 30px rgba(226,90,20,0.30);">Хочу научиться продавать</a>
-<div class="hero-free"><a href="test.html">🎯 Пройти игру-тест «Какой вы продавец» · 2 мин</a><a href="guide.pdf" target="_blank">📄 Гайд-самопроверка</a></div>
+<div class="hero-free"><a href="#kanal">🔒 Закрытый канал и эфир 9 ноября</a><a href="test.html">🎯 Пройти игру-тест «Какой вы продавец» · 2 мин</a><a href="guide.pdf" target="_blank">📄 Гайд-самопроверка</a></div>
 <div style="font-size: 15px; line-height: 1.5; color: #9d9a94;">Пишите Оксане в <a href="https://t.me/Oxi071280" target="_blank" rel="noopener">Telegram</a>, <a href="https://max.ru/u/f9LHodD0cOLfUrJS78I_kEc0COptckK-t9AedTTkOhEpouXCO49UxQG8S5Y" target="_blank" rel="noopener">MAX</a> или <a href="https://www.instagram.com/oxi0712" target="_blank" rel="noopener">Instagram Direct</a>. Instagram - запрещённая социальная сеть на территории РФ.</div>
 </div>
 </div>
 <div style="position: relative; flex: 0 1 340px; width: 340px; max-width: 100%; height: 620px; box-sizing: border-box; border-radius: 24px; overflow: hidden; box-shadow: 0 30px 70px rgba(0,0,0,0.4);">
 <img src="oksana-hero.jpg" alt="Оксана Пантелеева, эксперт по продажам и бизнес-тренер" style="display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 0%; filter: contrast(1.08) saturate(0.88) brightness(0.97);">
 <div style="position: absolute; inset: 0; background: linear-gradient(100deg, rgba(12,12,14,0.55) 0%, rgba(12,12,14,0) 32%, rgba(12,12,14,0) 68%, rgba(12,12,14,0.4) 100%), linear-gradient(0deg, rgba(12,12,14,0.6) 0%, rgba(12,12,14,0) 32%);"></div>
+</div>
+</div>
+</div>
+
+<div id="kanal" style="max-width: 1160px; margin: 0 auto; padding: 8px 24px 72px; box-sizing: border-box;">
+<div class="chan">
+<div class="chan-body">
+<span class="badge">Закрытый канал · бесплатно</span>
+<h2 class="ft-title">Не обязательно покупать сразу. Начните с закрытого канала</h2>
+<p class="ft-text">Зайдите в «Мастерскую продаж» Оксаны: без оплаты и без обязательств. Присмотритесь к её подаче, получите пользу и решите, нужен ли вам курс.</p>
+<ul class="chan-list">
+<li><b>Шпаргалка уже ждёт.</b> «Что ответить, чтобы не пропали?»: как отвечать на «сколько стоит» и «я подумаю», чтобы клиент не исчез.</li>
+<li><b>Закрытый эфир 9 ноября</b> в 14:00 по Москве. Оксана разберёт продажи вживую, участникам канала.</li>
+<li><b>Игра-тест и гайд-самодиагностика</b> тоже лежат в канале.</li>
+</ul>
+<div class="chan-cta"><a class="btn-test" id="chan-btn" href="__CHANNEL__" target="_blank" rel="noopener">Войти в канал</a><span class="chan-note">Откроется Telegram</span></div>
+</div>
+<div class="sheet" aria-hidden="true">
+<small>Подарок мастерской</small>
+<div class="q">Сколько стоит?</div>
+<div class="p">45 000 ₽</div>
+<div class="q">Спасибо, я подумаю</div>
+<h3>Что ответить, чтобы <span>не пропали?</span></h3>
+<div class="tag">Шпаргалка внутри</div>
 </div>
 </div>
 </div>
