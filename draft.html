@@ -1,0 +1,621 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta name="robots" content="noindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PRO Продажи. От сообщения до оплаты - курс Оксаны Пантелеевой</title>
+<meta name="description" content="Пошаговая система продаж для экспертов и предпринимателей: как назвать цену, что ответить на «дорого» и как довести разговор до сделки без давления.">
+<meta property="og:title" content="Школа PRO продажи — курс Оксаны Пантелеевой">
+<meta property="og:description" content="От «я не продажник» до эксперта, который уверенно называет цену.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0c0c0e">
+
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;0,700;1,600&amp;family=Oswald:wght@700&amp;family=Source+Sans+3:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#0c0c0e;color:#ece8e2;font-family:'Source Sans 3','Helvetica Neue',Arial,sans-serif;scroll-behavior:smooth}
+a{color:#f28a2e;text-decoration:none}
+a:hover{color:#ffb070}
+a:focus-visible{outline:2px solid #ffb070;outline-offset:3px}
+a.btn:hover{filter:brightness(1.1);color:#ffffff}
+a.pill:hover{border-color:#f28a2e;color:#ffffff}
+a.navlink{color:#c9c5be;font-size:14px;font-weight:600}
+a.navlink:hover{color:#f28a2e}
+.consent{display:flex;align-items:flex-start;gap:12px;max-width:520px;font-size:15px;line-height:1.5;color:#c9c5be;cursor:pointer}
+.consent input{flex:0 0 auto;width:20px;height:20px;margin:2px 0 0;accent-color:#ee7b2f;cursor:pointer}
+.consent-hint{font-size:14px;font-weight:700;color:#ff9a5a;margin-top:-14px}
+#pay-btn.locked{opacity:.55}
+.legal-links{display:flex;flex-wrap:wrap;gap:6px 20px;font-size:14px}
+.legal-links a{color:#c9c5be;text-decoration:underline;text-underline-offset:3px}
+.legal-links a:hover{color:#f28a2e}
+.navwrap{-ms-overflow-style:none;scrollbar-width:none}
+.navwrap::-webkit-scrollbar{display:none}
+.navrow{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px}
+.navlogo{flex:0 0 auto;display:flex;align-items:center;min-width:0;width:260px;max-width:38vw}
+.navlogo img{display:block;width:100%;height:auto;object-fit:contain}
+@media (max-width:640px){
+.navlinks{order:3;width:100%;justify-content:flex-start;padding-top:2px}
+.navcta{order:2}
+.navlogo{width:150px;max-width:44vw}
+}
+.wrap{max-width:1160px;margin:0 auto;box-sizing:border-box;padding:0 24px}
+.kicker{font-size:13px;letter-spacing:.3em;color:#f28a2e;font-weight:700;text-transform:uppercase}
+.h2{margin:0;font-family:Lora,Georgia,serif;font-weight:600;font-size:clamp(28px,4vw,44px);line-height:1.15;color:#f4f1ec}
+.card{box-sizing:border-box;background:#151518;border:1px solid rgba(255,255,255,.08);border-radius:22px}
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.stat{padding:24px 22px;display:flex;flex-direction:column;gap:8px}
+.stat-num{font-family:Lora,Georgia,serif;font-weight:700;font-size:clamp(34px,4.4vw,48px);line-height:1;color:#f28a2e}
+.stat-label{font-size:16px;line-height:1.4;color:#c9c5be}
+@media (max-width:820px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.feat-grid{display:flex;flex-wrap:wrap;gap:18px}
+.feat{flex:1 1 320px;padding:26px 26px 28px;display:flex;flex-direction:column;gap:12px}
+.feat-ico{width:44px;height:44px;border-radius:12px;background:rgba(242,138,46,.12);display:flex;align-items:center;justify-content:center;color:#f28a2e}
+.feat h3{margin:0;font-family:Lora,Georgia,serif;font-weight:600;font-size:21px;line-height:1.25;color:#f4f1ec}
+.feat p{margin:0;font-size:17px;line-height:1.6;color:#c9c5be}
+.create-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.create-item{padding:20px 22px;display:flex;gap:14px;align-items:flex-start;font-size:18px;line-height:1.45;color:#ece8e2}
+.check{flex:0 0 auto;width:26px;height:26px;border-radius:50%;background:linear-gradient(180deg,#ee7b2f,#c9480f);display:flex;align-items:center;justify-content:center;margin-top:1px}
+@media (max-width:900px){.create-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.create-grid{grid-template-columns:1fr}}
+.tariffs{display:flex;flex-wrap:wrap;gap:20px;align-items:stretch}
+.tariff{flex:1 1 300px;padding:30px 28px;display:flex;flex-direction:column;gap:18px;position:relative}
+.tariff.main{border:1.5px solid rgba(242,138,46,.75);background:linear-gradient(180deg,rgba(242,138,46,.10),#151518 45%);box-shadow:0 24px 60px rgba(226,90,20,.18)}
+.tariff-badge{position:absolute;top:-13px;left:28px;padding:5px 14px;border-radius:999px;background:linear-gradient(180deg,#ee7b2f,#c9480f);color:#fff;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.tariff-name{font-family:Lora,Georgia,serif;font-weight:600;font-size:26px;color:#f4f1ec;margin:0}
+.tariff-for{font-size:16px;line-height:1.45;color:#9d9a94;margin:-8px 0 0}
+.tariff-price{font-family:Lora,Georgia,serif;font-weight:700;font-size:38px;line-height:1;color:#f4f1ec}
+.tariff ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:11px}
+.tariff li{position:relative;padding-left:26px;font-size:16px;line-height:1.5;color:#e4e0d9}
+.tariff li::before{content:"";position:absolute;left:2px;top:8px;width:9px;height:9px;border-radius:50%;background:#f28a2e}
+.tariff li.plus{color:#f4f1ec;font-weight:600}
+.tariff li.muted{color:#9d9a94}
+.tariff li.muted::before{background:transparent;border:1.5px solid #6d6a65;width:7px;height:7px}
+.tariff .btn-t{margin-top:auto;display:flex;align-items:center;justify-content:center;min-height:54px;padding:0 24px;box-sizing:border-box;border-radius:999px;border:1px solid rgba(242,138,46,.55);color:#ece8e2;font-weight:700;font-size:15px;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;background:rgba(255,255,255,.03);font-family:inherit}
+.tariff.main .btn-t{background:linear-gradient(180deg,#ee7b2f,#c9480f);border:none;color:#fff;box-shadow:0 10px 30px rgba(226,90,20,.30)}
+.tariff .btn-t:hover{filter:brightness(1.1);border-color:#f28a2e}
+.picker{display:flex;flex-direction:column;gap:10px;max-width:520px;width:100%}
+.pick{display:flex;align-items:center;gap:14px;padding:14px 18px;box-sizing:border-box;border:1px solid rgba(255,255,255,.12);border-radius:16px;background:#151518;cursor:pointer;transition:border-color .15s}
+.pick input{accent-color:#ee7b2f;width:18px;height:18px;margin:0;flex:0 0 auto;cursor:pointer}
+.pick-name{flex:1 1 auto;font-size:17px;font-weight:600;color:#f4f1ec}
+.pick-price{font-size:17px;font-weight:700;color:#f28a2e;white-space:nowrap}
+.price-later{font-size:14px;color:#9d9a94;margin-top:-10px}
+.price-later s{color:#c9c5be}
+.pick:has(input:checked){border-color:#f28a2e;background:rgba(242,138,46,.07)}
+.pay-note{font-size:15px;line-height:1.5;color:#c9c5be;max-width:520px}
+.steps{display:flex;flex-direction:column;gap:0;max-width:520px;width:100%;box-sizing:border-box;padding:22px 24px}
+.step{display:flex;gap:16px;align-items:flex-start;padding:10px 0}
+.step-n{flex:0 0 auto;width:32px;height:32px;border-radius:50%;border:1.5px solid #f28a2e;color:#f28a2e;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center}
+.step-t{font-size:16px;line-height:1.5;color:#e4e0d9;padding-top:4px}
+.step-t b{color:#f4f1ec}
+.hero-btns{display:flex;flex-wrap:wrap;gap:14px;align-items:stretch}
+.btn-free{display:inline-flex;align-items:center;gap:12px;min-height:60px;padding:0 28px 0 16px;box-sizing:border-box;border-radius:999px;background:#f4efe6;color:#17130f;font-weight:700;font-size:18px;letter-spacing:.08em;text-transform:uppercase;box-shadow:0 10px 30px rgba(244,239,230,.18)}
+.btn-free:hover{background:#fff;color:#17130f}
+.btn-free .bf-badge{flex:none;padding:6px 12px;border-radius:999px;background:#17130f;color:#f4efe6;font-size:12px;font-weight:800;letter-spacing:.14em}
+.btn-free .bf-t{display:inline-flex;align-items:center;gap:8px}
+.navfree{color:#17130f!important;background:#f4efe6;border-radius:999px;padding:6px 14px;font-weight:700;white-space:nowrap}
+.navfree:hover{background:#fff}
+.chan-big{display:inline-flex;align-items:center;justify-content:center;gap:14px;min-height:68px;padding:0 36px;border-radius:999px;background:#f4efe6;color:#17130f;font-weight:800;font-size:20px;letter-spacing:.08em;text-transform:uppercase;box-shadow:0 14px 40px rgba(244,239,230,.2)}
+.chan-big:hover{background:#fff;color:#17130f}
+.chan-free{font-family:Oswald,"Arial Narrow",Arial,sans-serif;font-weight:700;font-size:clamp(34px,10.5vw,84px);line-height:.95;overflow-wrap:anywhere;letter-spacing:-.5px;text-transform:uppercase;color:#f28a2e;margin:0}
+.chan-free small{display:block;margin-top:8px;font-family:"Source Sans 3",Arial,sans-serif;font-weight:600;font-size:16px;letter-spacing:.04em;text-transform:none;color:#c9c5be}
+.free2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:700px){.free2{grid-template-columns:1fr}}
+.mf{box-sizing:border-box;padding:22px;border:1px solid rgba(255,255,255,.1);border-radius:20px;background:#151518;display:flex;flex-direction:column;gap:10px}
+.mf-t{font-family:Lora,Georgia,serif;font-weight:600;font-size:21px;line-height:1.2;color:#f4f1ec}
+.mf-p{margin:0;font-size:16px;line-height:1.5;color:#c9c5be}
+.mf-b{align-self:flex-start;margin-top:4px;display:inline-flex;align-items:center;min-height:46px;padding:0 22px;border-radius:999px;border:1px solid rgba(242,138,46,.6);color:#ece8e2;font-weight:700;font-size:14px;letter-spacing:.1em;text-transform:uppercase}
+.mf-b:hover{border-color:#f28a2e;color:#fff}
+@media (max-width:640px){
+#programma [style*="flex: 1 1 340px"]{padding:20px 20px 22px!important;gap:10px!important;border-radius:18px!important}
+#programma [style*="font-size: 64px"]{font-size:38px!important}
+#programma [style*="flex-wrap: wrap; gap: 20px"]{gap:12px!important}
+#programma h3{font-size:20px!important}
+#format .feat{padding:20px!important}
+#format .card{padding:20px!important}
+#otzyvy [style*="padding: 28px"]{padding:20px!important}
+}
+.qa{box-sizing:border-box;padding:0 28px;background:#151518;border:1px solid rgba(255,255,255,.08);border-radius:20px}
+.qa summary{list-style:none;cursor:pointer;padding:22px 34px 22px 0;position:relative}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::after{content:"+";position:absolute;right:0;top:50%;transform:translateY(-50%);font:600 28px/1 Lora,Georgia,serif;color:#f28a2e}
+.qa[open] summary::after{content:"\2212"}
+.qa[open] summary{padding-bottom:10px}
+.qa>div{padding:0 0 24px}
+.qa:hover{border-color:rgba(242,138,46,.4)}
+.more summary{list-style:none;cursor:pointer;display:inline-block;font-size:14px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#f28a2e;padding:2px 0}
+.more summary::-webkit-details-marker{display:none}
+.more summary::after{content:" +"}
+.more[open] summary::after{content:" \2212"}
+.more[open] summary{margin-bottom:10px}
+.chan{position:relative;overflow:hidden;display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:center;padding:36px 32px;border:1.5px solid rgba(242,138,46,.7);border-radius:28px;background:linear-gradient(135deg,rgba(242,138,46,.18),#151518 62%);box-shadow:0 24px 60px rgba(226,90,20,.18)}
+@media (max-width:860px){.chan{grid-template-columns:1fr;padding:28px 22px}}
+.chan-body{display:flex;flex-direction:column;gap:16px;min-width:0}
+.chan-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.chan-list li{position:relative;padding-left:28px;font-size:17px;line-height:1.5;color:#e4e0d9}
+.chan-list li::before{content:"";position:absolute;left:2px;top:9px;width:10px;height:10px;border-radius:50%;background:#f28a2e}
+.chan-list b{color:#f4f1ec}
+.chan-cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.chan-note{font-size:14px;color:#9d9a94}
+.sheet{box-sizing:border-box;width:100%;max-width:380px;justify-self:center;padding:20px;border-radius:22px;background:#f1eeea;color:#17130f;display:flex;flex-direction:column;gap:10px;box-shadow:0 24px 50px rgba(0,0,0,.4);transform:rotate(1.5deg)}
+@media (max-width:860px){.sheet{transform:none}}
+.sheet small{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:#c9480f}
+.sheet .q{align-self:flex-start;background:#fff;border-radius:14px;padding:8px 14px;font-size:16px}
+.sheet .p{align-self:flex-end;background:#f28a2e;border-radius:14px;padding:8px 14px;font-size:16px;font-weight:700;color:#17130f}
+.sheet h3{margin:6px 0 0;font-family:Lora,Georgia,serif;font-weight:700;font-size:25px;line-height:1.15}
+.sheet h3 span{display:inline-block;margin-top:4px;background:#17130f;color:#fff;padding:2px 10px;border-radius:8px}
+.sheet .tag{align-self:flex-start;margin-top:6px;background:#f28a2e;color:#17130f;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:7px 14px;border-radius:999px}
+.free{display:grid;grid-template-columns:1.35fr 1fr;gap:20px}
+@media (max-width:860px){.free{grid-template-columns:1fr}}
+.free-test{position:relative;overflow:hidden;display:grid;grid-template-columns:1fr 210px;gap:0;border:1.5px solid rgba(242,138,46,.7);background:linear-gradient(135deg,rgba(242,138,46,.16),#151518 60%);border-radius:24px;box-shadow:0 24px 60px rgba(226,90,20,.18)}
+.free-test .ft-body{padding:30px 28px;display:flex;flex-direction:column;gap:16px}
+.free-test .ft-img{position:relative;min-height:100%}
+.free-test .ft-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 10%}
+.free-test .ft-img::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#1a1412 0%,rgba(26,20,18,0) 45%)}
+@media (max-width:560px){.free-test{grid-template-columns:1fr}.free-test .ft-img{height:220px;order:-1}.free-test .ft-img::after{background:linear-gradient(0deg,#1a1412 0%,rgba(26,20,18,0) 55%)}}
+.badge{align-self:flex-start;padding:5px 12px;border-radius:999px;background:linear-gradient(180deg,#ee7b2f,#c9480f);color:#fff;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.ft-title{margin:0;font-family:Lora,Georgia,serif;font-weight:600;font-size:clamp(26px,3.4vw,36px);line-height:1.12;color:#f4f1ec}
+.ft-text{margin:0;font-size:17px;line-height:1.55;color:#c9c5be}
+.ft-chips{display:flex;flex-wrap:wrap;gap:8px}
+.ft-chips span{padding:6px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.16);font-size:14px;color:#d8d4cd}
+.btn-test{align-self:flex-start;display:inline-flex;align-items:center;gap:10px;min-height:56px;padding:0 30px;border-radius:999px;background:linear-gradient(180deg,#ee7b2f,#c9480f);color:#fff;font-weight:700;font-size:16px;letter-spacing:.1em;text-transform:uppercase;box-shadow:0 10px 30px rgba(226,90,20,.3)}
+.btn-test:hover{filter:brightness(1.1);color:#fff}
+.free-guide{padding:30px 28px;display:flex;flex-direction:column;gap:14px;border-radius:24px}
+.free-guide .gd-ico{width:52px;height:52px;border-radius:14px;background:rgba(242,138,46,.12);display:flex;align-items:center;justify-content:center;color:#f28a2e}
+.btn-guide{align-self:flex-start;margin-top:auto;display:inline-flex;align-items:center;min-height:52px;padding:0 26px;border-radius:999px;border:1px solid rgba(242,138,46,.6);color:#ece8e2;font-weight:700;font-size:15px;letter-spacing:.1em;text-transform:uppercase;background:rgba(255,255,255,.03)}
+.btn-guide:hover{border-color:#f28a2e;color:#fff}
+.hero-free{display:flex;flex-wrap:wrap;gap:10px}
+.hero-free a{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border-radius:999px;border:1px solid rgba(242,138,46,.5);background:rgba(242,138,46,.08);color:#f4f1ec;font-size:15px;font-weight:600}
+.hero-free a:hover{border-color:#f28a2e;color:#fff}
+.mod0{flex:1 1 100%;box-sizing:border-box;padding:28px;border-radius:22px;border:1px dashed rgba(242,138,46,.6);background:linear-gradient(135deg,rgba(242,138,46,.10),#151518 55%);display:grid;grid-template-columns:auto 1fr;gap:12px 28px;align-items:start}
+@media (max-width:640px){.mod0{grid-template-columns:1fr}}
+</style>
+
+<link rel="stylesheet" href="cookie-consent.css">
+<script src="cookie-consent.js" defer></script>
+</head>
+<body>
+
+
+<div id="top" style="width: 100%; box-sizing: border-box; background: #0c0c0e; color: #ece8e2; font-family: 'Source Sans 3','Helvetica Neue',Arial,sans-serif;">
+
+<div style="position: sticky; top: 0; z-index: 20; background: rgba(12,12,14,0.92); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(255,255,255,0.06);">
+<div class="navrow" style="max-width: 1160px; margin: 0 auto; padding: 14px 24px; box-sizing: border-box;">
+<a href="#top" class="navlogo"><img src="logo.png" alt="Школа PRO продажи Оксаны Пантелеевой"></a>
+<div class="navwrap navlinks" style="display: flex; gap: 20px; overflow-x: auto; align-items: center;">
+<a class="navlink navfree" href="#kanal">Мастерская · бесплатно</a>
+<a class="navlink" href="#besplatno">Тест</a>
+<a class="navlink" href="#programma">Программа</a>
+<a class="navlink" href="#format">Формат</a>
+<a class="navlink" href="#tarify">Тарифы</a>
+<a class="navlink" href="#otzyvy">Отзывы</a>
+<a class="navlink" href="#oksana">Об Оксане</a>
+<a class="navlink" href="#faq">Вопросы</a>
+</div>
+<a class="pill navcta" href="#tarify" style="display: inline-flex; align-items: center; min-height: 40px; padding: 0 18px; box-sizing: border-box; border: 1px solid rgba(242,138,46,0.55); border-radius: 999px; color: #ece8e2; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap;">Записаться</a>
+</div>
+</div>
+
+<div style="background: radial-gradient(60% 80% at 85% 25%, rgba(226,110,40,0.20), rgba(12,12,14,0) 70%);">
+<div style="max-width: 1160px; margin: 0 auto; padding: 40px 24px 88px; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 48px; align-items: center; justify-content: center;">
+<div style="flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 28px;">
+<div style="font-size: 13px; letter-spacing: 0.3em; color: #f28a2e; font-weight: 700; text-transform: uppercase;">PRO Продажи · От сообщения до оплаты</div>
+<h1 style="margin: 0; font-family: Lora,Georgia,serif; font-weight: 600; font-size: clamp(40px, 6.4vw, 74px); line-height: 1.04; color: #f4f1ec;">PRO Продажи.<br><span style="color: #f28a2e;">От сообщения до оплаты</span></h1>
+<p style="margin: 0; font-size: clamp(18px, 2.2vw, 21px); line-height: 1.55; color: #c9c5be; max-width: 620px;">6-недельная практическая программа для экспертов и предпринимателей, которые хотят научиться превращать интерес клиентов в оплаченные услуги - без давления, бесконечных бесплатных консультаций и постоянных скидок.</p>
+<p style="margin: -12px 0 0; font-size: 17px; line-height: 1.55; color: #9d9a94; max-width: 620px;">За время обучения участники выстраивают собственный алгоритм продаж, отрабатывают его на реальных диалогах и получают обратную связь.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 10px;">
+<div style="padding: 8px 16px; border: 1px solid rgba(242,138,46,0.4); background: rgba(242,138,46,0.08); border-radius: 999px; font-size: 15px; color: #f4f1ec; font-weight: 600;">22 года в продажах</div>
+<div style="padding: 8px 16px; border: 1px solid rgba(255,255,255,0.16); border-radius: 999px; font-size: 15px; color: #d8d4cd;">Старт - 15 ноября</div>
+<div class="price-deadline-tag" style="padding: 8px 16px; border: 1px solid rgba(242,138,46,0.5); background: rgba(242,138,46,0.1); border-radius: 999px; font-size: 15px; color: #f4f1ec; font-weight: 600;">Лучшие цены до 10 ноября</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 14px; align-items: flex-start;">
+<div class="hero-btns"><a class="btn" href="#tarify" style="display: inline-flex; align-items: center; justify-content: center; min-height: 60px; padding: 0 40px; box-sizing: border-box; border-radius: 999px; background: linear-gradient(180deg, #ee7b2f, #c9480f); color: #ffffff; font-weight: 700; font-size: 18px; letter-spacing: 0.12em; text-transform: uppercase; box-shadow: 0 10px 30px rgba(226,90,20,0.30);">Хочу научиться продавать</a><a class="btn-free" href="#kanal"><span class="bf-badge">Бесплатно</span><span class="bf-t">Мастерская продаж <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span></a></div>
+<div style="font-size: 15px; line-height: 1.5; color: #9d9a94;">Пишите Оксане в <a href="https://t.me/Oxi071280" target="_blank" rel="noopener">Telegram</a>, <a href="https://max.ru/u/f9LHodD0cOLfUrJS78I_kEc0COptckK-t9AedTTkOhEpouXCO49UxQG8S5Y" target="_blank" rel="noopener">MAX</a> или <a href="https://www.instagram.com/oxi0712" target="_blank" rel="noopener">Instagram Direct</a>. Instagram - запрещённая социальная сеть на территории РФ.</div>
+</div>
+</div>
+<div style="position: relative; flex: 0 1 340px; width: 340px; max-width: 100%; height: 620px; box-sizing: border-box; border-radius: 24px; overflow: hidden; box-shadow: 0 30px 70px rgba(0,0,0,0.4);">
+<img src="oksana-hero.jpg" alt="Оксана Пантелеева, эксперт по продажам и бизнес-тренер" style="display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 0%; filter: contrast(1.08) saturate(0.88) brightness(0.97);">
+<div style="position: absolute; inset: 0; background: linear-gradient(100deg, rgba(12,12,14,0.55) 0%, rgba(12,12,14,0) 32%, rgba(12,12,14,0) 68%, rgba(12,12,14,0.4) 100%), linear-gradient(0deg, rgba(12,12,14,0.6) 0%, rgba(12,12,14,0) 32%);"></div>
+</div>
+</div>
+</div>
+
+<div id="kanal" style="max-width: 1160px; margin: 0 auto; padding: 8px 24px 72px; box-sizing: border-box;">
+<div class="chan">
+<div class="chan-body">
+<span class="badge">Закрытый Telegram-канал</span>
+<h2 class="chan-free">Мастерская продаж<small>Входите бесплатно, без оплаты и без карты</small></h2>
+<p class="ft-text">Здесь Оксана каждый день показывает, как не терять клиентов на самом дорогом месте: после вопроса «сколько стоит». Не нужно покупать курс, чтобы начать получать пользу.</p>
+<ul class="chan-list">
+<li><b>Шпаргалка «Что ответить, чтобы не пропали?»</b> Вместо одной цифры в ответ на «сколько стоит» вы будете знать, что сказать, чтобы клиент не ушёл с «я подумаю».</li>
+<li><b>Закрытый эфир 9 ноября в 14:00 по Москве.</b> Оксана разберёт продажи вживую. Ссылка придёт только участникам канала.</li>
+<li><b>Разборы и короткие видео от Оксаны.</b> Живые примеры диалогов, ошибки и готовые фразы, которые можно взять в работу в тот же день.</li>
+<li><b>Игра-тест и гайд-самодиагностика.</b> За 10 минут увидите, на каком шаге вы теряете деньги.</li>
+</ul>
+<div class="chan-cta"><a class="chan-big" id="chan-btn" href="https://t.me/+_53FdwXhq8E0OTRi" target="_blank" rel="noopener">Войти бесплатно</a><span class="chan-note">Откроется Telegram. Выйти можно в любой момент.</span></div>
+</div>
+<div class="sheet" aria-hidden="true">
+<small>Подарок мастерской</small>
+<div class="q">Сколько стоит?</div>
+<div class="p">45 000 ₽</div>
+<div class="q">Спасибо, я подумаю</div>
+<h3>Что ответить, чтобы <span>не пропали?</span></h3>
+<div class="tag">Шпаргалка внутри</div>
+</div>
+</div>
+<div id="besplatno" style="margin-top: 28px; display: flex; flex-direction: column; gap: 14px;">
+<div class="kicker">И ещё бесплатно</div>
+<div class="free2">
+<div class="mf"><div class="mf-t">🎯 Игра-тест «Какой вы продавец?»</div><p class="mf-p">6 живых ситуаций за 2 минуты. Узнаете свой тип продавца и шаг, на котором уходят деньги.</p><a class="mf-b" href="test.html">Пройти тест</a></div>
+<div class="mf"><div class="mf-t">📄 Гайд «Самодиагностика продаж»</div><p class="mf-p">7 этапов продажи и самопроверка по каждому. За 10 минут видно, что проседает.</p><a class="mf-b" href="guide.pdf" target="_blank">Скачать гайд</a></div>
+</div>
+</div>
+</div>
+
+<div style="max-width: 1160px; margin: 0 auto; padding: 72px 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 36px;">
+<div style="display: flex; flex-direction: column; gap: 16px; max-width: 760px;">
+<div style="font-size: 13px; letter-spacing: 0.3em; color: #f28a2e; font-weight: 700; text-transform: uppercase;">Знакомо?</div>
+<h2 style="margin: 0; font-family: Lora,Georgia,serif; font-weight: 600; font-size: clamp(28px, 4vw, 44px); line-height: 1.15; color: #f4f1ec;">Хороший продукт, довольные клиенты — но всё равно «я подумаю»</h2>
+<p style="margin: 0; font-size: 19px; line-height: 1.6; color: #c9c5be;">Для экспертов, мастеров, фрилансеров и предпринимателей, которые продают свои услуги.</p>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 16px;">
+<div style="flex: 1 1 240px; box-sizing: border-box; padding: 24px; background: #151518; border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; font-size: 18px; line-height: 1.5; color: #e4e0d9;">Называть цену — неловко.</div>
+<div style="flex: 1 1 240px; box-sizing: border-box; padding: 24px; background: #151518; border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; font-size: 18px; line-height: 1.5; color: #e4e0d9;">Часами консультируете бесплатно — а человек уходит «подумать».</div>
+<div style="flex: 1 1 240px; box-sizing: border-box; padding: 24px; background: #151518; border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; font-size: 18px; line-height: 1.5; color: #e4e0d9;">При первом сомнении готовы дать скидку.</div>
+<div style="flex: 1 1 240px; box-sizing: border-box; padding: 24px; background: #151518; border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; font-size: 18px; line-height: 1.5; color: #e4e0d9;">Покупают у тех, кто лучше умеет говорить о деньгах.</div>
+</div>
+<p style="margin: 0; font-family: Lora,Georgia,serif; font-style: italic; font-weight: 600; font-size: clamp(22px, 3vw, 30px); line-height: 1.35; color: #f28a2e; max-width: 820px;">Дело не в том, что вы «не продажник». У вас пока нет системы разговора.</p>
+</div>
+
+<div id="otzyvy" style="max-width: 1160px; margin: 0 auto; padding: 24px 24px 96px; box-sizing: border-box; display: flex; flex-direction: column; gap: 36px;">
+<div style="display: flex; flex-direction: column; gap: 16px; max-width: 760px;">
+<div style="font-size: 13px; letter-spacing: 0.3em; color: #f28a2e; font-weight: 700; text-transform: uppercase;">Отзывы</div>
+<h2 style="margin: 0; font-family: Lora,Georgia,serif; font-weight: 600; font-size: clamp(28px, 4vw, 44px); line-height: 1.15; color: #f4f1ec;">Что говорят те, кто уже прошёл обучение</h2>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 20px;">
+
+<div style="flex: 1 1 260px; box-sizing: border-box; padding: 26px; background: #151518; border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; display: flex; flex-direction: column; gap: 16px;">
+<div style="font-family: Lora,Georgia,serif; font-style: italic; font-weight: 600; font-size: 19px; line-height: 1.45; color: #f4f1ec;">«Оксана стала моим проводником в бизнес-моделировании — процессы превратились в стройную систему».</div>
+<div style="font-size: 15px; color: #9d9a94;">Елена Буяхаева</div>
+</div>
+
+<div style="flex: 1 1 260px; box-sizing: border-box; padding: 26px; background: #151518; border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; display: flex; flex-direction: column; gap: 16px;">
+<div style="font-family: Lora,Georgia,serif; font-style: italic; font-weight: 600; font-size: 19px; line-height: 1.45; color: #f4f1ec;">«Нашла новую работу, чек вырос, добралась до зарплаты мечты — и это ещё не предел».</div>
+<div style="font-size: 15px; color: #9d9a94;">Лариса Ростовцева</div>
+</div>
+
+<div style="flex: 1 1 260px; box-sizing: border-box; padding: 26px; background: #151518; border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; display: flex; flex-direction: column; gap: 16px;">
+<div style="font-family: Lora,Georgia,serif; font-style: italic; font-weight: 600; font-size: 19px; line-height: 1.45; color: #f4f1ec;">«Теперь в переговорах веду я, а не клиент. И я не так сильно боюсь услышать "нет"».</div>
+<div style="font-size: 15px; color: #9d9a94;">Евстолия Наголова</div>
+</div>
+
+<div style="flex: 1 1 260px; box-sizing: border-box; padding: 26px; background: #151518; border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; display: flex; flex-direction: column; gap: 16px;">
+<div style="font-family: Lora,Georgia,serif; font-style: italic; font-weight: 600; font-size: 19px; line-height: 1.45; color: #f4f1ec;">«Пришла без опыта в продажах. Теперь знаю, с чего начать, чтобы продавать свои услуги».</div>
+<div style="font-size: 15px; color: #9d9a94;">Dari</div>
+</div>
+
+</div>
+</div>
+
+<div id="programma" style="max-width: 1160px; margin: 0 auto; padding: 24px 24px 88px; box-sizing: border-box; display: flex; flex-direction: column; gap: 40px;">
+<div style="display: flex; flex-direction: column; gap: 16px; max-width: 760px;">
+<div style="font-size: 13px; letter-spacing: 0.3em; color: #f28a2e; font-weight: 700; text-transform: uppercase;">Программа</div>
+<h2 style="margin: 0; font-family: Lora,Georgia,serif; font-weight: 600; font-size: clamp(28px, 4vw, 44px); line-height: 1.15; color: #f4f1ec;">Вводный модуль и 6 шагов от хаоса в продажах к понятной системе</h2>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 20px;">
+
+<div class="mod0">
+<div style="font-family: Lora,Georgia,serif; font-size: 64px; line-height: 1; font-weight: 700; color: transparent; -webkit-text-stroke: 1.5px rgba(242,138,46,0.7);">00</div>
+<div style="display: flex; flex-direction: column; gap: 12px;">
+<div class="kicker" style="letter-spacing:.24em">Предобучение</div>
+<h3 style="margin: 0; font-family: Lora,Georgia,serif; font-weight: 600; font-size: 25px; line-height: 1.25; color: #f4f1ec;">Работа с мышлением</h3>
+<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #c9c5be;">Почему навык продаж - это про уверенность, самооценку и развитие, которые в первую очередь влияют на доход. Уйдём навсегда от ненужных убеждений, которые мешают называть цену и предлагать свои услуги.</p>
+<div style="padding: 14px 16px; background: rgba(242,138,46,0.09); border-radius: 12px;"><div style="font-size: 12px; letter-spacing: 0.24em; font-weight: 700; color: #f28a2e; text-transform: uppercase; margin-bottom: 6px;">На выходе</div><div style="font-size: 16px; line-height: 1.5; color: #ece8e2;">Спокойное отношение к продажам и деньгам - фундамент для всех следующих модулей.</div></div>
+</div>
+</div>
+
+<div style="flex: 1 1 340px; box-sizing: border-box; padding: 28px 28px 30px; background: #151518; border: 1px solid rgba(255,255,255,0.08); border-radius: 22px; display: flex; flex-direction: column; gap: 16px;">
+<div style="font-family: Lora,Georgia,serif; font-size: 64px; line-height: 1; font-weight: 700; color: transparent; -webkit-text-stroke: 1.5px rgba(242,138,46,0.7);">01</div>
+<h3 style="margin: 0; font-family: Lora,Georgia,serif; font-weight: 600; font-size: 23px; line-height: 1.25; color: #f4f1ec;">«Я не продажник». Вы просто не знали, как продавать себя</h3>
+<details class="more"><summary>Подробнее</summary><p style="margin: 0; font-size: 17px; line-height: 1.6; color: #c9c5be;">Разберём, почему сложно называть цену. Найдём вашу сильную сторону и научимся говорить о ценности без оправданий.</p></details>
+<div style="margin-top: auto; padding: 14px 16px; background: rgba(242,138,46,0.09); border-radius: 12px;">
+<div style="font-size: 12px; letter-spacing: 0.24em; font-weight: 700; color: #f28a2e; text-transform: uppercase; margin-bottom: 6px;">На выходе</div>
+<div style="font-size: 16px; line-height: 1.5; color: #ece8e2;">Уверенность и готовность говорить о цене.</div>
+</div>
+</div>
+
+<div style="flex: 1 1 340px; box-sizing: border-box; padding: 28px 28px 30px; background: #151518; border: 1px solid rgba(255,255,255,0.08); border-radius: 22px; display: flex; flex-direction: column; gap: 16px;">
+<div style="font-family: Lora,Georgia,serif; font-size: 64px; line-height: 1; font-weight: 700; color: transparent; -webkit-text-stroke: 1.5px rgba(242,138,46,0.7);">02</div>
+<h3 style="margin: 0; font-family: Lora,Georgia,serif; font-weight: 600; font-size: 23px; line-height: 1.25; color: #f4f1ec;">Поймём, кому и что вы продаёте</h3>
+<details class="more"><summary>Подробнее</summary><p style="margin: 0; font-size: 17px; line-height: 1.6; color: #c9c5be;">Разберём аудиторию и её реальные задачи. Упакуем вашу экспертизу в понятный продукт.</p></details>
+<div style="margin-top: auto; padding: 14px 16px; background: rgba(242,138,46,0.09); border-radius: 12px;">
+<div style="font-size: 12px; letter-spacing: 0.24em; font-weight: 700; color: #f28a2e; text-transform: uppercase; margin-bottom: 6px;">На выходе</div>
+<div style="font-size: 16px; line-height: 1.5; color: #ece8e2;">Ответ на «Кому я нужен?» и «Что именно я продаю?».</div>
+</div>
+</div>
+
+<div style="flex: 1 1 340px; box-sizing: border-box; padding: 28px 28px 30px; background: #151518; border: 1px solid rgba(255,255,255,0.08); border-radius: 22px; display: flex; flex-direction: column; gap: 16px;">
+<div style="font-family: Lora,Georgia,serif; font-size: 64px; line-height: 1; font-weight: 700; color: transparent; -webkit-text-stroke: 1.5px rgba(242,138,46,0.7);">03</div>
+<h3 style="margin: 0; font-family: Lora,Georgia,serif; font-weight: 600; font-size: 23px; line-height: 1.25; color: #f4f1ec;">Перестанете терять клиента в разговоре</h3>
+<details class="more"><summary>Подробнее</summary><p style="margin: 0; font-size: 17px; line-height: 1.6; color: #c9c5be;">Соберём алгоритм продажи: как начать диалог, задать вопросы и перейти к предложению.</p></details>
+<div style="margin-top: auto; padding: 14px 16px; background: rgba(242,138,46,0.09); border-radius: 12px;">
+<div style="font-size: 12px; letter-spacing: 0.24em; font-weight: 700; color: #f28a2e; text-transform: uppercase; margin-bottom: 6px;">На выходе</div>
+<div style="font-size: 16px; line-height: 1.5; color: #ece8e2;">Схема разговора вместо импровизации и бесплатных консультаций.</div>
+</div>
+</div>
+
+<div style="flex: 1 1 340px; box-sizing: border-box; padding: 28px 28px 30px; background: #151518; border: 1px solid rgba(255,255,255,0.08); border-radius: 22px; display: flex; flex-direction: column; gap: 16px;">
+<div style="font-family: Lora,Georgia,serif; font-size: 64px; line-height: 1; font-weight: 700; color: transparent; -webkit-text-stroke: 1.5px rgba(242,138,46,0.7);">04</div>
+<h3 style="margin: 0; font-family: Lora,Georgia,serif; font-weight: 600; font-size: 23px; line-height: 1.25; color: #f4f1ec;">Продажи в переписке и на консультации</h3>
+<details class="more"><summary>Подробнее</summary><p style="margin: 0; font-size: 17px; line-height: 1.6; color: #c9c5be;">Сильные вопросы, голосовые сообщения и ошибки в переписках, из-за которых клиент пропадает.</p></details>
+<div style="margin-top: auto; padding: 14px 16px; background: rgba(242,138,46,0.09); border-radius: 12px;">
+<div style="font-size: 12px; letter-spacing: 0.24em; font-weight: 700; color: #f28a2e; text-transform: uppercase; margin-bottom: 6px;">На выходе</div>
+<div style="font-size: 16px; line-height: 1.5; color: #ece8e2;">Библиотека сообщений и вопросов, отработанные сценарии продаж.</div>
+</div>
+</div>
+
+<div style="flex: 1 1 340px; box-sizing: border-box; padding: 28px 28px 30px; background: #151518; border: 1px solid rgba(255,255,255,0.08); border-radius: 22px; display: flex; flex-direction: column; gap: 16px;">
+<div style="font-family: Lora,Georgia,serif; font-size: 64px; line-height: 1; font-weight: 700; color: transparent; -webkit-text-stroke: 1.5px rgba(242,138,46,0.7);">05</div>
+<h3 style="margin: 0; font-family: Lora,Georgia,serif; font-weight: 600; font-size: 23px; line-height: 1.25; color: #f4f1ec;">«Дорого», «я подумаю», «у других дешевле». Что отвечать?</h3>
+<details class="more"><summary>Подробнее</summary><p style="margin: 0; font-size: 17px; line-height: 1.6; color: #c9c5be;">Найдём настоящую причину сомнений и научимся отвечать без скидок и давления.</p></details>
+<div style="margin-top: auto; padding: 14px 16px; background: rgba(242,138,46,0.09); border-radius: 12px;">
+<div style="font-size: 12px; letter-spacing: 0.24em; font-weight: 700; color: #f28a2e; text-transform: uppercase; margin-bottom: 6px;">На выходе</div>
+<div style="font-size: 16px; line-height: 1.5; color: #ece8e2;">Готовые формулировки для звонков, встреч и переписок.</div>
+</div>
+</div>
+
+<div style="flex: 1 1 340px; box-sizing: border-box; padding: 28px 28px 30px; background: #151518; border: 1px solid rgba(255,255,255,0.08); border-radius: 22px; display: flex; flex-direction: column; gap: 16px;">
+<div style="font-family: Lora,Georgia,serif; font-size: 64px; line-height: 1; font-weight: 700; color: transparent; -webkit-text-stroke: 1.5px rgba(242,138,46,0.7);">06</div>
+<h3 style="margin: 0; font-family: Lora,Georgia,serif; font-weight: 600; font-size: 23px; line-height: 1.25; color: #f4f1ec;">Отработаете всё на своих реальных клиентах</h3>
+<details class="more"><summary>Подробнее</summary><p style="margin: 0; font-size: 17px; line-height: 1.6; color: #c9c5be;">На мастермайнде разберём ваши диалоги и найдём, где вы теряете клиентов.</p></details>
+<div style="margin-top: auto; padding: 14px 16px; background: rgba(242,138,46,0.09); border-radius: 12px;">
+<div style="font-size: 12px; letter-spacing: 0.24em; font-weight: 700; color: #f28a2e; text-transform: uppercase; margin-bottom: 6px;">На выходе</div>
+<div style="font-size: 16px; line-height: 1.5; color: #ece8e2;">Своя рабочая система продаж, готовая к применению.</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div id="format" style="background: #111114; border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06);">
+<div class="wrap" style="padding-top: 80px; padding-bottom: 80px; display: flex; flex-direction: column; gap: 40px;">
+<div style="display: flex; flex-direction: column; gap: 16px; max-width: 820px;"><div class="kicker">Формат обучения</div><h2 class="h2">Не 6 модулей в записи, а 6 недель работы над вашими продажами</h2><p style="margin: 0; font-size: 19px; line-height: 1.6; color: #c9c5be;">Короткие уроки, живая практика и обратная связь. Вы внедряете каждый шаг сразу в работе с клиентами.</p></div>
+<div class="stats">
+<div class="card stat"><div class="stat-num">6+1</div><div class="stat-label">практических модулей и вводный</div></div>
+<div class="card stat"><div class="stat-num">6</div><div class="stat-label">живых Zoom-встреч</div></div>
+<div class="card stat"><div class="stat-num">15-20</div><div class="stat-label">минут длится один видеоурок</div></div>
+<div class="card stat"><div class="stat-num">6</div><div class="stat-label">недель до своей системы продаж</div></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 22px;"><h3 style="margin: 0; font-family: Lora,Georgia,serif; font-weight: 600; font-size: clamp(22px, 3vw, 30px); color: #f4f1ec;">Что входит в обучение</h3><div class="feat-grid">
+<div class="card feat"><div class="feat-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="13" height="12" rx="2"/><path d="M16 10l5-3v10l-5-3"/></svg></div><h3>6 живых Zoom-практикумов</h3><p>Не просто ответы на вопросы, а разборы реальных переписок, ролевые переговоры и тренировка навыков. Шесть встреч по 60-90 минут.</p></div>
+<div class="card feat"><div class="feat-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/></svg></div><h3>Практика с обратной связью</h3><p>Задания на реальных клиентах. Например, после третьего модуля вы проводите два диалога по новой структуре и сдаёте их на разбор с обратной связью.</p></div>
+<div class="card feat"><div class="feat-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg></div><h3>PRO-набор продавца</h3><p>Авторская библиотека: карта продаж, 20 диагностических вопросов, шаблоны сообщений, матрица возражений, чек-лист консультации, таблица учёта клиентов и сценарии последующих касаний.</p></div>
+<div class="card feat"><div class="feat-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><h3>Закрытый чат участников</h3><p>Вопросы, обмен опытом и поддержка все 6 недель обучения. Вы не остаётесь один на один с материалами.</p></div>
+<div class="card feat"><div class="feat-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 15l4-4 3 3 5-6"/></svg></div><h3>Диагностика до и после</h3><p>На старте фиксируем количество заявок, конверсию, основные трудности и уровень навыков. В конце повторяем диагностику и видим реальный прогресс.</p></div>
+</div></div>
+</div></div>
+
+<div class="wrap" style="padding-top: 80px; padding-bottom: 80px; display: flex; flex-direction: column; gap: 32px;">
+<div style="display: flex; flex-direction: column; gap: 16px; max-width: 760px;"><div class="kicker">Результат</div><h2 class="h2">Что вы создадите за время обучения</h2><p style="margin: 0; font-size: 19px; line-height: 1.6; color: #c9c5be;">Вы уходите не с конспектом, а с готовыми инструментами под свой продукт.</p></div>
+<div class="create-grid">
+<div class="card create-item"><div class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M4 12.5L9.5 18L20 6" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Сильный оффер своего продукта</span></div>
+<div class="card create-item"><div class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M4 12.5L9.5 18L20 6" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Собственный алгоритм продаж</span></div>
+<div class="card create-item"><div class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M4 12.5L9.5 18L20 6" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Библиотеку сообщений, вопросов и сценариев продаж</span></div>
+<div class="card create-item"><div class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M4 12.5L9.5 18L20 6" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Матрицу ответов на возражения</span></div>
+<div class="card create-item"><div class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M4 12.5L9.5 18L20 6" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Систему последующих касаний</span></div>
+<div class="card create-item"><div class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M4 12.5L9.5 18L20 6" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>План развития продаж на 30 дней</span></div>
+</div></div>
+
+<div id="oksana" style="max-width: 1160px; margin: 0 auto; padding: 88px 24px; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 48px; align-items: center; justify-content: center;">
+<div style="position: relative; flex: 0 1 400px; width: 400px; max-width: 100%; height: 540px; box-sizing: border-box; border-radius: 24px; overflow: hidden; box-shadow: 0 30px 70px rgba(0,0,0,0.4);">
+<img src="oksana-portrait.jpg" alt="Оксана Пантелеева" style="display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 12%; filter: contrast(1.06) saturate(0.9) brightness(1.0);">
+<div style="position: absolute; inset: 0; background: linear-gradient(0deg, rgba(12,12,14,0.5) 0%, rgba(12,12,14,0) 30%), linear-gradient(180deg, rgba(12,12,14,0.4) 0%, rgba(12,12,14,0) 22%);"></div>
+</div>
+<div style="flex: 1 1 440px; min-width: 0; display: flex; flex-direction: column; gap: 22px;">
+<div style="font-size: 13px; letter-spacing: 0.3em; color: #f28a2e; font-weight: 700; text-transform: uppercase;">Ваш эксперт</div>
+<h2 style="margin: 0; font-family: Lora,Georgia,serif; font-weight: 600; font-size: clamp(30px, 4.4vw, 48px); line-height: 1.1; color: #f4f1ec;">Оксана Пантелеева</h2>
+<p style="margin: 0; font-size: 19px; line-height: 1.6; color: #c9c5be;">Предприниматель, эксперт по продажам и бизнес-тренер. Разбирает продажи через практику: как вести диалог, показывать ценность и доводить разговор до решения.</p>
+<div style="display: flex; flex-direction: column; gap: 10px;">
+<div style="font-size: 17px; line-height: 1.5; color: #e4e0d9;">Основатель школы PRO Продажи</div>
+<div style="font-size: 17px; line-height: 1.5; color: #e4e0d9;">14 лет управляет компанией АТСК «Кровельный сервис»</div>
+<div style="font-size: 17px; line-height: 1.5; color: #e4e0d9;">Наставник предпринимателей по систематизации бизнеса</div>
+<div style="font-size: 17px; line-height: 1.5; color: #e4e0d9;">Спикер мероприятий</div>
+</div>
+</div>
+</div>
+
+<div id="tarify" style="background: #111114; border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06);">
+<div class="wrap" style="padding-top: 80px; padding-bottom: 88px; display: flex; flex-direction: column; gap: 44px;">
+<div style="display: flex; flex-direction: column; gap: 16px; max-width: 760px;"><div class="kicker">Тарифы · Первый поток · Старт 15 ноября</div><h2 class="h2">Выберите свой формат участия</h2><p style="margin: 0; font-size: 19px; line-height: 1.6; color: #c9c5be;">Во всех тарифах - 6 модулей, PRO-набор продавца и доступ к материалам на 6 месяцев.</p><div class="price-deadline-tag" style="align-self:flex-start; padding: 8px 16px; border: 1px solid rgba(242,138,46,0.5); background: rgba(242,138,46,0.1); border-radius: 999px; font-size: 15px; color: #f4f1ec; font-weight: 600;">Цены первого потока действуют до 10 ноября</div></div>
+<div class="tariffs">
+
+<div class="card tariff">
+<h3 class="tariff-name">Самостоятельный</h3>
+<p class="tariff-for">Для тех, кому нужен алгоритм и материалы</p>
+<div class="tariff-price" data-later="27 000 ₽">24 900 ₽</div>
+<div class="price-later price-deadline-tag">До 10 ноября. С 11 ноября - 27 000 ₽</div>
+<ul>
+<li>6 модулей в записи</li>
+<li>Задания для самостоятельной работы</li>
+<li>PRO-набор инструментов продавца</li>
+<li>Доступ к материалам на 6 месяцев</li>
+<li class="muted">Без персональной проверки заданий</li>
+</ul>
+<button type="button" class="btn-t" data-tariff="self">Выбрать тариф</button>
+</div>
+
+<div class="card tariff main">
+<div class="tariff-badge">Рекомендуем</div>
+<h3 class="tariff-name">Практика PRO</h3>
+<p class="tariff-for">Для тех, кто хочет результат через практику</p>
+<div class="tariff-price" data-later="55 000 ₽">49 900 ₽</div>
+<div class="price-later price-deadline-tag">До 10 ноября. С 11 ноября - 55 000 ₽</div>
+<ul>
+<li>Всё из тарифа «Самостоятельный»</li>
+<li class="plus">6 живых Zoom-практикумов</li>
+<li class="plus">Обратная связь по заданиям</li>
+<li class="plus">Разборы ваших реальных диалогов</li>
+<li class="plus">Закрытый чат участников</li>
+<li class="plus">Итоговый план продаж на 30 дней</li>
+</ul>
+<button type="button" class="btn-t" data-tariff="pro">Выбрать тариф</button>
+</div>
+
+<div class="card tariff">
+<h3 class="tariff-name">Личное сопровождение</h3>
+<p class="tariff-for">Для тех, кому нужен индивидуальный разбор</p>
+<div class="tariff-price" data-later="99 000 ₽">89 900 ₽</div>
+<div class="price-later price-deadline-tag">До 10 ноября. С 11 ноября - 99 000 ₽</div>
+<ul>
+<li>Всё из тарифа «Практика PRO»</li>
+<li class="plus">2 индивидуальные встречи с Оксаной</li>
+<li class="plus">Персональный аудит ваших диалогов</li>
+<li class="plus">Рекомендации по вашей системе продаж</li>
+</ul>
+<button type="button" class="btn-t" data-tariff="vip">Выбрать тариф</button>
+</div>
+
+</div>
+</div>
+</div>
+
+<div id="faq" style="max-width: 1160px; margin: 0 auto; padding: 24px 24px 88px; box-sizing: border-box; display: flex; flex-direction: column; gap: 36px;">
+<div style="display: flex; flex-direction: column; gap: 16px; max-width: 760px;">
+<div style="font-size: 13px; letter-spacing: 0.3em; color: #f28a2e; font-weight: 700; text-transform: uppercase;">Частые вопросы</div>
+<h2 style="margin: 0; font-family: Lora,Georgia,serif; font-weight: 600; font-size: clamp(28px, 4vw, 44px); line-height: 1.15; color: #f4f1ec;">Прежде чем написать</h2>
+</div>
+<div style="display: flex; flex-direction: column; gap: 16px;">
+
+<details class="qa"><summary style="font-family: Lora,Georgia,serif; font-weight: 600; font-size: 19px; color: #f4f1ec;">У меня совсем нет времени — я и так занят(а) клиентами</summary><div style="font-size: 17px; line-height: 1.6; color: #c9c5be;">Курс построен на практике с вашими же клиентами: вы применяете каждый шаг сразу в работе, а не откладываете на «после обучения».</div></details>
+
+<details class="qa"><summary style="font-family: Lora,Georgia,serif; font-weight: 600; font-size: 19px; color: #f4f1ec;">Я не «продажник» по натуре — вдруг не получится?</summary><div style="font-size: 17px; line-height: 1.6; color: #c9c5be;">Курс как раз для тех, кто себя так не считает. Вместо врождённого таланта — понятный алгоритм разговора, который можно повторить.</div></details>
+
+<details class="qa"><summary style="font-family: Lora,Georgia,serif; font-weight: 600; font-size: 19px; color: #f4f1ec;">Я уже проходил(а) тренинги по продажам, и не сработало</summary><div style="font-size: 17px; line-height: 1.6; color: #c9c5be;">На Zoom-практикумах разбираются ваши реальные диалоги с вашими клиентами, а не общие скрипты «для всех». Плюс обратная связь по заданиям и диагностика до и после, чтобы вы видели свой прогресс.</div></details>
+
+<details class="qa"><summary style="font-family: Lora,Georgia,serif; font-weight: 600; font-size: 19px; color: #f4f1ec;">Мне подходит, если я только начинаю продавать свои услуги?</summary><div style="font-size: 17px; line-height: 1.6; color: #c9c5be;">Да. Курс проходят и те, кто только начинает называть цену клиентам, и те, кто продаёт давно, но хочет делать это увереннее.</div></details>
+
+<details class="qa"><summary style="font-family: Lora,Georgia,serif; font-weight: 600; font-size: 19px; color: #f4f1ec;">Как проходит обучение?</summary><div style="font-size: 17px; line-height: 1.6; color: #c9c5be;">Онлайн, 6 недель, старт 15 ноября. Начинаем с вводного модуля о мышлении и отношении к продажам, дальше каждую неделю - модуль из коротких видеоуроков по 15-20 минут и практическое задание. В тарифах «Практика PRO» и «Личное сопровождение» - еженедельный Zoom-практикум, закрытый чат и обратная связь по заданиям. Материалы доступны 6 месяцев.</div></details>
+
+<details class="qa"><summary style="font-family: Lora,Georgia,serif; font-weight: 600; font-size: 19px; color: #f4f1ec;">Какой тариф выбрать?</summary><div style="font-size: 17px; line-height: 1.6; color: #c9c5be;">Если вы дисциплинированы и вам нужен алгоритм - «Самостоятельный». Если хотите отработать навык на практике и получить разбор своих диалогов - «Практика PRO», с ним результат приходит быстрее всего. Если нужен персональный аудит и внимание Оксаны - «Личное сопровождение». Сомневаетесь - напишите Оксане, она подскажет.</div></details>
+
+</div>
+</div>
+
+<div id="zapis" style="background: radial-gradient(70% 90% at 15% 20%, rgba(226,110,40,0.16), rgba(12,12,14,0) 70%);">
+<div style="max-width: 1160px; margin: 0 auto; padding: 24px 24px 96px; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 48px; align-items: center; justify-content: center;">
+<div style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 26px;">
+<div style="font-size: 13px; letter-spacing: 0.3em; color: #f28a2e; font-weight: 700; text-transform: uppercase;">Следующий шаг</div>
+<h2 style="margin: 0; font-family: Lora,Georgia,serif; font-weight: 600; font-size: clamp(30px, 4.6vw, 50px); line-height: 1.1; color: #f4f1ec;">Готовы навести порядок в своих продажах?</h2>
+<p style="margin: 0; font-size: 19px; line-height: 1.6; color: #c9c5be;">Выберите тариф и оплатите участие онлайн - это займёт пару минут. Старт потока - 15 ноября.</p>
+<div class="picker" role="radiogroup" aria-label="Тариф">
+<label class="pick"><input type="radio" name="tariff" value="self"><span class="pick-name">Самостоятельный</span><span class="pick-price" data-later="27 000 ₽">24 900 ₽</span></label>
+<label class="pick"><input type="radio" name="tariff" value="pro" checked><span class="pick-name">Практика PRO</span><span class="pick-price" data-later="55 000 ₽">49 900 ₽</span></label>
+<label class="pick"><input type="radio" name="tariff" value="vip"><span class="pick-name">Личное сопровождение</span><span class="pick-price" data-later="99 000 ₽">89 900 ₽</span></label>
+</div>
+<label class="consent" for="consent"><input type="checkbox" id="consent"><span>Я принимаю условия <a href="oferta.html" target="_blank">публичной оферты</a> и даю <a href="soglasie.html" target="_blank">согласие на обработку персональных данных</a> в соответствии с <a href="privacy.html" target="_blank">политикой обработки персональных данных</a></span></label>
+<div id="consent-hint" class="consent-hint" hidden>Отметьте галочку выше, чтобы перейти к оплате</div>
+<a class="btn" id="pay-btn" href="https://securepayecom.com/sc/gYJHDMxYNAJEsRRN" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; justify-content: center; align-self: flex-start; min-height: 60px; padding: 0 40px; box-sizing: border-box; border-radius: 999px; background: linear-gradient(180deg, #ee7b2f, #c9480f); color: #ffffff; font-weight: 700; font-size: 18px; letter-spacing: 0.12em; text-transform: uppercase; box-shadow: 0 10px 30px rgba(226,90,20,0.30);">Перейти к оплате</a>
+<div id="pay-note" class="pay-note" hidden>Для этого тарифа оплата оформляется через Оксану: напишите ей в Telegram, и она пришлёт ссылку на оплату.</div>
+<div class="card steps">
+<div class="kicker" style="margin-bottom: 8px;">Что будет после оплаты</div>
+<div class="step"><div class="step-n">1</div><div class="step-t"><b>Оплачиваете</b> выбранный тариф онлайн</div></div>
+<div class="step"><div class="step-n">2</div><div class="step-t"><b>Получаете письмо</b> на почту с подтверждением участия</div></div>
+<div class="step"><div class="step-n">3</div><div class="step-t"><b>Попадаете в закрытый Telegram-канал</b> участников потока</div></div>
+<div class="step"><div class="step-n">4</div><div class="step-t"><b>В день старта</b> присылаем доступы к урокам на платформе</div></div>
+</div>
+<div id="qr-box" style="width: 100%; max-width: 460px; box-sizing: border-box; padding: 18px 22px; background: #151518; border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; display: flex; align-items: center; gap: 18px;">
+<img id="qr-img" src="qr-pay.jpg" alt="QR-код для оплаты" style="display: block; width: 72px; height: 72px; border-radius: 10px; flex: 0 0 auto;">
+<div style="font-size: 15px; line-height: 1.4; color: #c9c5be;"><span id="qr-text">Или отсканируйте QR-код, чтобы оплатить тариф «Практика PRO» с телефона.</span> Оплачивая, вы принимаете условия <a href="oferta.html" target="_blank">оферты</a>.</div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px; max-width: 460px;">
+<div style="font-size: 15px; color: #9d9a94;">Сомневаетесь? <a href="test.html">Пройдите игру-тест за 2 минуты</a> или напишите Оксане:</div>
+<a class="pill" href="https://t.me/Oxi071280" target="_blank" rel="noopener" style="display: flex; align-items: center; justify-content: center; min-height: 56px; padding: 0 24px; box-sizing: border-box; border: 1px solid rgba(242,138,46,0.55); border-radius: 999px; background: rgba(255,255,255,0.03); color: #ece8e2; font-size: 16px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;">Telegram • личные сообщения</a>
+<a class="pill" href="https://max.ru/u/f9LHodD0cOLfUrJS78I_kEc0COptckK-t9AedTTkOhEpouXCO49UxQG8S5Y" target="_blank" rel="noopener" style="display: flex; align-items: center; justify-content: center; min-height: 56px; padding: 0 24px; box-sizing: border-box; border: 1px solid rgba(242,138,46,0.55); border-radius: 999px; background: rgba(255,255,255,0.03); color: #ece8e2; font-size: 16px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;">MAX • личные сообщения</a>
+<a class="pill" href="https://www.instagram.com/oxi0712" target="_blank" rel="noopener" style="display: flex; align-items: center; justify-content: center; min-height: 56px; padding: 0 24px; box-sizing: border-box; border: 1px solid rgba(242,138,46,0.55); border-radius: 999px; background: rgba(255,255,255,0.03); color: #ece8e2; font-size: 16px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;">Instagram • Direct</a>
+</div>
+</div>
+<div style="position: relative; flex: 0 1 300px; width: 300px; max-width: 100%; height: 640px; box-sizing: border-box; border-radius: 24px; overflow: hidden; box-shadow: 0 30px 70px rgba(0,0,0,0.4);">
+<img src="oksana-mirror.jpg" alt="Оксана Пантелеева у зеркала" style="display: block; width: 100%; height: 100%; object-fit: cover; object-position: 50% 0%; filter: grayscale(0.25) contrast(1.1) brightness(0.95);">
+<div style="position: absolute; inset: 0; background: linear-gradient(0deg, rgba(12,12,14,0.6) 0%, rgba(12,12,14,0) 30%), linear-gradient(90deg, rgba(12,12,14,0.4) 0%, rgba(12,12,14,0) 25%);"></div>
+</div>
+</div>
+</div>
+
+<div style="border-top: 1px solid rgba(255,255,255,0.08);">
+<div style="max-width: 1160px; margin: 0 auto; padding: 32px 24px 44px; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px;">
+<img src="logo.png" alt="Школа PRO продажи Оксаны Пантелеевой" style="display: block; width: 220px; max-width: 60vw; height: auto; object-fit: contain;">
+<div class="legal-links"><a href="oferta.html">Публичная оферта</a><a href="privacy.html">Политика обработки персональных данных</a><a href="soglasie.html">Согласие на обработку персональных данных</a><a href="cookie.html">Политика использования файлов cookie</a><a href="#" data-cookie-settings>Настройки cookie</a></div>
+<div style="font-size: 14px; line-height: 1.6; color: #c9c5be;"><div style="font-size: 12px; letter-spacing: 0.2em; color: #f28a2e; font-weight: 700; text-transform: uppercase; margin-bottom: 4px;">Реквизиты</div>Индивидуальный предприниматель Пантелеева Оксана Владимировна<br>ИНН 380800402893 · ОГРНИП 313385002800189<br>E-mail: <a href="mailto:oxi0712@mail.ru">oxi0712@mail.ru</a></div>
+<div style="font-size: 14px; line-height: 1.5; color: #9d9a94;">Instagram — запрещённая социальная сеть на территории РФ.</div>
+</div>
+</div>
+
+</div>
+
+<script>
+(function(){
+var box = document.getElementById('consent');
+var btn = document.getElementById('pay-btn');
+var hint = document.getElementById('consent-hint');
+if (!box || !btn) return;
+function sync(){ btn.classList.toggle('locked', !box.checked); if (box.checked && hint) hint.hidden = true; }
+box.addEventListener('change', sync);
+btn.addEventListener('click', function(e){
+if (!box.checked) { e.preventDefault(); if (hint) hint.hidden = false; box.focus(); }
+});
+sync();
+})();
+// Цены первого потока до 10 ноября 23:59 мск, с 11 ноября +10%.
+// Проверить, как сайт будет выглядеть после дедлайна: добавить к адресу ?preview=after
+var PRICE_DEADLINE = new Date('2026-11-10T20:59:59Z');
+var AFTER_DEADLINE = new Date() > PRICE_DEADLINE || /[?&]preview=after/.test(location.search);
+(function(){
+// Ссылки на оплату по тарифам. Пустая строка = оплата через личку Оксаны. Пустая строка = оплата через личку Оксаны.
+var PAY_LINKS = {
+  self: 'https://securepayecom.com/sc/LwzrVZougpIEJCFt',
+  pro: 'https://securepayecom.com/sc/gYJHDMxYNAJEsRRN',
+  vip: 'https://securepayecom.com/sc/IDLkjpxheDzGkXzp'
+};
+var DM = 'https://t.me/Oxi071280';
+// QR-коды по тарифам. Пустая строка = QR для тарифа нет, блок скрывается.
+var QR = { self: 'qr-self.png', pro: 'qr-pay.jpg', vip: 'qr-vip.png' };
+// С 11 ноября ссылки и QR те же - сумму в них Оксана меняет в Альфа-банке.
+// Сайт сам меняет только цифры цен.
+if (AFTER_DEADLINE) {
+  document.querySelectorAll('[data-later]').forEach(function(el){ el.textContent = el.getAttribute('data-later'); });
+}
+var NAMES = { self: 'Самостоятельный', pro: 'Практика PRO', vip: 'Личное сопровождение' };
+var qrBox = document.getElementById('qr-box');
+var qrImg = document.getElementById('qr-img');
+var qrText = document.getElementById('qr-text');
+var btn = document.getElementById('pay-btn');
+var note = document.getElementById('pay-note');
+var radios = document.querySelectorAll('input[name="tariff"]');
+function apply(){
+  var cur = document.querySelector('input[name="tariff"]:checked');
+  var t = cur ? cur.value : 'pro';
+  var link = PAY_LINKS[t];
+  if (link) { btn.href = link; btn.textContent = 'Перейти к оплате'; note.hidden = true; }
+  else { btn.href = DM; btn.textContent = 'Написать Оксане'; note.hidden = false; }
+  if (QR[t]) { qrBox.style.display = 'flex'; qrImg.src = QR[t]; qrText.textContent = 'Или отсканируйте QR-код, чтобы оплатить тариф «' + NAMES[t] + '» с телефона.'; }
+  else { qrBox.style.display = 'none'; }
+}
+radios.forEach(function(r){ r.addEventListener('change', apply); });
+document.querySelectorAll('[data-tariff]').forEach(function(b){
+  b.addEventListener('click', function(){
+    var r = document.querySelector('input[name="tariff"][value="'+b.getAttribute('data-tariff')+'"]');
+    if (r) { r.checked = true; apply(); }
+    document.getElementById('zapis').scrollIntoView({behavior:'smooth'});
+  });
+});
+apply();
+})();
+(function(){
+// Плашки «лучшие цены» прячутся после 10 ноября 23:59 мск
+if (AFTER_DEADLINE) {
+document.querySelectorAll('.price-deadline-tag').forEach(function(el){ el.style.display = 'none'; });
+}
+})();
+</script>
+
+</body>
+</html>
