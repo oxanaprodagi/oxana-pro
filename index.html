@@ -104,6 +104,28 @@ a.navlink:hover{color:#f28a2e}
 .mf-p{margin:0;font-size:16px;line-height:1.5;color:#c9c5be}
 .mf-b{align-self:flex-start;margin-top:4px;display:inline-flex;align-items:center;min-height:46px;padding:0 22px;border-radius:999px;border:1px solid rgba(242,138,46,.6);color:#ece8e2;font-weight:700;font-size:14px;letter-spacing:.1em;text-transform:uppercase}
 .mf-b:hover{border-color:#f28a2e;color:#fff}
+@media (max-width:640px){
+#programma [style*="flex: 1 1 340px"]{padding:20px 20px 22px!important;gap:10px!important;border-radius:18px!important}
+#programma [style*="font-size: 64px"]{font-size:38px!important}
+#programma [style*="flex-wrap: wrap; gap: 20px"]{gap:12px!important}
+#programma h3{font-size:20px!important}
+#format .feat{padding:20px!important}
+#format .card{padding:20px!important}
+#otzyvy [style*="padding: 28px"]{padding:20px!important}
+}
+.qa{box-sizing:border-box;padding:0 28px;background:#151518;border:1px solid rgba(255,255,255,.08);border-radius:20px}
+.qa summary{list-style:none;cursor:pointer;padding:22px 34px 22px 0;position:relative}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary::after{content:"+";position:absolute;right:0;top:50%;transform:translateY(-50%);font:600 28px/1 Lora,Georgia,serif;color:#f28a2e}
+.qa[open] summary::after{content:"\2212"}
+.qa[open] summary{padding-bottom:10px}
+.qa>div{padding:0 0 24px}
+.qa:hover{border-color:rgba(242,138,46,.4)}
+.more summary{list-style:none;cursor:pointer;display:inline-block;font-size:14px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#f28a2e;padding:2px 0}
+.more summary::-webkit-details-marker{display:none}
+.more summary::after{content:" +"}
+.more[open] summary::after{content:" \2212"}
+.more[open] summary{margin-bottom:10px}
 .chan{position:relative;overflow:hidden;display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:center;padding:36px 32px;border:1.5px solid rgba(242,138,46,.7);border-radius:28px;background:linear-gradient(135deg,rgba(242,138,46,.18),#151518 62%);box-shadow:0 24px 60px rgba(226,90,20,.18)}
 @media (max-width:860px){.chan{grid-template-columns:1fr;padding:28px 22px}}
 .chan-body{display:flex;flex-direction:column;gap:16px;min-width:0}
@@ -243,6 +265,36 @@ a.navlink:hover{color:#f28a2e}
 <p style="margin: 0; font-family: Lora,Georgia,serif; font-style: italic; font-weight: 600; font-size: clamp(22px, 3vw, 30px); line-height: 1.35; color: #f28a2e; max-width: 820px;">Дело не в том, что вы «не продажник». У вас пока нет системы разговора.</p>
 </div>
 
+<div id="otzyvy" style="max-width: 1160px; margin: 0 auto; padding: 24px 24px 96px; box-sizing: border-box; display: flex; flex-direction: column; gap: 36px;">
+<div style="display: flex; flex-direction: column; gap: 16px; max-width: 760px;">
+<div style="font-size: 13px; letter-spacing: 0.3em; color: #f28a2e; font-weight: 700; text-transform: uppercase;">Отзывы</div>
+<h2 style="margin: 0; font-family: Lora,Georgia,serif; font-weight: 600; font-size: clamp(28px, 4vw, 44px); line-height: 1.15; color: #f4f1ec;">Что говорят те, кто уже прошёл обучение</h2>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 20px;">
+
+<div style="flex: 1 1 260px; box-sizing: border-box; padding: 26px; background: #151518; border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; display: flex; flex-direction: column; gap: 16px;">
+<div style="font-family: Lora,Georgia,serif; font-style: italic; font-weight: 600; font-size: 19px; line-height: 1.45; color: #f4f1ec;">«Оксана стала моим проводником в бизнес-моделировании — процессы превратились в стройную систему».</div>
+<div style="font-size: 15px; color: #9d9a94;">Елена Буяхаева</div>
+</div>
+
+<div style="flex: 1 1 260px; box-sizing: border-box; padding: 26px; background: #151518; border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; display: flex; flex-direction: column; gap: 16px;">
+<div style="font-family: Lora,Georgia,serif; font-style: italic; font-weight: 600; font-size: 19px; line-height: 1.45; color: #f4f1ec;">«Нашла новую работу, чек вырос, добралась до зарплаты мечты — и это ещё не предел».</div>
+<div style="font-size: 15px; color: #9d9a94;">Лариса Ростовцева</div>
+</div>
+
+<div style="flex: 1 1 260px; box-sizing: border-box; padding: 26px; background: #151518; border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; display: flex; flex-direction: column; gap: 16px;">
+<div style="font-family: Lora,Georgia,serif; font-style: italic; font-weight: 600; font-size: 19px; line-height: 1.45; color: #f4f1ec;">«Теперь в переговорах веду я, а не клиент. И я не так сильно боюсь услышать "нет"».</div>
+<div style="font-size: 15px; color: #9d9a94;">Евстолия Наголова</div>
+</div>
+
+<div style="flex: 1 1 260px; box-sizing: border-box; padding: 26px; background: #151518; border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; display: flex; flex-direction: column; gap: 16px;">
+<div style="font-family: Lora,Georgia,serif; font-style: italic; font-weight: 600; font-size: 19px; line-height: 1.45; color: #f4f1ec;">«Пришла без опыта в продажах. Теперь знаю, с чего начать, чтобы продавать свои услуги».</div>
+<div style="font-size: 15px; color: #9d9a94;">Dari</div>
+</div>
+
+</div>
+</div>
+
 <div id="programma" style="max-width: 1160px; margin: 0 auto; padding: 24px 24px 88px; box-sizing: border-box; display: flex; flex-direction: column; gap: 40px;">
 <div style="display: flex; flex-direction: column; gap: 16px; max-width: 760px;">
 <div style="font-size: 13px; letter-spacing: 0.3em; color: #f28a2e; font-weight: 700; text-transform: uppercase;">Программа</div>
@@ -263,7 +315,7 @@ a.navlink:hover{color:#f28a2e}
 <div style="flex: 1 1 340px; box-sizing: border-box; padding: 28px 28px 30px; background: #151518; border: 1px solid rgba(255,255,255,0.08); border-radius: 22px; display: flex; flex-direction: column; gap: 16px;">
 <div style="font-family: Lora,Georgia,serif; font-size: 64px; line-height: 1; font-weight: 700; color: transparent; -webkit-text-stroke: 1.5px rgba(242,138,46,0.7);">01</div>
 <h3 style="margin: 0; font-family: Lora,Georgia,serif; font-weight: 600; font-size: 23px; line-height: 1.25; color: #f4f1ec;">«Я не продажник». Вы просто не знали, как продавать себя</h3>
-<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #c9c5be;">Разберём, почему сложно называть цену. Найдём вашу сильную сторону и научимся говорить о ценности без оправданий.</p>
+<details class="more"><summary>Подробнее</summary><p style="margin: 0; font-size: 17px; line-height: 1.6; color: #c9c5be;">Разберём, почему сложно называть цену. Найдём вашу сильную сторону и научимся говорить о ценности без оправданий.</p></details>
 <div style="margin-top: auto; padding: 14px 16px; background: rgba(242,138,46,0.09); border-radius: 12px;">
 <div style="font-size: 12px; letter-spacing: 0.24em; font-weight: 700; color: #f28a2e; text-transform: uppercase; margin-bottom: 6px;">На выходе</div>
 <div style="font-size: 16px; line-height: 1.5; color: #ece8e2;">Уверенность и готовность говорить о цене.</div>
@@ -273,7 +325,7 @@ a.navlink:hover{color:#f28a2e}
 <div style="flex: 1 1 340px; box-sizing: border-box; padding: 28px 28px 30px; background: #151518; border: 1px solid rgba(255,255,255,0.08); border-radius: 22px; display: flex; flex-direction: column; gap: 16px;">
 <div style="font-family: Lora,Georgia,serif; font-size: 64px; line-height: 1; font-weight: 700; color: transparent; -webkit-text-stroke: 1.5px rgba(242,138,46,0.7);">02</div>
 <h3 style="margin: 0; font-family: Lora,Georgia,serif; font-weight: 600; font-size: 23px; line-height: 1.25; color: #f4f1ec;">Поймём, кому и что вы продаёте</h3>
-<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #c9c5be;">Разберём аудиторию и её реальные задачи. Упакуем вашу экспертизу в понятный продукт.</p>
+<details class="more"><summary>Подробнее</summary><p style="margin: 0; font-size: 17px; line-height: 1.6; color: #c9c5be;">Разберём аудиторию и её реальные задачи. Упакуем вашу экспертизу в понятный продукт.</p></details>
 <div style="margin-top: auto; padding: 14px 16px; background: rgba(242,138,46,0.09); border-radius: 12px;">
 <div style="font-size: 12px; letter-spacing: 0.24em; font-weight: 700; color: #f28a2e; text-transform: uppercase; margin-bottom: 6px;">На выходе</div>
 <div style="font-size: 16px; line-height: 1.5; color: #ece8e2;">Ответ на «Кому я нужен?» и «Что именно я продаю?».</div>
@@ -283,7 +335,7 @@ a.navlink:hover{color:#f28a2e}
 <div style="flex: 1 1 340px; box-sizing: border-box; padding: 28px 28px 30px; background: #151518; border: 1px solid rgba(255,255,255,0.08); border-radius: 22px; display: flex; flex-direction: column; gap: 16px;">
 <div style="font-family: Lora,Georgia,serif; font-size: 64px; line-height: 1; font-weight: 700; color: transparent; -webkit-text-stroke: 1.5px rgba(242,138,46,0.7);">03</div>
 <h3 style="margin: 0; font-family: Lora,Georgia,serif; font-weight: 600; font-size: 23px; line-height: 1.25; color: #f4f1ec;">Перестанете терять клиента в разговоре</h3>
-<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #c9c5be;">Соберём алгоритм продажи: как начать диалог, задать вопросы и перейти к предложению.</p>
+<details class="more"><summary>Подробнее</summary><p style="margin: 0; font-size: 17px; line-height: 1.6; color: #c9c5be;">Соберём алгоритм продажи: как начать диалог, задать вопросы и перейти к предложению.</p></details>
 <div style="margin-top: auto; padding: 14px 16px; background: rgba(242,138,46,0.09); border-radius: 12px;">
 <div style="font-size: 12px; letter-spacing: 0.24em; font-weight: 700; color: #f28a2e; text-transform: uppercase; margin-bottom: 6px;">На выходе</div>
 <div style="font-size: 16px; line-height: 1.5; color: #ece8e2;">Схема разговора вместо импровизации и бесплатных консультаций.</div>
@@ -293,7 +345,7 @@ a.navlink:hover{color:#f28a2e}
 <div style="flex: 1 1 340px; box-sizing: border-box; padding: 28px 28px 30px; background: #151518; border: 1px solid rgba(255,255,255,0.08); border-radius: 22px; display: flex; flex-direction: column; gap: 16px;">
 <div style="font-family: Lora,Georgia,serif; font-size: 64px; line-height: 1; font-weight: 700; color: transparent; -webkit-text-stroke: 1.5px rgba(242,138,46,0.7);">04</div>
 <h3 style="margin: 0; font-family: Lora,Georgia,serif; font-weight: 600; font-size: 23px; line-height: 1.25; color: #f4f1ec;">Продажи в переписке и на консультации</h3>
-<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #c9c5be;">Сильные вопросы, голосовые сообщения и ошибки в переписках, из-за которых клиент пропадает.</p>
+<details class="more"><summary>Подробнее</summary><p style="margin: 0; font-size: 17px; line-height: 1.6; color: #c9c5be;">Сильные вопросы, голосовые сообщения и ошибки в переписках, из-за которых клиент пропадает.</p></details>
 <div style="margin-top: auto; padding: 14px 16px; background: rgba(242,138,46,0.09); border-radius: 12px;">
 <div style="font-size: 12px; letter-spacing: 0.24em; font-weight: 700; color: #f28a2e; text-transform: uppercase; margin-bottom: 6px;">На выходе</div>
 <div style="font-size: 16px; line-height: 1.5; color: #ece8e2;">Библиотека сообщений и вопросов, отработанные сценарии продаж.</div>
@@ -303,7 +355,7 @@ a.navlink:hover{color:#f28a2e}
 <div style="flex: 1 1 340px; box-sizing: border-box; padding: 28px 28px 30px; background: #151518; border: 1px solid rgba(255,255,255,0.08); border-radius: 22px; display: flex; flex-direction: column; gap: 16px;">
 <div style="font-family: Lora,Georgia,serif; font-size: 64px; line-height: 1; font-weight: 700; color: transparent; -webkit-text-stroke: 1.5px rgba(242,138,46,0.7);">05</div>
 <h3 style="margin: 0; font-family: Lora,Georgia,serif; font-weight: 600; font-size: 23px; line-height: 1.25; color: #f4f1ec;">«Дорого», «я подумаю», «у других дешевле». Что отвечать?</h3>
-<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #c9c5be;">Найдём настоящую причину сомнений и научимся отвечать без скидок и давления.</p>
+<details class="more"><summary>Подробнее</summary><p style="margin: 0; font-size: 17px; line-height: 1.6; color: #c9c5be;">Найдём настоящую причину сомнений и научимся отвечать без скидок и давления.</p></details>
 <div style="margin-top: auto; padding: 14px 16px; background: rgba(242,138,46,0.09); border-radius: 12px;">
 <div style="font-size: 12px; letter-spacing: 0.24em; font-weight: 700; color: #f28a2e; text-transform: uppercase; margin-bottom: 6px;">На выходе</div>
 <div style="font-size: 16px; line-height: 1.5; color: #ece8e2;">Готовые формулировки для звонков, встреч и переписок.</div>
@@ -313,7 +365,7 @@ a.navlink:hover{color:#f28a2e}
 <div style="flex: 1 1 340px; box-sizing: border-box; padding: 28px 28px 30px; background: #151518; border: 1px solid rgba(255,255,255,0.08); border-radius: 22px; display: flex; flex-direction: column; gap: 16px;">
 <div style="font-family: Lora,Georgia,serif; font-size: 64px; line-height: 1; font-weight: 700; color: transparent; -webkit-text-stroke: 1.5px rgba(242,138,46,0.7);">06</div>
 <h3 style="margin: 0; font-family: Lora,Georgia,serif; font-weight: 600; font-size: 23px; line-height: 1.25; color: #f4f1ec;">Отработаете всё на своих реальных клиентах</h3>
-<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #c9c5be;">На мастермайнде разберём ваши диалоги и найдём, где вы теряете клиентов.</p>
+<details class="more"><summary>Подробнее</summary><p style="margin: 0; font-size: 17px; line-height: 1.6; color: #c9c5be;">На мастермайнде разберём ваши диалоги и найдём, где вы теряете клиентов.</p></details>
 <div style="margin-top: auto; padding: 14px 16px; background: rgba(242,138,46,0.09); border-radius: 12px;">
 <div style="font-size: 12px; letter-spacing: 0.24em; font-weight: 700; color: #f28a2e; text-transform: uppercase; margin-bottom: 6px;">На выходе</div>
 <div style="font-size: 16px; line-height: 1.5; color: #ece8e2;">Своя рабочая система продаж, готовая к применению.</div>
@@ -351,36 +403,6 @@ a.navlink:hover{color:#f28a2e}
 <div class="card create-item"><div class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M4 12.5L9.5 18L20 6" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>Систему последующих касаний</span></div>
 <div class="card create-item"><div class="check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M4 12.5L9.5 18L20 6" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><span>План развития продаж на 30 дней</span></div>
 </div></div>
-
-<div id="otzyvy" style="max-width: 1160px; margin: 0 auto; padding: 24px 24px 96px; box-sizing: border-box; display: flex; flex-direction: column; gap: 36px;">
-<div style="display: flex; flex-direction: column; gap: 16px; max-width: 760px;">
-<div style="font-size: 13px; letter-spacing: 0.3em; color: #f28a2e; font-weight: 700; text-transform: uppercase;">Отзывы</div>
-<h2 style="margin: 0; font-family: Lora,Georgia,serif; font-weight: 600; font-size: clamp(28px, 4vw, 44px); line-height: 1.15; color: #f4f1ec;">Что говорят те, кто уже прошёл обучение</h2>
-</div>
-<div style="display: flex; flex-wrap: wrap; gap: 20px;">
-
-<div style="flex: 1 1 260px; box-sizing: border-box; padding: 26px; background: #151518; border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; display: flex; flex-direction: column; gap: 16px;">
-<div style="font-family: Lora,Georgia,serif; font-style: italic; font-weight: 600; font-size: 19px; line-height: 1.45; color: #f4f1ec;">«Оксана стала моим проводником в бизнес-моделировании — процессы превратились в стройную систему».</div>
-<div style="font-size: 15px; color: #9d9a94;">Елена Буяхаева</div>
-</div>
-
-<div style="flex: 1 1 260px; box-sizing: border-box; padding: 26px; background: #151518; border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; display: flex; flex-direction: column; gap: 16px;">
-<div style="font-family: Lora,Georgia,serif; font-style: italic; font-weight: 600; font-size: 19px; line-height: 1.45; color: #f4f1ec;">«Нашла новую работу, чек вырос, добралась до зарплаты мечты — и это ещё не предел».</div>
-<div style="font-size: 15px; color: #9d9a94;">Лариса Ростовцева</div>
-</div>
-
-<div style="flex: 1 1 260px; box-sizing: border-box; padding: 26px; background: #151518; border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; display: flex; flex-direction: column; gap: 16px;">
-<div style="font-family: Lora,Georgia,serif; font-style: italic; font-weight: 600; font-size: 19px; line-height: 1.45; color: #f4f1ec;">«Теперь в переговорах веду я, а не клиент. И я не так сильно боюсь услышать "нет"».</div>
-<div style="font-size: 15px; color: #9d9a94;">Евстолия Наголова</div>
-</div>
-
-<div style="flex: 1 1 260px; box-sizing: border-box; padding: 26px; background: #151518; border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; display: flex; flex-direction: column; gap: 16px;">
-<div style="font-family: Lora,Georgia,serif; font-style: italic; font-weight: 600; font-size: 19px; line-height: 1.45; color: #f4f1ec;">«Пришла без опыта в продажах. Теперь знаю, с чего начать, чтобы продавать свои услуги».</div>
-<div style="font-size: 15px; color: #9d9a94;">Dari</div>
-</div>
-
-</div>
-</div>
 
 <div id="oksana" style="max-width: 1160px; margin: 0 auto; padding: 88px 24px; box-sizing: border-box; display: flex; flex-wrap: wrap; gap: 48px; align-items: center; justify-content: center;">
 <div style="position: relative; flex: 0 1 400px; width: 400px; max-width: 100%; height: 540px; box-sizing: border-box; border-radius: 24px; overflow: hidden; box-shadow: 0 30px 70px rgba(0,0,0,0.4);">
@@ -462,35 +484,17 @@ a.navlink:hover{color:#f28a2e}
 </div>
 <div style="display: flex; flex-direction: column; gap: 16px;">
 
-<div style="box-sizing: border-box; padding: 24px 28px; background: #151518; border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; display: flex; flex-direction: column; gap: 10px;">
-<div style="font-family: Lora,Georgia,serif; font-weight: 600; font-size: 19px; color: #f4f1ec;">У меня совсем нет времени — я и так занят(а) клиентами</div>
-<div style="font-size: 17px; line-height: 1.6; color: #c9c5be;">Курс построен на практике с вашими же клиентами: вы применяете каждый шаг сразу в работе, а не откладываете на «после обучения».</div>
-</div>
+<details class="qa"><summary style="font-family: Lora,Georgia,serif; font-weight: 600; font-size: 19px; color: #f4f1ec;">У меня совсем нет времени — я и так занят(а) клиентами</summary><div style="font-size: 17px; line-height: 1.6; color: #c9c5be;">Курс построен на практике с вашими же клиентами: вы применяете каждый шаг сразу в работе, а не откладываете на «после обучения».</div></details>
 
-<div style="box-sizing: border-box; padding: 24px 28px; background: #151518; border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; display: flex; flex-direction: column; gap: 10px;">
-<div style="font-family: Lora,Georgia,serif; font-weight: 600; font-size: 19px; color: #f4f1ec;">Я не «продажник» по натуре — вдруг не получится?</div>
-<div style="font-size: 17px; line-height: 1.6; color: #c9c5be;">Курс как раз для тех, кто себя так не считает. Вместо врождённого таланта — понятный алгоритм разговора, который можно повторить.</div>
-</div>
+<details class="qa"><summary style="font-family: Lora,Georgia,serif; font-weight: 600; font-size: 19px; color: #f4f1ec;">Я не «продажник» по натуре — вдруг не получится?</summary><div style="font-size: 17px; line-height: 1.6; color: #c9c5be;">Курс как раз для тех, кто себя так не считает. Вместо врождённого таланта — понятный алгоритм разговора, который можно повторить.</div></details>
 
-<div style="box-sizing: border-box; padding: 24px 28px; background: #151518; border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; display: flex; flex-direction: column; gap: 10px;">
-<div style="font-family: Lora,Georgia,serif; font-weight: 600; font-size: 19px; color: #f4f1ec;">Я уже проходил(а) тренинги по продажам, и не сработало</div>
-<div style="font-size: 17px; line-height: 1.6; color: #c9c5be;">На Zoom-практикумах разбираются ваши реальные диалоги с вашими клиентами, а не общие скрипты «для всех». Плюс обратная связь по заданиям и диагностика до и после, чтобы вы видели свой прогресс.</div>
-</div>
+<details class="qa"><summary style="font-family: Lora,Georgia,serif; font-weight: 600; font-size: 19px; color: #f4f1ec;">Я уже проходил(а) тренинги по продажам, и не сработало</summary><div style="font-size: 17px; line-height: 1.6; color: #c9c5be;">На Zoom-практикумах разбираются ваши реальные диалоги с вашими клиентами, а не общие скрипты «для всех». Плюс обратная связь по заданиям и диагностика до и после, чтобы вы видели свой прогресс.</div></details>
 
-<div style="box-sizing: border-box; padding: 24px 28px; background: #151518; border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; display: flex; flex-direction: column; gap: 10px;">
-<div style="font-family: Lora,Georgia,serif; font-weight: 600; font-size: 19px; color: #f4f1ec;">Мне подходит, если я только начинаю продавать свои услуги?</div>
-<div style="font-size: 17px; line-height: 1.6; color: #c9c5be;">Да. Курс проходят и те, кто только начинает называть цену клиентам, и те, кто продаёт давно, но хочет делать это увереннее.</div>
-</div>
+<details class="qa"><summary style="font-family: Lora,Georgia,serif; font-weight: 600; font-size: 19px; color: #f4f1ec;">Мне подходит, если я только начинаю продавать свои услуги?</summary><div style="font-size: 17px; line-height: 1.6; color: #c9c5be;">Да. Курс проходят и те, кто только начинает называть цену клиентам, и те, кто продаёт давно, но хочет делать это увереннее.</div></details>
 
-<div style="box-sizing: border-box; padding: 24px 28px; background: #151518; border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; display: flex; flex-direction: column; gap: 10px;">
-<div style="font-family: Lora,Georgia,serif; font-weight: 600; font-size: 19px; color: #f4f1ec;">Как проходит обучение?</div>
-<div style="font-size: 17px; line-height: 1.6; color: #c9c5be;">Онлайн, 6 недель, старт 15 ноября. Начинаем с вводного модуля о мышлении и отношении к продажам, дальше каждую неделю - модуль из коротких видеоуроков по 15-20 минут и практическое задание. В тарифах «Практика PRO» и «Личное сопровождение» - еженедельный Zoom-практикум, закрытый чат и обратная связь по заданиям. Материалы доступны 6 месяцев.</div>
-</div>
+<details class="qa"><summary style="font-family: Lora,Georgia,serif; font-weight: 600; font-size: 19px; color: #f4f1ec;">Как проходит обучение?</summary><div style="font-size: 17px; line-height: 1.6; color: #c9c5be;">Онлайн, 6 недель, старт 15 ноября. Начинаем с вводного модуля о мышлении и отношении к продажам, дальше каждую неделю - модуль из коротких видеоуроков по 15-20 минут и практическое задание. В тарифах «Практика PRO» и «Личное сопровождение» - еженедельный Zoom-практикум, закрытый чат и обратная связь по заданиям. Материалы доступны 6 месяцев.</div></details>
 
-<div style="box-sizing: border-box; padding: 24px 28px; background: #151518; border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; display: flex; flex-direction: column; gap: 10px;">
-<div style="font-family: Lora,Georgia,serif; font-weight: 600; font-size: 19px; color: #f4f1ec;">Какой тариф выбрать?</div>
-<div style="font-size: 17px; line-height: 1.6; color: #c9c5be;">Если вы дисциплинированы и вам нужен алгоритм - «Самостоятельный». Если хотите отработать навык на практике и получить разбор своих диалогов - «Практика PRO», с ним результат приходит быстрее всего. Если нужен персональный аудит и внимание Оксаны - «Личное сопровождение». Сомневаетесь - напишите Оксане, она подскажет.</div>
-</div>
+<details class="qa"><summary style="font-family: Lora,Georgia,serif; font-weight: 600; font-size: 19px; color: #f4f1ec;">Какой тариф выбрать?</summary><div style="font-size: 17px; line-height: 1.6; color: #c9c5be;">Если вы дисциплинированы и вам нужен алгоритм - «Самостоятельный». Если хотите отработать навык на практике и получить разбор своих диалогов - «Практика PRO», с ним результат приходит быстрее всего. Если нужен персональный аудит и внимание Оксаны - «Личное сопровождение». Сомневаетесь - напишите Оксане, она подскажет.</div></details>
 
 </div>
 </div>
