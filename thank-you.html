@@ -56,5 +56,33 @@ a.pill:hover{border-color:#f28a2e;color:#ffffff}
 </div>
 </div>
 
+<script>
+/* Продажа для Яндекс Метрики: ecommerce-покупка в dataLayer + цель "oplata".
+   Тариф можно передать в адресе: thank-you.html?t=self | pro | vip */
+(function () {
+  var T = {
+    self: { id: 'self', name: 'PRO Продажи - Самостоятельный', price: 24900 },
+    pro:  { id: 'pro',  name: 'PRO Продажи - Практика PRO', price: 49900 },
+    vip:  { id: 'vip',  name: 'PRO Продажи - Личное сопровождение', price: 89900 }
+  };
+  var t = (new URLSearchParams(location.search).get('t') || '').toLowerCase();
+  var item = T[t] || { id: 'course', name: 'PRO Продажи - оплата курса' };
+  var orderId = 'order-' + Date.now();
+  try {
+    if (sessionStorage.getItem('purchase_sent')) return; /* не считать повторно при обновлении страницы */
+    sessionStorage.setItem('purchase_sent', '1');
+  } catch (e) {}
+  var product = { id: item.id, name: item.name, category: 'Курс', quantity: 1 };
+  if (item.price) product.price = item.price;
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({ ecommerce: { currencyCode: 'RUB', purchase: { actionField: { id: orderId }, products: [product] } } });
+  document.addEventListener('DOMContentLoaded', function () {
+    if (!window.CookieConsent) return;
+    CookieConsent.onAccept(function () {
+      try { ym(114110225, 'reachGoal', 'oplata', item.price ? { order_price: item.price, currency: 'RUB' } : {}); } catch (e) {}
+    });
+  });
+})();
+</script>
 </body>
 </html>
